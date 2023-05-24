@@ -45,6 +45,7 @@ export default defineConfig({
       }
     }
   },
+  base: "/its-show-time/", // github page use
   build: {
     chunkSizeWarningLimit: 1500,
     rollupOptions: {
