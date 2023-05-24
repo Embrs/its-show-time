@@ -1,4 +1,4 @@
-// import antd from "@/plugin/antd";
+import antd from "@/plugin/antd";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
@@ -9,5 +9,5 @@ const app = createApp(App);
 
 app.use(createPinia());
 app.use(router);
-// app.use(antd);
+app.use(antd);
 app.mount("#app");
