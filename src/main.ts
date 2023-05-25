@@ -1,4 +1,5 @@
 import antd from "@/plugin/antd";
+import "@/plugin/firebase";
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 
