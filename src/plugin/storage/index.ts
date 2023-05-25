@@ -1,14 +1,14 @@
 // key對應表
 export const keys = {
   theme: "THEME", // @param object，主題
-  countdonw: "COUNTDONW", // 計時器資訊
-  productCard: "PRODUCTCARD", // 商品卡片資訊
-  commentsHistory: "COMMENTSHISTORY", // 留言列表
 };
 
+interface AnyObject {
+  [key: string]: any;
+}
 
 // 設定項目
-export const Set = function (key, valueObj) {
+export const Set = function (key: string, valueObj: AnyObject) {
   console.log("set", key);
   try {
     const _data = JSON.stringify(valueObj);
@@ -20,9 +20,9 @@ export const Set = function (key, valueObj) {
 };
 
 // 提取項目
-export const Get = function (key = "") {
+export const Get = function (key: string) {
   try {
-    const _data = localStorage.getItem(key);
+    const _data = localStorage.getItem(key) || "";
     return JSON.parse(_data);
   } catch (error) {
     return undefined;
@@ -30,7 +30,7 @@ export const Get = function (key = "") {
 };
 
 // 清除項目
-export const Remove = function (key) {
+export const Remove = function (key: string) {
   try {
     localStorage.removeItem(key);
     return true;

@@ -1,0 +1,28 @@
+<template lang="pug">
+//- 請填寫功能描述👈
+#layout
+  p web layout
+  nav.row 
+    RouterLink(to="/") Home
+    RouterLink(to="/about") About
+    RouterLink(to="/bgm-login") BGM login
+  RouterView
+</template>
+
+<script setup lang="ts">
+import { RouterLink, RouterView } from "vue-router";
+// script
+</script>
+
+<style lang="scss" scoped>
+// 佈局
+#layout {
+}
+// 組件
+#layout {
+  .row {
+    display: flex;
+    gap: 10px;
+  }
+}
+</style>
