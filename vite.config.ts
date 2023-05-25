@@ -24,8 +24,7 @@ export default defineConfig(({ mode }) => {
       // },
       proxy: {
         "/api": {
-          // target: loadEnv("", process.cwd()).VITE_APP_URL,
-          target: "https://bgec.relithe.com",
+          target: loadEnv("", process.cwd()).VITE_APP_URL,
           changeOrigin: true,
           // rewrite: (path) => path.replace(/^\/api/, ""),
         }
