@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
         "@": fileURLToPath(new URL("./src", import.meta.url))
       }
     },
+    // base: "/its-show-time/", // github page use
     server: {
       host: "0.0.0.0",
       port: 8088,
@@ -23,7 +24,8 @@ export default defineConfig(({ mode }) => {
       // },
       proxy: {
         "/api": {
-          target: loadEnv("", process.cwd()).VITE_APP_URL,
+          // target: loadEnv("", process.cwd()).VITE_APP_URL,
+          target: "https://bgec.relithe.com",
           changeOrigin: true,
           // rewrite: (path) => path.replace(/^\/api/, ""),
         }
@@ -46,7 +48,6 @@ export default defineConfig(({ mode }) => {
         }
       }
     },
-    base: "/its-show-time/", // github page use
     build: {
       chunkSizeWarningLimit: 1500, // 分割檔案
       rollupOptions: {

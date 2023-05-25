@@ -18,10 +18,10 @@ interface AnyParams {
   [key: string]: any;
 }
 
-export const Get = (uri: string, param: AnyParams): Promise<ResObject> => {
+export const Get = (uri: string, param: AnyParams | undefined = undefined): Promise<ResObject> => {
   return new Promise<ResObject>((resolve) => {
     axiosIns
-      .get(`uri${fn.ToQueryStr(param)}`)
+      .get(`${uri}${fn.ToQueryStr(param)}`)
       .then((response: any) => resolve(response));
   });
 };

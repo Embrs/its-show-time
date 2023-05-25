@@ -26,7 +26,7 @@ export const HandleErrorRes = (error: Error): ResObject => {
 };
 
 // Object 轉換為 query
-export const ToQueryStr = (params: AnyObject): string => {
+export const ToQueryStr = (params: AnyObject | undefined): string => {
   if (!params) return "";
   return `?${Object.entries(params)
     .map(([key, val]) => `${key}=${encodeURIComponent(val)}`)
