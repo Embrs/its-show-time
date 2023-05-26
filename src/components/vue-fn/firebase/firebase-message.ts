@@ -5,8 +5,10 @@ import { message } from "ant-design-vue";
 export default () => {
   const { proxy } = getCurrentInstance()!;
   const db = proxy!.$firebase.db;
+
   const msgDB = dbFn.ref(db, "message");
   const msgData = ref({} as Record<string, any>);
+
   // 監聽 member 資料
   dbFn.onValue(msgDB, (snapshot) => {
     if (snapshot.val() !== null) {
@@ -15,6 +17,7 @@ export default () => {
       message.error("監聽失敗");
     }
   });
+
   // 加入訊息
   const PushMessage = (msgContent: string) => {
     dbFn.push(msgDB, msgContent)
@@ -24,6 +27,7 @@ export default () => {
       .catch((err) => { message.error(`送出失敗${err}`); });
     console.log();
   };
+
   // 刪除訊息
   const RemoveMessage = (id: string) => {
     if (!id) {
@@ -38,6 +42,7 @@ export default () => {
         message.error(`刪除失敗${err}`);
       });
   };
+
   return {
     PushMessage,
     RemoveMessage,

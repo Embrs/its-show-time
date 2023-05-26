@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import {ref, computed} from "vue";
-import firebaseMsg from "@/components/interface/web-pages/firebase/firebase-message";
+import firebaseMsg from "@/components/vue-fn/firebase/firebase-message";
 
 const msgFn = firebaseMsg();
 const message = ref("");
