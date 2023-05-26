@@ -6,11 +6,16 @@
     RouterLink(to="/") Home
     RouterLink(to="/about") About
     RouterLink(to="/bgm-login") BGM login
+    RouterLink(to="/firebase") Firebase
   RouterView
 </template>
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
+import { getCurrentInstance } from "vue";
+const { proxy } = getCurrentInstance()!;
+const $firebase = proxy!.$firebase;
+
 // script
 </script>
 

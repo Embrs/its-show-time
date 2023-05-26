@@ -19,6 +19,11 @@ const router = createRouter({
           name: "about",
           component: () => import("@/views/web/pages/about.vue")
         },
+        {
+          path: "/firebase",
+          name: "firebase",
+          component: () => import("@/views/web/pages/firebase.vue")
+        },
       ]
     },
     // ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
