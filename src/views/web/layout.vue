@@ -1,41 +1,31 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#Layout(:class="[{'full-page': fullPage.isFullPage}]")
+#Layout(:class="[{'full-page': fullPageStore.isFullPage}]")
   header.info-area
     UserInfo
   .page-bar-area
     PageBar
   .menu-area 
     PageMenu
-    //- RouterLink(to="/") Home
-    //- RouterLink(to="/about") About
-    //- RouterLink(to="/bgm-login") BGM login
-    //- RouterLink(to="/firebase") Firebase
-  main.page-area page
-    aButton(@click="fullPage.SetFull(true)") full
-    aButton(@click="fullPage.SetFull(false)") unfull
+  main.page-area
     .full-btn
-      FullscreenOutlined
-      FullscreenExitOutlined
-    <fullscreen-outlined /> 
+      PageFullBtn
     RouterView
   footer.footer-area
     LayoutFooter
 </template>
 
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
 import UserInfo from "@/components/layout/web/user-info/index.vue";
 import PageMenu from "@/components/layout/web/page-menu/index.vue";
 import LayoutFooter from "@/components/layout/web/layout-footer/index.vue";
 import PageBar from "@/components/layout/web/page-bar/index.vue";
-// icon
-import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons-vue";
+import PageFullBtn from "@/components/layout/web/page-full-btn/index.vue";
+// store
+import { useFullPageStore } from "@/stores/ctrl";
+// 頁面延展 Store
+const fullPageStore = useFullPageStore();
 
-import {useFullPageStore} from "@/stores/ctrl";
-
-
-const fullPage = useFullPageStore();
 // script
 </script>
 
@@ -82,9 +72,15 @@ const fullPage = useFullPageStore();
     grid-area: footer; 
   }
 }
+
 // 組件
 #Layout {
-  
+  .full-btn {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    z-index: 1;
+  }
 }
 
 .full-page {

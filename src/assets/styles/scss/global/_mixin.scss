@@ -1,0 +1,57 @@
+@mixin size($width: 100%, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+
+@mixin center($gap: 0) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap
+}
+
+@mixin flex($gap: 0) {
+  display: flex;
+  align-items: center;
+  gap: $gap
+}
+
+@mixin column($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap
+}
+
+@mixin text-line {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin text-break {
+  // word-break: break-all;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+@mixin btn-click {
+  cursor: pointer;
+  user-select: none; 
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+@mixin select-none {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+@mixin img-lock {
+  -webkit-user-drag: none; // 不可拖曳圖片
+  pointer-events: none; //防止拖拉圖片
+  -webkit-touch-callout: none; // ios禁用菜單
+}
