@@ -1,14 +1,14 @@
-<template lang="pug">
+  <template lang="pug">
 //- 請填寫功能描述👈
 #friebase
-  p friebase
+  p {{"Friebase"}}
   a-input(v-model:value="message")
-  a-button(@click="msgFn.PushMessage(message)") Send
+  a-button(@click="msgFn.PushMessage(message)") {{"Send"}}
   .list
     .item(v-for="msgInfo in msgList")
       p {{ msgInfo.id }}
       p {{ msgInfo.value }}
-      a-button(@click="msgFn.RemoveMessage(msgInfo.id)") X
+      a-button(@click="msgFn.RemoveMessage(msgInfo.id)") {{"X"}}
 </template>
 
 <script setup lang="ts">

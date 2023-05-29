@@ -1,0 +1,12 @@
+html {
+  font-family: "Quicksand", "Noto Sans TC";
+  font-smooth: always;
+  p {
+    margin: 0;
+    padding: 0;
+  }
+}
+html {
+  min-height: 100vh;
+  overflow: overlay;
+}
