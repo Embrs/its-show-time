@@ -27,6 +27,16 @@ module.exports = {
     curly: "off", // 可用return 簡寫
     "vue/no-mutating-props": "off", // change props
     "vue/multi-word-component-names": "off", // 多單字的名字
+    "vue/max-attributes-per-line": // 最大參數量
+      ["error", {
+        "singleline": {
+          "max": 3
+        },      
+        "multiline": {
+          "max": 3
+        }
+      }],
+    "vue/mustache-interpolation-spacing": "off", // 強制 Html {{ }} 左右空白 
     "no-unused-vars": "off"
   }
 };

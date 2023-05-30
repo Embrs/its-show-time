@@ -1,14 +1,14 @@
   <template lang="pug">
 //- 請填寫功能描述👈
 #friebase
-  p {{"Friebase"}}
-  a-input(v-model:value="message")
-  a-button(@click="msgFn.PushMessage(message)") {{"Send"}}
+  p {{ "Friebase" }}
+  aInput(v-model:value="message")
+  aButton(@click="msgFn.PushMessage(message)") {{"Send"}} 
   .list
-    .item(v-for="msgInfo in msgList")
+    .item(v-for="msgInfo in msgList" :key="msgInfo.id")
       p {{ msgInfo.id }}
       p {{ msgInfo.value }}
-      a-button(@click="msgFn.RemoveMessage(msgInfo.id)") {{"X"}}
+      aButton(@click="msgFn.RemoveMessage(msgInfo.id)") {{"X"}}
 </template>
 
 <script setup lang="ts">
@@ -17,7 +17,6 @@ import firebaseMsg from "@/components/vue-fn/firebase/firebase-message";
 
 const msgFn = firebaseMsg();
 const message = ref("");
-
 const msgList = computed(() => {
   return Object.keys(msgFn.msgData.value).map((key) =>{
     return {

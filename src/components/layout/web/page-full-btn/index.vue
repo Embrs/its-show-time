@@ -9,9 +9,7 @@ import { computed } from "vue";
 import debounce from "lodash/debounce";
 // icon
 import { FullscreenOutlined, FullscreenExitOutlined } from "@ant-design/icons-vue";
-// store
 import { useFullPageStore } from "@/stores/ctrl";
-
 // 頁面延展 Store
 const fullPageStore = useFullPageStore();
 // 頁面延展 icon
@@ -21,6 +19,7 @@ const fullPageIcon = computed(()=> {
 });
 // 點擊頁面延展 icon
 const ClickFullPageIcon = debounce(() => {
+  console.log(fullPageStore);
   fullPageStore.SetFull(!fullPageStore.isFullPage);
 }, 200, { leading: true, trailing: false });
 </script>

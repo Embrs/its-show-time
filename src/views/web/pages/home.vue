@@ -14,16 +14,16 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
+import { ref } from "vue";
 import { useCounterStore } from "@/stores/counter";
-const counterStore = useCounterStore();
-
 import { useThemeColorStore } from "@/stores/theme-color";
+const counterStore = useCounterStore();
 const colorStore = useThemeColorStore();
+
 const colorVal = ref("");
 const SetColor = () => {
   if (!colorVal.value) return;
-  colorStore.SetColor("primaryDark", colorVal.value);
+  colorStore.SetColor("fontPrimary", colorVal.value);
 };
 
 </script>
@@ -31,7 +31,7 @@ const SetColor = () => {
 <style lang="scss" scoped>
 // 佈局
 #Home {
-  color: var(--primary-dark);
+  color: var(--fontPrimary);
   font-family: "Noto Sans TC";
   font-size: 20px;
   font-weight: 900;

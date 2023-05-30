@@ -1,4 +1,4 @@
-import { ref, reactive, computed } from "vue";
+import { reactive } from "vue";
 import { defineStore } from "pinia";
 
 export interface ColorMap {
@@ -6,15 +6,18 @@ export interface ColorMap {
 }
 
 // 設定頁面滿屏
-export const useThemeColorStore = defineStore("counter", () => {
-  const color = ref("#aaa");
+export const useThemeColorStore = defineStore("themeColor", () => {
   const colors: ColorMap = reactive({
-    "primaryDark": "#189086",
-    "primary": "#118D83",
-    "primaryLight": "#1DB0A3",
-    "secondaryDark": "#1F3A51",
-    "secondary": "#455AA9",
-    "secondaryLight": "#6978CC",
+    "fontPrimary": "#3E3E3E",
+    "fontSecondary": "#FFFFFF",
+    "fontDisabled": "#858585",
+    "bgPrimary": "#FFFFFF",
+    "bgSecondary": "#3E3E3E",
+    "bgDisabled": "#ABABAB",
+    "processing": "#79D6E2",
+    "success": "#61DD50",
+    "warning": "#ECE86C",
+    "error": "#ED4493",
   });
 
   const GetColor = (key: string): string => {
@@ -24,6 +27,6 @@ export const useThemeColorStore = defineStore("counter", () => {
   const SetColor = (key: string, value: string) => {
     colors[key] = value;
   };
-  return { color, colors, GetColor, SetColor };
+  return { colors, GetColor, SetColor };
 });
 
