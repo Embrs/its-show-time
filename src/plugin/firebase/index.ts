@@ -28,7 +28,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app); // 應該是GA
-console.log("aa", analytics);
 
 const database = getDatabase(app);
 

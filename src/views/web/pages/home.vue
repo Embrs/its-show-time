@@ -15,9 +15,11 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+
 import { useCounterStore } from "@/stores/counter";
-import { useThemeColorStore } from "@/stores/theme-color";
 const counterStore = useCounterStore();
+
+import { useThemeColorStore } from "@/stores/theme-color";
 const colorStore = useThemeColorStore();
 
 const colorVal = ref("");
