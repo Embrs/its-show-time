@@ -9,12 +9,12 @@ export interface ColorMap {
 export const useThemeColorStore = defineStore("counter", () => {
   const color = ref("#aaa");
   const colors: ColorMap = reactive({
-    "primary-dark": "#189086",
+    "primaryDark": "#189086",
     "primary": "#118D83",
-    "primary-light": "#1DB0A3",
-    "secondary-dark": "#1F3A51",
+    "primaryLight": "#1DB0A3",
+    "secondaryDark": "#1F3A51",
     "secondary": "#455AA9",
-    "secondary-light": "#6978CC",
+    "secondaryLight": "#6978CC",
   });
 
   const GetColor = (key: string): string => {

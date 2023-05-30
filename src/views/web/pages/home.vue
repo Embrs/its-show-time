@@ -9,7 +9,7 @@
 
   aInput(v-model:value="colorVal")
   aButton(@click="SetColor") SetColor
-
+  pre {{ colorStore.colors }}
   p(v-for="i of 100" :key="i") {{ i }}
 </template>
 
@@ -23,7 +23,7 @@ const colorStore = useThemeColorStore();
 const colorVal = ref("");
 const SetColor = () => {
   if (!colorVal.value) return;
-  colorStore.SetColor("primary-dark", colorVal.value);
+  colorStore.SetColor("primaryDark", colorVal.value);
 };
 
 </script>
