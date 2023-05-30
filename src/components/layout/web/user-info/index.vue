@@ -1,7 +1,7 @@
 <template lang="pug">
 //- 請填寫功能描述👈
 #UserInfo
-  p UserInfo
+  p Harry
 </template>
 
 <script setup lang="ts">

@@ -32,6 +32,7 @@ const fullPageStore = useFullPageStore();
 <style lang="scss" scoped>
 // 佈局
 #Layout {
+  color: var(--fontPrimary);
   height: 100vh;
   @include web-media {
     display: grid;
@@ -76,9 +77,9 @@ const fullPageStore = useFullPageStore();
 // 組件
 #Layout {
   .full-btn {
-    position: absolute;
-    right: 8px;
-    top: 8px;
+    position: sticky;
+    top: 10px;
+    margin-right: 10px;
     z-index: 1;
   }
 }
