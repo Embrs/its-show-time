@@ -1,6 +1,6 @@
 <template lang="pug">
-//- 工作作品
-#SectionWork
+//- 作品
+section#SectionWork
   p SectionWork
 </template>
 

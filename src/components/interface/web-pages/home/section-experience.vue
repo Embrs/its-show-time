@@ -1,6 +1,6 @@
 <template lang="pug">
 //- 經歷
-#SectionExperience
+section#SectionExperience
   p SectionExperience
 </template>
 
