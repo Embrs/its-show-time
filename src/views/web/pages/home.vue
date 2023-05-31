@@ -1,20 +1,15 @@
 <template lang="pug">
-//- 請填寫功能描述👈
+//- 自我介紹
 #Home
-  p 首頁
-
-  p(v-for="i of 100" :key="i") {{ i }}
+  SectionSelfInfo
+  SectionWork
+  SectionExperience
 </template>
 
 <script setup lang="ts">
-
+import SectionSelfInfo from "@/components/interface/web-pages/home/section-self-info.vue";
+import SectionWork from "@/components/interface/web-pages/home/section-work.vue";
+import SectionExperience from "@/components/interface/web-pages/home/section-experience.vue";
 </script>
 
-<style lang="scss" scoped>
-// 佈局
-#Home {
-}
-// 組件
-#Home {
-}
-</style>
+

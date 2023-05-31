@@ -19,7 +19,6 @@ const fullPageIcon = computed(()=> {
 });
 // 點擊頁面延展 icon
 const ClickFullPageIcon = debounce(() => {
-  console.log(fullPageStore);
   fullPageStore.SetFull(!fullPageStore.isFullPage);
 }, 200, { leading: true, trailing: false });
 </script>

@@ -1,7 +1,7 @@
 <template lang="pug">
-//- 請填寫功能描述👈
-#Info
-  p Info
+//- 經歷
+#SectionExperience
+  p SectionExperience
 </template>
 
 <script setup lang="ts">
@@ -10,9 +10,9 @@
 
 <style lang="scss" scoped>
 // 佈局
-#Info {
+#SectionExperience {
 }
 // 組件
-#Info {
+#SectionExperience {
 }
 </style>

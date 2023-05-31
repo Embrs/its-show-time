@@ -9,7 +9,6 @@ interface AnyObject {
 
 // 設定項目
 export const Set = function (key: string, valueObj: AnyObject) {
-  console.log("set", key);
   try {
     const _data = JSON.stringify(valueObj);
     localStorage.setItem(key, _data);

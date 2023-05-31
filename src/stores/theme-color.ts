@@ -11,9 +11,13 @@ export const useThemeColorStore = defineStore("themeColor", () => {
     "fontPrimary": "#3E3E3E",
     "fontSecondary": "#FFFFFF",
     "fontDisabled": "#858585",
+
     "bgPrimary": "#FFFFFF",
     "bgSecondary": "#3E3E3E",
     "bgDisabled": "#ABABAB",
+
+    "border100": "#676767",
+
     "processing": "#79D6E2",
     "success": "#61DD50",
     "warning": "#ECE86C",

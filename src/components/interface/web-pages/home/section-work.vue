@@ -1,7 +1,7 @@
 <template lang="pug">
-//- 請填寫功能描述👈
-#Other1
-  p Other1
+//- 工作作品
+#SectionWork
+  p SectionWork
 </template>
 
 <script setup lang="ts">
@@ -10,9 +10,9 @@
 
 <style lang="scss" scoped>
 // 佈局
-#Other1 {
+#SectionWork {
 }
 // 組件
-#Other1 {
+#SectionWork {
 }
 </style>

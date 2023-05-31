@@ -3,8 +3,6 @@ RouterView
 </template>
 
 <script setup lang="ts">
-import { RouterView } from "vue-router";
-
 // 主題色配置 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
 import { useThemeColorStore } from "@/stores/theme-color";
 const colorStore = useThemeColorStore();
@@ -17,9 +15,13 @@ const colorStore = useThemeColorStore();
   --fontPrimary: v-bind(colorStore.colors.fontPrimary);
   --fontSecondary: v-bind(colorStore.colors.fontSecondary);
   --fontDisabled: v-bind(colorStore.colors.fontDisabled);
+  
   --bgPrimary: v-bind(colorStore.colors.bgPrimary);
   --bgSecondary: v-bind(colorStore.colors.bgSecondary);
   --bgDisabled: v-bind(colorStore.colors.bgDisabled);
+  
+  --border100: v-bind(colorStore.colors.border100);
+  
   --processing: v-bind(colorStore.colors.processing);
   --success: v-bind(colorStore.colors.success);
   --warning: v-bind(colorStore.colors.warning);

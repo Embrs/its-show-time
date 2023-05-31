@@ -25,7 +25,6 @@ export default () => {
         message.success("成功送出");
       })
       .catch((err) => { message.error(`送出失敗${err}`); });
-    console.log();
   };
 
   // 刪除訊息

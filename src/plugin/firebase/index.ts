@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase } from "firebase/database";
-import type { Firebase } from "./interface";
+// import type { Firebase } from "./interface";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -35,5 +35,8 @@ const $firebase: Firebase = {
   ga: analytics,
   db: database, // .ref()、.on()、.set()、.push()
 };
-
+export interface Firebase {
+  ga: typeof analytics,
+  db: typeof database,
+}
 export default $firebase;

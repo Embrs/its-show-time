@@ -32,5 +32,4 @@ const router = createRouter({
     }
   ]
 });
-console.log(router);
 export default router;

@@ -9,6 +9,7 @@ export interface Status {
   details: Array<string>;
   err: number;
   unix?: number;
+  aaa: typeof aaa
 }
 
 //---------------------------
