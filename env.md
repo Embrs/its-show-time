@@ -1,4 +1,4 @@
-检查process.cwd()路径下.env.development.local、.env.development、.env.local、.env这四个环境文件。
-输出NODE_ENV和VITE_开头的键值对。
-VITE_开头的键值对后面的不会覆盖前面的。
-NODE_ENV的值后面的会覆盖前面的。
+檢查process.cwd()路徑下.env.development.local、.env.development、.env.local、.env這四個環境文件。
+輸出NODE_ENV和VITE_開頭的鍵值對。
+VITE_開頭的鍵值對後面的不會覆蓋前面的。
+NODE_ENV的值後面的會覆蓋前面的。
