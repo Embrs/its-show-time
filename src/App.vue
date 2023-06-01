@@ -3,7 +3,7 @@ RouterView
 </template>
 
 <script setup lang="ts">
-// 主題色配置 ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+// 主題色配置 -------------------------------------------------------------------------------------------------
 import { useThemeColorStore } from "@/stores/theme-color";
 const colorStore = useThemeColorStore();
 </script>

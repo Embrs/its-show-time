@@ -1,7 +1,7 @@
 <template lang="pug">
 //- 經歷
 section#SectionExperience
-  p SectionExperience
+  p(v-for="i of 50" :key="i") Experience
 </template>
 
 <script setup lang="ts">

@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import SectionIntroduction from "./section-introduction.vue";
+import SectionIntroduction from "./section-introduction/index.vue";
 import SectionSkill from "./section-skill.vue";
 import SectionExperience from "./section-experience.vue";
 import SectionWork from "./section-work.vue";

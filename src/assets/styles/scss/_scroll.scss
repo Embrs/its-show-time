@@ -5,14 +5,15 @@
   margin: 5px;
 }
 ::-webkit-scrollbar-thumb {
-  background:#c9c9c974;
-  border-radius: 30px;
+  background:#0000004f;
+  // filter: invert(100%);
+  // border-radius: 30px;
   background-clip: padding-box !important;
   border: solid transparent !important;
   cursor: pointer !important;
 
   &:hover {
-    background: #a3a3a3;
+    background: #000000ac;
   }
 }
 ::-webkit-scrollbar-track {

@@ -1,7 +1,7 @@
 <template lang="pug">
 //- 作品
 section#SectionWork
-  p SectionWork
+  p(v-for="i of 50" :key="i") Work
 </template>
 
 <script setup lang="ts">
