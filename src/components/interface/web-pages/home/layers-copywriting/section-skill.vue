@@ -1,10 +1,7 @@
 <template lang="pug">
-//- 自我介紹
-section#SectionSelfInfo
-  p SectionSelfInfo
-  p(v-for="i of 20" :key="i") {{ i }}
-  .test-box
-  p(v-for="i of 100" :key="i") {{ i }}
+//- 技能
+section#SectionSkill
+
 </template>
 
 <script setup lang="ts">
@@ -15,25 +12,20 @@ onMounted(() => {
   // const el = document.querySelector("main.page-area");
   const scrollTL = $gsap.gsap.timeline({
     scrollTrigger: {
-      trigger: "#SectionSelfInfo",
+      trigger: "#SectionSkill",
       pin: true,
       scrub: true
     },
   });
-  scrollTL.to(".test-box",  { yPercent: "100" });
+  scrollTL.to(".test-box", { opacity: 1 , duration: 1}); // 延長
 });
 </script>
 
 <style lang="scss" scoped>
 // 佈局
-#SectionSelfInfo {
+#SectionSkill {
 }
-// 組件 
-#SectionSelfInfo {
-  .test-box {
-    @include size(50vw, 100vh);
-    transform: translate(50px, -100vh);
-    background-color: #666;
-  }
+// 組件
+#SectionSkill {
 }
 </style>
