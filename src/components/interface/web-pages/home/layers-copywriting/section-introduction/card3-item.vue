@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 const InitAction = (scrollTL:  gsap.core.Timeline) => {
-  scrollTL.from("#Card2Item > * > .welocme", {x: -100, opacity: 0 });
+  scrollTL.from(".welocme", {x: -100, opacity: 0 });
   // scrollTL.from("#Card3Item > * > .other", {y: "100vh"});
 };
 defineExpose({InitAction});

@@ -29,7 +29,7 @@ const El_Card3Item = ref();
 onMounted(() => {
   const scrollTL = gsap.timeline({
     scrollTrigger: {
-      trigger: "#SectionIntroduction", pin: true, scrub: 1, markers: true
+      trigger: "#SectionIntroduction", pin: true, scrub: true, markers: true
     },
   });
 
