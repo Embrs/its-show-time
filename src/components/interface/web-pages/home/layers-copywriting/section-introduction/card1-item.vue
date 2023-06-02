@@ -12,9 +12,6 @@ const InitAction = (scrollTL:  gsap.core.Timeline) => {
     text: "Hello World !!", //text屬性將自動為DOM元素嵌入我們所輸入的文字
     duration: 2,
     toggleActions: "play pause resume reset", //見備註
-    // scrollTrigger: {
-    //   trigger: "#Card1Item > * > .text",
-    // },
   });
 };
 defineExpose({InitAction});

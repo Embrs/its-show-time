@@ -3,6 +3,12 @@
   height: $height;
 }
 
+@mixin absolute($top: 0, $left: 0) {
+  @include size;
+  position: absolute;
+  top: $top;
+  left: $left;
+}
 
 @mixin center($gap: 0) {
   display: flex;
@@ -97,4 +103,26 @@
   @if $size > 32px {
     letter-spacing: 2.6px;
   }
+}
+// 字框 -------------------------------------------------------------------------------------------------
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {List}            - text-shadow list
+@function stroke($stroke, $color) {
+  $shadow: ();
+  $from: $stroke*-1;
+  @for $i from $from through $stroke {
+   @for $j from $from through $stroke {
+      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+    }
+  }
+  @return $shadow;
+}
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {Style}           - text-shadow
+@mixin stroke($stroke, $color) {
+  text-shadow: stroke($stroke, $color);
 }

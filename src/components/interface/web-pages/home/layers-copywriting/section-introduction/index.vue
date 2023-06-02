@@ -30,32 +30,29 @@ onMounted(() => {
   const scrollTL = gsap.timeline({
     scrollTrigger: {
       trigger: "#SectionIntroduction", pin: true, scrub: true, markers: true
+
     },
   });
 
   // time line --------------------------------------------
   El_Card1Item.value.InitAction(scrollTL);
-  scrollTL.to(".a2", { duration: 3 });
+  scrollTL.to(".a1", { duration: 10 });
   scrollTL.to(".a1", { xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1, onComplete: () => {/* */} });
+  //-----
   El_Card2Item.value.InitAction(scrollTL);
-  scrollTL.to(".a2", { duration: 3 });
+  scrollTL.to(".a2", { duration: 10 });
   scrollTL.to(".a2", { xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "ease-in", duration: 1});
+  //-----
   El_Card3Item.value.InitAction(scrollTL);
-  scrollTL.to(".a3", { duration: 3 });
+  scrollTL.to(".a3", { duration: 10 });
   scrollTL.to(".a3", { xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1});
-  scrollTL.to(".a4", { duration: 3 });
+  //-----
   scrollTL.fromTo(
     ".a4", 
     {clipPath: "polygon(0% 99%, 100% 0%, 100% 1%, 0% 100%)", duration: 1},
     {clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1},
     );
-  // scrollTL.to(".a4", { duration: 4});
-  // scrollTL.from(
-  //   ".a4", 
-  //   { scaleX: 3, scaleY: 0.001,   rotation: -30, duration: 50,  opacity: 1},
-  //   // { scale: 1, rotation: 0, duration: 50, opacity: 0}
-  // );
-  // scrollTL.from(".a6", { opacity: 0 ,delay: 1}, "<");
+  scrollTL.to(".a4", { duration: 10});
 });
 </script>
 
