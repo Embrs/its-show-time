@@ -6,37 +6,47 @@ section#SectionIntroduction
       img.a6.star-img(src="@/assets/svg/bg-star.svg")
     //- .card-item
   p aaaa
-  .level-area.a3.c-3
-    .card-item
-  .level-area.a2.c-2
-    .card-item
-  .level-area.a1.c-1
-    .card-item
-      Card1Item
+  .level-area.a3
+    Card3Item.card-item
+  .level-area.a2
+    Card2Item.card-item(ref="El_Card2Item")
+  .level-area.a1
+    Card1Item.card-item
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue"; 
 import Card1Item from "./card1-item.vue";
+import Card2Item from "./card2-item.vue";
+import Card3Item from "./card3-item.vue";
 import { getCurrentInstance, onMounted } from "vue";
 const { proxy } = getCurrentInstance()!;
-const $gsap = proxy!.$gsap;
+const { gsap } = proxy!.$gsap;
+const El_Card2Item = ref();
 // -------------------------------------------------------------------------------------------------
 onMounted(() => {
-  const scrollTL = $gsap.gsap.timeline({
-    scrollTrigger: { trigger: "#SectionIntroduction", pin: true, scrub: true , markers: true},
+  const scrollTL = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#SectionIntroduction", pin: true, scrub: true , markers: true
+    },
   });
   // time line
-  scrollTL.to(".a1", { xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 4});
-  scrollTL.to(".a2", { duration: 1});
-  scrollTL.to(".a2", { xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "ease-in", duration: 4});
-  scrollTL.to(".a3", { duration: 1});
-  scrollTL.to(".a3", { xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 4});
-  scrollTL.to(".a4", { duration: 1});
+  scrollTL.to(".a1", { 
+    xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1,
+    onComplete: () => {
+     El_Card2Item.value.InitAction();
+    }
+  });
+  scrollTL.to(".a2", { duration: 3 });
+  scrollTL.to(".a2", { xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "ease-in", duration: 1});
+  scrollTL.to(".a3", { duration: 3 });
+  scrollTL.to(".a3", { xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1});
+  scrollTL.to(".a4", { duration: 3 });
   scrollTL.fromTo(
     ".a4", 
-    {clipPath: "polygon(0% 99%, 100% 0%, 100% 1%, 0% 100%)", duration: 4},
-    {clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 4},
-  );
+    {clipPath: "polygon(0% 99%, 100% 0%, 100% 1%, 0% 100%)", duration: 1},
+    {clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1},
+    );
   // scrollTL.to(".a4", { duration: 4});
   // scrollTL.from(
   //   ".a4", 
@@ -73,15 +83,6 @@ onMounted(() => {
     box-shadow: 73px 57px 0px -17px #0000003d;
   }
  
-  .c-1 {
-    background-color: #F3F7F0;
-  }
-  .c-2 {
-    background-color: #76E5B3;
-  }
-  .c-3 {
-    background-color: #49B2DF;
-  }
 
   .c-4 {
     background-color: #111d2f;

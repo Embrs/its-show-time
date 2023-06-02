@@ -1,49 +1,36 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#Card1Item
+#Card3Item
   .mask-text
     span.text
 </template>
 
 <script setup lang="ts">
 import { getCurrentInstance, onMounted } from "vue";
+
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 // -------------------------------------------------------------------------------------------------
-onMounted(() => {
-  gsap.to("#Card1Item > * > .text", {
-    text: "Hello World !!", //text屬性將自動為DOM元素嵌入我們所輸入的文字
-    duration: 2,
-    scrollTrigger: {
-      trigger: "#Card1Item > * > .text",
-      toggleActions: "play pause resume reset", //見備註
-    },
-  });
-});
+
+
 </script>
 
 <style lang="scss" scoped>
 // 佈局
-#Card1Item {
-  background-color: #F3F7F0;
-  text-shadow: 10px 9px 2px #00000036;
+#Card3Item {
+  background-color: #49B2DF;
   padding: 20px;
-  @include size;
   @include center;
   font-weight: 700;
   @include web-media {
-    font-size: 160px;
+    font-size: 170px;
   }
-  @include pad-media {
+  @include mobile-media {
     font-size: 80px;
-  }
-  @include phone-media {
-    font-size: 80px;
-    text-align: center;
   }
 }
 // 組件
-#Card1Item {
+#Card3Item {
   .mask-text {
     background: url(@/assets/svg/bg-star.svg);
     -webkit-text-fill-color: transparent;
