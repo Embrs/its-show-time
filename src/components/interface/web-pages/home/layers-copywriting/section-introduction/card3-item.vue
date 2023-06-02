@@ -1,7 +1,7 @@
 <template lang="pug">
 //- 請填寫功能描述👈
 #Card3Item
-  img.bg(src="@/assets/svg/bg-bestgon.svg")
+  img.bg(src="@/assets/images/bg/svg/bg-bestgon.svg")
   .mask-text
     p.welocme {{"Welcome"}}
     p.other {{"to your visit"}}
@@ -9,8 +9,8 @@
 
 <script setup lang="ts">
 const InitAction = (scrollTL:  gsap.core.Timeline) => {
-  scrollTL.from("#Card3Item > * > .welocme", { opacity:0, scale: 4, filter: "blur(40px)" });
-  scrollTL.from("#Card3Item > * > .other", { opacity:0, scale: 4, filter: "blur(40px)" });
+  scrollTL.from("#Card3Item > * > .welocme", { opacity:0, scale: 4, filter: "blur(40px)", duration: 1 });
+  scrollTL.from("#Card3Item > * > .other", { opacity:0, scale: 4, filter: "blur(40px)", duration: 1 });
 };
 defineExpose({InitAction});
 </script>

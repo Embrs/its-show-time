@@ -1,7 +1,7 @@
 <template lang="pug">
 //- 請填寫功能描述👈
 #LayersBackground
-  //- img(src="@/assets/svg/bg-star.svg")
+  //- img(src="@/assets/images/bg/svg/bg-star.svg")
 </template>
 
 <script setup lang="ts">

@@ -60,8 +60,10 @@
   -webkit-user-drag: none; // 不可拖曳圖片
   pointer-events: none; //防止拖拉圖片
   -webkit-touch-callout: none; // ios禁用菜單
+  display: block;
 }
 
+// mix-blend-mode 混合
 // -------------------------------------------------------------------------------------------------
 @mixin font($size: 14px, $weight: 400, $family: "") {
   font-weight: $weight; // 400, 700

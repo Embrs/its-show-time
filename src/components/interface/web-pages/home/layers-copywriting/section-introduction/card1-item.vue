@@ -10,7 +10,7 @@ const InitAction = (scrollTL:  gsap.core.Timeline) => {
   console.log("aa");
   scrollTL.to("#Card1Item > * > .text", {
     text: "Hello World !!", //text屬性將自動為DOM元素嵌入我們所輸入的文字
-    duration: 2,
+    duration: 1,
     toggleActions: "play pause resume reset", //見備註
   });
 };
@@ -40,7 +40,7 @@ defineExpose({InitAction});
 // 組件
 #Card1Item {
   .mask-text {
-    background: url(@/assets/svg/bg-star.svg);
+    background: url(@/assets/images/bg/svg/bg-star.svg);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
