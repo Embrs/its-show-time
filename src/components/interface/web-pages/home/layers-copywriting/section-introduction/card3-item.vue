@@ -11,7 +11,6 @@
 const InitAction = (scrollTL:  gsap.core.Timeline) => {
   scrollTL.from("#Card3Item > * > .welocme", { opacity:0, scale: 4, filter: "blur(40px)" });
   scrollTL.from("#Card3Item > * > .other", { opacity:0, scale: 4, filter: "blur(40px)" });
-  // scrollTL.from("#Card3Item > * > .other", {y: "100vh"});
 };
 defineExpose({InitAction});
 </script>
