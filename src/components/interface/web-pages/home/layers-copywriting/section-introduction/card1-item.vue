@@ -2,24 +2,22 @@
 //- 請填寫功能描述👈
 #Card1Item
   .mask-text
-    span.text
+    span.text 👋🏻
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance, onMounted } from "vue";
-const { proxy } = getCurrentInstance()!;
-const { gsap } = proxy!.$gsap;
-// -------------------------------------------------------------------------------------------------
-onMounted(() => {
-  gsap.to("#Card1Item > * > .text", {
+const InitAction = (scrollTL:  gsap.core.Timeline) => {
+  console.log("aa");
+  scrollTL.to("#Card1Item > * > .text", {
     text: "Hello World !!", //text屬性將自動為DOM元素嵌入我們所輸入的文字
     duration: 2,
-    scrollTrigger: {
-      trigger: "#Card1Item > * > .text",
-      toggleActions: "play pause resume reset", //見備註
-    },
+    toggleActions: "play pause resume reset", //見備註
+    // scrollTrigger: {
+    //   trigger: "#Card1Item > * > .text",
+    // },
   });
-});
+};
+defineExpose({InitAction});
 </script>
 
 <style lang="scss" scoped>

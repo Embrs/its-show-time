@@ -7,11 +7,11 @@ section#SectionIntroduction
     //- .card-item
   p aaaa
   .level-area.a3
-    Card3Item.card-item
+    Card3Item.card-item(ref="El_Card3Item")
   .level-area.a2
     Card2Item.card-item(ref="El_Card2Item")
   .level-area.a1
-    Card1Item.card-item
+    Card1Item.card-item(ref="El_Card1Item")
 </template>
 
 <script setup lang="ts">
@@ -22,23 +22,25 @@ import Card3Item from "./card3-item.vue";
 import { getCurrentInstance, onMounted } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
+const El_Card1Item = ref();
 const El_Card2Item = ref();
+const El_Card3Item = ref();
 // -------------------------------------------------------------------------------------------------
 onMounted(() => {
   const scrollTL = gsap.timeline({
     scrollTrigger: {
-      trigger: "#SectionIntroduction", pin: true, scrub: true , markers: true
+      trigger: "#SectionIntroduction", pin: true, scrub: 1, markers: true
     },
   });
-  // time line
-  scrollTL.to(".a1", { 
-    xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1,
-    onComplete: () => {
-     El_Card2Item.value.InitAction();
-    }
-  });
+
+  // time line --------------------------------------------
+  El_Card1Item.value.InitAction(scrollTL);
+  scrollTL.to(".a2", { duration: 3 });
+  scrollTL.to(".a1", { xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1, onComplete: () => {/* */} });
+  El_Card2Item.value.InitAction(scrollTL);
   scrollTL.to(".a2", { duration: 3 });
   scrollTL.to(".a2", { xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "ease-in", duration: 1});
+  El_Card3Item.value.InitAction(scrollTL);
   scrollTL.to(".a3", { duration: 3 });
   scrollTL.to(".a3", { xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1});
   scrollTL.to(".a4", { duration: 3 });
