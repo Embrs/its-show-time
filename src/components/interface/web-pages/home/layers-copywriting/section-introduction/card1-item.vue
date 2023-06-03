@@ -6,15 +6,35 @@
 </template>
 
 <script setup lang="ts">
-const InitAction = (scrollTL:  gsap.core.Timeline) => {
-  console.log("aa");
-  scrollTL.to("#Card1Item > * > .text", {
-    text: "Hello World !!", //text屬性將自動為DOM元素嵌入我們所輸入的文字
+import { getCurrentInstance } from "vue";
+const { proxy } = getCurrentInstance()!;
+const { gsap } = proxy!.$gsap;
+
+const TextAction = (text: string, delay: number = 0) =>  {
+  gsap.to("#Card1Item > * > .text", {
+    text,
     duration: 1,
-    toggleActions: "play pause resume reset", //見備註
+    delay
   });
 };
-defineExpose({InitAction});
+const StartAction = () => {
+  TextAction("Hello World !!", 1);
+};
+
+const InitAction = () => {
+  TextAction("");
+};
+
+const CardLeave = () => {
+  gsap.to("#Card1Item", {duration: 1, xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "expo"});
+  InitAction();
+};
+
+const CardBack = () => {
+  gsap.to("#Card1Item", {duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo"});
+  StartAction();
+};
+defineExpose({ StartAction, InitAction, CardLeave, CardBack});
 </script>
 
 <style lang="scss" scoped>

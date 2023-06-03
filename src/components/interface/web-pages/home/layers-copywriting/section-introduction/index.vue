@@ -1,14 +1,9 @@
 <template lang="pug">
 //- 自我介紹
 section#SectionIntroduction
-  .hand-imgs
-    img.bg-cloud(src="@/assets/images/bg/bg-yellow-cloud.jpg")
-    img.hand1(src="@/assets/images/png/hand1.png")
-    img.hand2(src="@/assets/images/png/hand2.png")
+
   .level-area.a4
-    .star-item
-      img.star-img(src="@/assets/images/bg/svg/bg-star.svg")
-    //- .card-item
+    Card4Item(ref="El_Card4Item")
   .level-area.a3
     Card3Item.card-item(ref="El_Card3Item")
   .level-area.a2
@@ -22,6 +17,8 @@ import { ref } from "vue";
 import Card1Item from "./card1-item.vue";
 import Card2Item from "./card2-item.vue";
 import Card3Item from "./card3-item.vue";
+import Card4Item from "./card4-item.vue";
+
 import { getCurrentInstance, onMounted } from "vue";
 
 const { proxy } = getCurrentInstance()!;
@@ -29,6 +26,7 @@ const { gsap } = proxy!.$gsap;
 const El_Card1Item = ref();
 const El_Card2Item = ref();
 const El_Card3Item = ref();
+const El_Card4Item = ref();
 // -------------------------------------------------------------------------------------------------
 onMounted(() => {
   const scrollTL = gsap.timeline({
@@ -36,31 +34,35 @@ onMounted(() => {
       trigger: "#SectionIntroduction", pin: true, scrub: true, markers: true,
     },
   });
-
   // time line --------------------------------------------
-  El_Card1Item.value.InitAction(scrollTL);
-  scrollTL.to(".a1", { duration: 1 });
-  scrollTL.fromTo(".a1",
-    { xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "ease-in", duration: 1 },
-    { xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1 }
-  );
+  scrollTL.to(".a1", {
+    duration: 1,
+    onStart: () => { El_Card1Item.value.StartAction(); },
+    onComplete: () => { El_Card1Item.value.CardLeave(); }
+  });
   //-----
-  El_Card2Item.value.InitAction(scrollTL);
-  scrollTL.to(".a2", { duration: 1 });
-  scrollTL.to(".a2", { xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "ease-in", duration: 1});
+  scrollTL.to(".a2", { 
+    duration: 2,
+    onReverseComplete: () => { El_Card1Item.value.CardBack();},
+    onStart: () => { El_Card2Item.value.StartAction(); },
+    onComplete: () => { El_Card2Item.value.CardLeave(); }
+  });
   //-----
-  El_Card3Item.value.InitAction(scrollTL);
-  scrollTL.to(".a3", { duration: 1 });
-  scrollTL.to(".a3", { xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1});
+  scrollTL.to(".a3", {
+    duration: 2,
+    onReverseComplete: () => { El_Card2Item.value.CardBack(); },
+    onStart: () => { El_Card3Item.value.StartAction(); },
+    onComplete: () => { El_Card3Item.value.CardLeave(); }
+  });
   //-----
-  scrollTL.fromTo(
-    ".a4", 
-    {clipPath: "polygon(0% 99.5%, 100% 0%, 100% .5%, 0% 100%)" ,opacity: 0, duration: 1},
-    {clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", opacity: 1, duration: 1},
-  );
-  //-----
-  scrollTL.to(".hand1", { y:"-50vh", x:"-100vw", duration: 1}, "<");
-  scrollTL.to(".hand2", { y:"50vh",  x:"100vw", uration: 1 }, "<");
+  scrollTL.to(".a4", {
+    duration: 2,
+    onReverseComplete: () => {
+      El_Card3Item.value.CardBack();
+      El_Card4Item.value.InitAction();
+    },
+    onStart: () => { El_Card4Item.value.StartAction();},
+  });
 });
 </script>
 
@@ -95,10 +97,6 @@ onMounted(() => {
   }
   .star-item {
     @include size;
-  }
-  .star-mask {
-    @include size;
-    background-image: url(@/assets/images/bg/svg/bg-star.svg);
   }
   .hand-imgs {
     @include size;

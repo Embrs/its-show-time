@@ -8,12 +8,33 @@
 </template>
 
 <script setup lang="ts">
-const InitAction = (scrollTL:  gsap.core.Timeline) => {
-  scrollTL.from("#Card2Item > * > .en-name", {x: "-100vw", opacity: 0, duration: 1 });
-  scrollTL.from("#Card2Item > * > .name", {y: "100vh", opacity: 0, duration: 1 });
-  scrollTL.from("#Card2Item > * > .job", {x: "100vw", opacity: 0, duration: 1 });
+import { getCurrentInstance } from "vue";
+const { proxy } = getCurrentInstance()!;
+const { gsap } = proxy!.$gsap;
+
+const StartAction = () => {
+  gsap.fromTo("#Card2Item > * > .en-name", {x: "-100vw", opacity: 0, duration: 0 }, {x: "0", opacity: 1, duration: 1 });
+  gsap.fromTo("#Card2Item > * > .name", {y: "100vh", opacity: 0, duration: 0 }, {y: "0", opacity: 1, duration: 1 });
+  gsap.fromTo("#Card2Item > * > .job", {x: "100vw", opacity: 0, duration: 0 }, {x: "0", opacity: 1, duration: 1 });
 };
-defineExpose({InitAction});
+
+const InitAction = () => {
+  gsap.to("#Card2Item > * > .en-name", {opacity: 0});
+  gsap.to("#Card2Item > * > .name", {opacity: 0});
+  gsap.to("#Card2Item > * > .job", {opacity: 0});
+};
+
+const CardLeave = () => {
+  gsap.to("#Card2Item", { duration: 1, xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "expo" });
+  InitAction();
+};
+
+const CardBack = () => {
+  gsap.to("#Card2Item", { duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo" });
+  StartAction();
+};
+
+defineExpose({ StartAction, InitAction, CardLeave, CardBack });
 </script>
 
 <style lang="scss" scoped>
@@ -38,7 +59,7 @@ defineExpose({InitAction});
     line-height: 127px;
     font-weight: 700px;
     letter-spacing: 14px;
-    
+    opacity: 0;
     @include phone-media {
       font-size: 90px;
       line-height: 77px;
@@ -49,7 +70,7 @@ defineExpose({InitAction});
     font-size: 40px;
     letter-spacing: 20px;
     padding-left: 8px;
-    
+    opacity: 0;
     @include phone-media {
       font-size: 30px;
     }
@@ -60,7 +81,7 @@ defineExpose({InitAction});
     font-size: 40px;
     letter-spacing: 10px;
     padding-right: 5px;
-    
+    opacity: 0;
     @include phone-media {
       padding-top: 40px;
       font-size: 30px;

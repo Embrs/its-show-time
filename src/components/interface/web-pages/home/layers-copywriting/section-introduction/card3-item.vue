@@ -8,11 +8,39 @@
 </template>
 
 <script setup lang="ts">
-const InitAction = (scrollTL:  gsap.core.Timeline) => {
-  scrollTL.from("#Card3Item > * > .welocme", { opacity:0, scale: 4, filter: "blur(40px)", duration: 1 });
-  scrollTL.from("#Card3Item > * > .other", { opacity:0, scale: 4, filter: "blur(40px)", duration: 1 });
+
+import { getCurrentInstance } from "vue";
+const { proxy } = getCurrentInstance()!;
+const { gsap } = proxy!.$gsap;
+
+const StartAction = () => {
+  gsap.fromTo(
+    "#Card3Item > * > .welocme", 
+    { opacity: 0, scale: 4, filter: "blur(40px)", duration: 1 },
+    { opacity: 1, scale: 1, filter: "blur(0)", duration: 1 }
+  );
+  gsap.fromTo(
+    "#Card3Item > * > .other",
+    { opacity: 0, scale: 4, filter: "blur(40px)", duration: 1 },
+    { opacity: 1, scale: 1, filter: "blur(0)", duration: 1 }
+  );
 };
-defineExpose({InitAction});
+
+const InitAction = () => {
+  gsap.to("#Card3Item > * > .welocme", { opacity:0, scale: 1, filter: "blur(0)", duration: 0 });
+  gsap.to("#Card3Item > * > .other", { opacity:0, scale: 1, filter: "blur(0)", duration: 0 });
+};
+
+const CardLeave = () => {
+  gsap.to("#Card3Item", { duration: 1, xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "expo" });
+  InitAction();
+};
+
+const CardBack = () => {
+  gsap.to("#Card3Item", { duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo" });
+  StartAction();
+};
+defineExpose({ StartAction, InitAction, CardLeave, CardBack});
 </script>
 
 <style lang="scss" scoped>
@@ -50,6 +78,7 @@ defineExpose({InitAction});
     font-weight: 700;
     letter-spacing: 10px;
     line-height: 130px;
+    opacity: 0;
     @include mobile-media {
       font-size: 80px;
       letter-spacing: 0px;
@@ -61,6 +90,7 @@ defineExpose({InitAction});
     font-weight: 700;
     letter-spacing: 6px;
     line-height: 130px;
+    opacity: 0;
     @include mobile-media {
       font-size: 50px;
       letter-spacing: 0px;

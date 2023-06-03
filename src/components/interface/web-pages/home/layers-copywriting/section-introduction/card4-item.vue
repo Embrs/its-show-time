@@ -1,0 +1,104 @@
+<template lang="pug">
+//- 請填寫功能描述👈
+//- .hand-imgs
+//-   img.bg-cloud(src="@/assets/images/bg/bg-yellow-cloud.jpg")
+//-   img.hand1(src="@/assets/images/png/hand1.png")
+//-   img.hand2(src="@/assets/images/png/hand2.png")
+
+#Card4Item
+  .hand-imgs
+    img.bg-cloud(src="@/assets/images/bg/bg-yellow-cloud.jpg")
+    img.hand1(src="@/assets/images/png/hand1.png")
+    img.hand2(src="@/assets/images/png/hand2.png")
+
+  .star-item
+    img.star-img(src="@/assets/images/bg/svg/bg-star.svg")
+</template>
+
+<script setup lang="ts">
+import { getCurrentInstance } from "vue";
+const { proxy } = getCurrentInstance()!;
+const { gsap } = proxy!.$gsap;
+
+const StartAction = () => {
+  gsap.fromTo(
+    "#Card4Item > .star-item", 
+    { clipPath: "polygon(0% 99.5%, 100% 0%, 100% .5%, 0% 100%)" ,opacity: 0, duration: 1, delay: 1 },
+    { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", opacity: 1, duration: 1, delay: 1  },
+  );
+  gsap.to("#Card4Item > .star-item > .hand1", { yPercent:-50, xPercent: -150, duration: 1, delay: 1});
+  gsap.to("#Card4Item > .star-item > .hand2", { yPercent:50, xPercent: 150, duration: 1, delay: 1 });
+};
+
+const InitAction = () => {
+  gsap.to("#Card4Item > .star-item > .hand1", { yPercent: 0, xPercent: 0, duration: 0});
+  gsap.to("#Card4Item > .star-item > .hand2", { yPercent: 0, xPercent: 0, duration: 0 });
+};
+
+
+defineExpose({ StartAction, InitAction});
+</script>
+
+<style lang="scss" scoped>
+// 佈局
+#Card4Item {
+
+}
+// 組件
+#Card4Item {
+  position: relative;
+  .hand-imgs {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    .bg-cloud {
+      @include size;
+      object-fit: cover;
+    }
+    .hand1 {
+      position: absolute;
+      transform: rotate(50deg);
+      // filter: opacity(.7);
+
+      @include web-media {
+        height: 35vh;
+        right: 50vw ;
+      }
+      @include mobile-media {
+        height: 25vh;
+        right: 40vw ;
+        top: 20vh;
+      }
+    }
+    .hand2 {
+      position: absolute;
+      bottom: -20vh;
+      transform: rotate(70deg);
+      // filter: opacity(.7);
+      @include web-media {
+        height: 65vh;
+        left: 50vw;
+        bottom: -20vh;
+      }
+      @include mobile-media {
+        height: 50vh;
+        left: 50vw;
+        bottom: 0;
+      }
+    }
+  }
+  .star-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    .star-img {
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      object-fit: cover;
+      object-position: bottom; 
+    }
+  }
+}
+
+</style>
