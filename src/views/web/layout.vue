@@ -1,5 +1,5 @@
 <template lang="pug">
-//- 請填寫功能描述👈
+//- 佈局
 #Layout
   RouterView
 </template>
