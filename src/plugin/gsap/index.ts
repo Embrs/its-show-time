@@ -1,7 +1,8 @@
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import TextPlugin from "gsap/TextPlugin";
-// import type { GSAP } from "./interface";
+// import CustomEase from "gsap/CustomEase"; // 自定義 ease
+
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const $gsap: Gsap = {

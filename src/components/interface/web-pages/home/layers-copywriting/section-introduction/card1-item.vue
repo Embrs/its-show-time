@@ -29,6 +29,10 @@ const TextAction = (text: string, delay: number = 0) =>  {
   );
 };
 
+const InitAction = () => {
+  TextAction("");
+};
+
 const CardEnter = () => {
   CardAction.reverse();
   TextAction("Hello World !!", 1);
@@ -36,10 +40,10 @@ const CardEnter = () => {
 
 const CardLeave = () => {
   CardAction.play();
-  TextAction("");
+  InitAction();
 };
 
-defineExpose({ CardLeave, CardEnter});
+defineExpose({ InitAction, CardLeave, CardEnter});
 </script>
 
 <style lang="scss" scoped>

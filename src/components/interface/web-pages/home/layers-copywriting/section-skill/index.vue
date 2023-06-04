@@ -1,9 +1,8 @@
 <template lang="pug">
 //- 技能
 section#SectionSkill(ref="El_SectionSkill")
-  //- .ss-box
   .card1
-    .card1-title {{"SKILL"}} 
+    .card1-title(ref="El_SkillTitle") {{"SKILL"}} 
     //- .bg
   //- p(v-for="i of 50" :key="i") skill
 </template>
@@ -12,40 +11,34 @@ section#SectionSkill(ref="El_SectionSkill")
 import { ref, getCurrentInstance, onMounted } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap, ScrollTrigger } = proxy!.$gsap;
-const El_SectionSkill = ref();
 
+const El_SectionSkill = ref();
+const El_SkillTitle = ref();
+
+let SkillTitleAction: gsap.core.Tween;
 onMounted(() => {
+  SkillTitleAction = gsap.fromTo(
+    El_SkillTitle.value, 
+    { y: -400 , opacity: 2, duration: 1 }, 
+    { y: -200 , opacity: 2,  duration: 1, paused: true } 
+  );
+
   ScrollTrigger.create({
-    trigger: "#SectionSkill",
+    trigger: El_SectionSkill.value,
     markers: true,
 		//向下滾動進入start點時觸發callback
     onEnter: function () {
-      gsap.fromTo(
-        ".card1-title",
-        { y: -400 , opacity:0},
-        { y: -200 , opacity:1,  duration: 1}
-      );
+      SkillTitleAction.play();
     },
 		//向下滾動超過end點時觸發callback
     onLeave: function () {  
-      gsap.set(".card1-title", { opacity: 0 });
-      // hide(El_SectionSkill.value);
+      SkillTitleAction.reverse();
     }, 
 		//向上滾動超過end點時觸發（回滾時觸發）callback
     onEnterBack: function () {
-      gsap.fromTo(
-        ".card1-title",
-        { y: -400 , opacity:0},
-        { y: -300 , opacity:1,  duration: 1}
-      );
+      SkillTitleAction.play();
     },
   });
-  // const scrollTL = gsap.timeline({
-  //   scrollTrigger: {
-  //     trigger: "#SectionSkill", pin: true, scrub: true, markers: true,
-  //   }
-  // });
-  // gsap.from(".card1-title", { y: -200 , opacity:0,  duration: 2});
   
 });
 </script>

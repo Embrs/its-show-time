@@ -50,7 +50,10 @@ onMounted(() => {
     El_Card2Item.value,
     { 
       duration: 1,
-      onReverseComplete: () => { El_Card1Item.value.CardEnter();},
+      onReverseComplete: () => { 
+        El_Card1Item.value.CardEnter();
+        El_Card2Item.value.InitAction();
+      },
       onStart: () => { El_Card2Item.value.CardEnter(); },
       onComplete: () => { El_Card2Item.value.CardLeave(); }
     }
@@ -60,7 +63,10 @@ onMounted(() => {
     El_Card3Item.value,
     {
       duration: 1,
-      onReverseComplete: () => { El_Card2Item.value.CardEnter(); },
+      onReverseComplete: () => {
+        El_Card2Item.value.CardEnter();
+        El_Card3Item.value.InitAction();
+      },
       onStart: () => { El_Card3Item.value.CardEnter(); },
       onComplete: () => { El_Card3Item.value.CardLeave(); }
     }
@@ -72,7 +78,7 @@ onMounted(() => {
       duration: 1,
       onReverseComplete: () => {
         El_Card3Item.value.CardEnter();
-        El_Card4Item.value.CardLeave();
+        El_Card4Item.value.InitAction();
       },
       onStart: () => { El_Card4Item.value.CardEnter();},
     }

@@ -8,7 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import { limitToLast } from "firebase/database";
 import { ref, getCurrentInstance, onMounted } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
@@ -25,27 +24,30 @@ let JobAction: gsap.core.Tween;
 
 onMounted( () => {
   CardAction = gsap.to(El_Card.value, { duration: 1, xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20,  paused: true});
-  EnNameAction = gsap.from(El_EnName.value, { x: "-100vw", opacity: 0, duration: 2, ease: "Elastic.easeOut", paused: true }); 
-  NameAction = gsap.from(El_Name.value, { y: "100vh", opacity: 0, duration: 2, ease: "Bounce.easeOut",paused: true });
-  JobAction = gsap.from(El_Job.value, { x: "100vw", opacity: 0, duration: 2, ease: "Elastic.easeOut",paused: true });
+  EnNameAction = gsap.from(El_EnName.value, { duration: 2, x: "-100vw", opacity: 0, ease: "Elastic.easeOut", paused: true }); 
+  NameAction = gsap.from(El_Name.value, { duration: 2, y: "100vh", opacity: 0, ease: "Bounce.easeOut",paused: true });
+  JobAction = gsap.from(El_Job.value, { duration: 2, x: "100vw", opacity: 0, ease: "Elastic.easeOut",paused: true });
   // ease: https://greensock.com/docs/v2/Easing
 });
 
+const InitAction = () => {
+  EnNameAction.reverse();
+  NameAction.reverse();
+  JobAction.reverse();
+};
+
 const CardEnter = () => {
   CardAction.reverse();
-  
+
   EnNameAction.play();
   NameAction.play();
   JobAction.play();
 };
 const CardLeave = () => {
   CardAction.play();
-
-  EnNameAction.reverse();
-  NameAction.reverse();
-  JobAction.reverse();
+  InitAction();
 };
-defineExpose({ CardLeave, CardEnter });
+defineExpose({ InitAction, CardLeave, CardEnter });
 </script>
 
 <style lang="scss" scoped>
