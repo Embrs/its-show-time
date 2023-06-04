@@ -22,29 +22,22 @@ onMounted(() => {
   CardAction = gsap.to(El_Card.value, {duration: 1, xPercent: -140, yPercent: 10, scale: .7, rotation: -20,  paused: true });
   MaskAction = gsap.fromTo(
     El_MaskText.value,
-    { duration: 1, opacity: 0, scale: 2, filter: "blur(10px)", paused: true },
-    { duration: 1, opacity: 1, scale: 1, filter: "blur(0px)", paused: true }
+    { duration: 2, opacity: 0, scale: 2, filter: "blur(10px)", paused: true },
+    { duration: 2, opacity: 1, scale: 1, filter: "blur(0px)", paused: true }
   );
 });
 
-const StartAction = () => {
+
+const CardEnter = () => {
+  CardAction.reverse();
   MaskAction.play();
 };
-
-const InitAction = () => {
+const CardLeave = () => {
+  CardAction.play();
   MaskAction.reverse();
 };
 
-const CardLeave = () => {
-  CardAction.play();
-  InitAction();
-};
-
-const CardBack = () => {
-  CardAction.reverse();
-  StartAction();
-};
-defineExpose({ StartAction, InitAction, CardLeave, CardBack});
+defineExpose({ CardLeave, CardEnter});
 </script>
 
 <style lang="scss" scoped>

@@ -41,7 +41,7 @@ onMounted(() => {
     El_Card1Item.value,
     {
       duration: 1,
-      onStart: () => { El_Card1Item.value.StartAction(); },
+      onStart: () => { El_Card1Item.value.CardEnter(); },
       onComplete: () => { El_Card1Item.value.CardLeave(); }
     }
   );
@@ -49,9 +49,9 @@ onMounted(() => {
   scrollTL.to(
     El_Card2Item.value,
     { 
-      duration: 3,
-      onReverseComplete: () => { El_Card1Item.value.CardBack();},
-      onStart: () => { El_Card2Item.value.StartAction(); },
+      duration: 1,
+      onReverseComplete: () => { El_Card1Item.value.CardEnter();},
+      onStart: () => { El_Card2Item.value.CardEnter(); },
       onComplete: () => { El_Card2Item.value.CardLeave(); }
     }
   );
@@ -59,9 +59,9 @@ onMounted(() => {
   scrollTL.to(
     El_Card3Item.value,
     {
-      duration: 3,
-      onReverseComplete: () => { El_Card2Item.value.CardBack(); },
-      onStart: () => { El_Card3Item.value.StartAction(); },
+      duration: 1,
+      onReverseComplete: () => { El_Card2Item.value.CardEnter(); },
+      onStart: () => { El_Card3Item.value.CardEnter(); },
       onComplete: () => { El_Card3Item.value.CardLeave(); }
     }
   );
@@ -69,18 +69,18 @@ onMounted(() => {
   scrollTL.to(
     El_Card4Item.value,
     {
-      duration: 3,
+      duration: 1,
       onReverseComplete: () => {
-        El_Card3Item.value.CardBack();
-        El_Card4Item.value.InitAction();
+        El_Card3Item.value.CardEnter();
+        El_Card4Item.value.CardLeave();
       },
-      onStart: () => { El_Card4Item.value.StartAction();},
+      onStart: () => { El_Card4Item.value.CardEnter();},
     }
   );
   scrollTL.to(
     El_Card4Item.value,
     {
-      duration: 2,
+      duration: 1,
     }
   );
 });

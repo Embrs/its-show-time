@@ -32,20 +32,19 @@ onMounted( () => {
   Hand2Action = gsap.to(El_Hand2.value, { yPercent:50, xPercent: 150, duration: 1, delay: 1, paused: true });
 });
 
-const StartAction = () => {
+const CardEnter = () => {
   StarAction.play();
   Hand1Action.play();
   Hand2Action.play();
 };
 
-const InitAction = () => {
+const CardLeave = () => {
   StarAction.reverse();
   Hand1Action.reverse();
   Hand2Action.reverse();
 };
 
-
-defineExpose({ StartAction, InitAction});
+defineExpose({ CardEnter, CardLeave});
 </script>
 
 <style lang="scss" scoped>
