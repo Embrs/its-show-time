@@ -1,38 +1,37 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-//- .hand-imgs
-//-   img.bg-cloud(src="@/assets/images/bg/bg-yellow-cloud.jpg")
-//-   img.hand1(src="@/assets/images/png/hand1.png")
-//-   img.hand2(src="@/assets/images/png/hand2.png")
-
-#Card4Item
+#Card4Item(ref="El_Card")
   .hand-imgs
     img.bg-cloud(src="@/assets/images/bg/bg-yellow-cloud.jpg")
-    img.hand1(src="@/assets/images/png/hand1.png")
-    img.hand2(src="@/assets/images/png/hand2.png")
+    img.hand1(ref="El_Hand1" src="@/assets/images/png/hand1.png")
+    img.hand2(ref="El_Hand2" src="@/assets/images/png/hand2.png")
 
-  .star-item
+  .star-item(ref="El_Star")
     img.star-img(src="@/assets/images/bg/svg/bg-star.svg")
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
+import { ref, getCurrentInstance } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
+const El_Hand1 = ref();
+const El_Hand2 = ref();
+const El_Star = ref();
+
 const StartAction = () => {
   gsap.fromTo(
-    "#Card4Item > .star-item", 
-    { clipPath: "polygon(0% 99.5%, 100% 0%, 100% .5%, 0% 100%)" ,opacity: 0, duration: 1, delay: 1 },
-    { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", opacity: 1, duration: 1, delay: 1  },
+    El_Star.value, 
+    { clipPath: "polygon(0% 99.5%, 100% 0%, 100% .5%, 0% 100%)" ,opacity: 0, duration: 1, delay: 0 },
+    { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", opacity: 1, duration: 1, delay: 1 },
   );
-  gsap.to("#Card4Item > .star-item > .hand1", { yPercent:-50, xPercent: -150, duration: 1, delay: 1});
-  gsap.to("#Card4Item > .star-item > .hand2", { yPercent:50, xPercent: 150, duration: 1, delay: 1 });
+  gsap.to(El_Hand1.value, { yPercent:-50, xPercent: -150, duration: 1, delay: 1 });
+  gsap.to(El_Hand2.value, { yPercent:50, xPercent: 150, duration: 1, delay: 1 });
 };
 
 const InitAction = () => {
-  gsap.to("#Card4Item > .star-item > .hand1", { yPercent: 0, xPercent: 0, duration: 0});
-  gsap.to("#Card4Item > .star-item > .hand2", { yPercent: 0, xPercent: 0, duration: 0 });
+  gsap.to(El_Hand1.value, { yPercent: 0, xPercent: 0, duration: 0 });
+  gsap.to(El_Hand2.value, { yPercent: 0, xPercent: 0, duration: 0 });
 };
 
 

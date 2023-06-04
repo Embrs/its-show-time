@@ -1,22 +1,28 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#Card1Item
+#Card1Item(ref="El_Card")
   .mask-text
-    span.text 👋🏻
+    span.text(ref="El_Text") {{"👋🏻"}}
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
+import { ref, getCurrentInstance } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
+const El_Card = ref();
+const El_Text = ref();
 
 const TextAction = (text: string, delay: number = 0) =>  {
-  gsap.to("#Card1Item > * > .text", {
-    text,
-    duration: 1,
-    delay
-  });
+  gsap.to(
+    El_Text.value,
+    {
+      text,
+      duration: 1,
+      delay
+    }
+  );
 };
+
 const StartAction = () => {
   TextAction("Hello World !!", 1);
 };
@@ -26,12 +32,12 @@ const InitAction = () => {
 };
 
 const CardLeave = () => {
-  gsap.to("#Card1Item", {duration: 1, xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "expo"});
+  gsap.to(El_Card.value, {duration: 1, xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "expo"});
   InitAction();
 };
 
 const CardBack = () => {
-  gsap.to("#Card1Item", {duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo"});
+  gsap.to(El_Card.value, {duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo"});
   StartAction();
 };
 defineExpose({ StartAction, InitAction, CardLeave, CardBack});

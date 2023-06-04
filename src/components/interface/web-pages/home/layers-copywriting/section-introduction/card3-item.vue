@@ -1,43 +1,40 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#Card3Item
+#Card3Item(ref="El_Card")
   img.bg(src="@/assets/images/bg/svg/bg-bestgon.svg")
-  .mask-text
+  .mask-text(ref="El_MaskText")
     p.welocme {{"Welcome"}}
     p.other {{"to your visit"}}
 </template>
 
 <script setup lang="ts">
 
-import { getCurrentInstance } from "vue";
+import { ref, getCurrentInstance } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
+const El_Card = ref();
+const El_MaskText = ref();
+
 const StartAction = () => {
   gsap.fromTo(
-    "#Card3Item > * > .welocme", 
-    { opacity: 0, scale: 4, filter: "blur(40px)", duration: 1 },
-    { opacity: 1, scale: 1, filter: "blur(0)", duration: 1 }
-  );
-  gsap.fromTo(
-    "#Card3Item > * > .other",
-    { opacity: 0, scale: 4, filter: "blur(40px)", duration: 1 },
-    { opacity: 1, scale: 1, filter: "blur(0)", duration: 1 }
+    El_MaskText.value, 
+    { opacity: 0, scale: 2, filter: "blur(10px)", duration: 0 },
+    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1 }
   );
 };
 
 const InitAction = () => {
-  gsap.to("#Card3Item > * > .welocme", { opacity:0, scale: 1, filter: "blur(0)", duration: 0 });
-  gsap.to("#Card3Item > * > .other", { opacity:0, scale: 1, filter: "blur(0)", duration: 0 });
+  gsap.to(El_MaskText.value, { opacity:0, scale: 1, filter: "blur(0)", duration: 0 });
 };
 
 const CardLeave = () => {
-  gsap.to("#Card3Item", { duration: 1, xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "expo" });
+  gsap.to(El_Card.value, { duration: 1, xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "expo" });
   InitAction();
 };
 
 const CardBack = () => {
-  gsap.to("#Card3Item", { duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo" });
+  gsap.to(El_Card.value, { duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo" });
   StartAction();
 };
 defineExpose({ StartAction, InitAction, CardLeave, CardBack});
@@ -72,13 +69,14 @@ defineExpose({ StartAction, InitAction, CardLeave, CardBack});
     background-clip: text;
     background-size: cover;
     text-align: center;
+    opacity: 0;
   }
   .welocme {
     font-size: 150px;
     font-weight: 700;
     letter-spacing: 10px;
     line-height: 130px;
-    opacity: 0;
+    
     @include mobile-media {
       font-size: 80px;
       letter-spacing: 0px;
@@ -90,7 +88,7 @@ defineExpose({ StartAction, InitAction, CardLeave, CardBack});
     font-weight: 700;
     letter-spacing: 6px;
     line-height: 130px;
-    opacity: 0;
+    
     @include mobile-media {
       font-size: 50px;
       letter-spacing: 0px;

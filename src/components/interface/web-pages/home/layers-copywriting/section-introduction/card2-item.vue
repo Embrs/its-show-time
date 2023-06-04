@@ -1,36 +1,41 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#Card2Item
+#Card2Item(ref="El_Card")
   .text-area
-    p.en-name {{"HARRY TSOU"}}
-    p.name {{ "鄒豐懋" }}
-    p.job {{"FRONT-END ENGINEER"}}
+    p.en-name(ref="El_EnName") {{"HARRY TSOU"}}
+    p.name(ref="El_Name") {{ "鄒豐懋" }}
+    p.job(ref="El_Job") {{"FRONT-END ENGINEER"}}
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
+import { ref, getCurrentInstance } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
+const El_Card = ref();
+const El_EnName = ref();
+const El_Name = ref();
+const El_Job  = ref();
+
 const StartAction = () => {
-  gsap.fromTo("#Card2Item > * > .en-name", {x: "-100vw", opacity: 0, duration: 0 }, {x: "0", opacity: 1, duration: 1 });
-  gsap.fromTo("#Card2Item > * > .name", {y: "100vh", opacity: 0, duration: 0 }, {y: "0", opacity: 1, duration: 1 });
-  gsap.fromTo("#Card2Item > * > .job", {x: "100vw", opacity: 0, duration: 0 }, {x: "0", opacity: 1, duration: 1 });
+  gsap.fromTo(El_EnName.value, {x: "-100vw", opacity: 0, duration: 0 }, {x: "0", opacity: 1, duration: 1 });
+  gsap.fromTo(El_Name.value, {y: "100vh", opacity: 0, duration: 0 }, {y: "0", opacity: 1, duration: 1 });
+  gsap.fromTo(El_Job.value, {x: "100vw", opacity: 0, duration: 0 }, {x: "0", opacity: 1, duration: 1 });
 };
 
 const InitAction = () => {
-  gsap.to("#Card2Item > * > .en-name", {opacity: 0});
-  gsap.to("#Card2Item > * > .name", {opacity: 0});
-  gsap.to("#Card2Item > * > .job", {opacity: 0});
+  gsap.to(El_EnName.value, {opacity: 0});
+  gsap.to(El_Name.value, {opacity: 0});
+  gsap.to(El_Job.value, {opacity: 0});
 };
 
 const CardLeave = () => {
-  gsap.to("#Card2Item", { duration: 1, xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "expo" });
+  gsap.to(El_Card.value, { duration: 1, xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "expo" });
   InitAction();
 };
 
 const CardBack = () => {
-  gsap.to("#Card2Item", { duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo" });
+  gsap.to(El_Card.value, { duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo" });
   StartAction();
 };
 
