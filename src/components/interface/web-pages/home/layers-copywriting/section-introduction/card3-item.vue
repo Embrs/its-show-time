@@ -29,7 +29,7 @@ const InitAction = () => {
 };
 
 const CardLeave = () => {
-  gsap.to(El_Card.value, { duration: 1, xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "expo" });
+  gsap.to(El_Card.value, { duration: 2, xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "expo" });
   InitAction();
 };
 

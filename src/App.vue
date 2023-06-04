@@ -1,4 +1,5 @@
 <template lang="pug">
+
 RouterView
 </template>
 
@@ -9,6 +10,7 @@ const colorStore = useThemeColorStore();
 </script>
 
 <style lang="scss">
+
 @import "@/assets/styles/scss/_scroll.scss"; // scroll 樣式
 
 * /*主題色注入*/{
@@ -27,4 +29,5 @@ const colorStore = useThemeColorStore();
   --warning: v-bind(colorStore.colors.warning);
   --error: v-bind(colorStore.colors.error);
 }
+
 </style>

@@ -82,11 +82,6 @@ const fullPageStore = useFullPageStore();
     margin-right: 10px;
     z-index: 1;
   }
-
-  // .test-box {
-  //   @include size(50vw, 100vh);
-  //   background-color: #666;
-  // }
 }
 
 .full-page {

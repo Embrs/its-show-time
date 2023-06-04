@@ -57,8 +57,7 @@ defineExpose({ StartAction, InitAction});
     .hand1 {
       position: absolute;
       transform: rotate(50deg);
-      // filter: opacity(.7);
-
+      
       @include web-media {
         height: 35vh;
         right: 50vw ;

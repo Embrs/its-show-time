@@ -49,7 +49,7 @@ onMounted(() => {
   scrollTL.to(
     El_Card2Item.value,
     { 
-      duration: 2,
+      duration: 3,
       onReverseComplete: () => { El_Card1Item.value.CardBack();},
       onStart: () => { El_Card2Item.value.StartAction(); },
       onComplete: () => { El_Card2Item.value.CardLeave(); }
@@ -59,7 +59,7 @@ onMounted(() => {
   scrollTL.to(
     El_Card3Item.value,
     {
-      duration: 2,
+      duration: 3,
       onReverseComplete: () => { El_Card2Item.value.CardBack(); },
       onStart: () => { El_Card3Item.value.StartAction(); },
       onComplete: () => { El_Card3Item.value.CardLeave(); }
@@ -69,7 +69,7 @@ onMounted(() => {
   scrollTL.to(
     El_Card4Item.value,
     {
-      duration: 2,
+      duration: 3,
       onReverseComplete: () => {
         El_Card3Item.value.CardBack();
         El_Card4Item.value.InitAction();
