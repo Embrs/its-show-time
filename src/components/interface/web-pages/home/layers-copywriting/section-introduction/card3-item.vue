@@ -9,32 +9,39 @@
 
 <script setup lang="ts">
 
-import { ref, getCurrentInstance } from "vue";
+import { ref, getCurrentInstance, onMounted } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
 const El_Card = ref();
 const El_MaskText = ref();
 
-const StartAction = () => {
-  gsap.fromTo(
-    El_MaskText.value, 
-    { opacity: 0, scale: 2, filter: "blur(10px)", duration: 0 },
-    { opacity: 1, scale: 1, filter: "blur(0px)", duration: 1 }
+let CardAction: gsap.core.Tween;
+let MaskAction: gsap.core.Tween;
+onMounted(() => {
+  CardAction = gsap.to(El_Card.value, {duration: 1, xPercent: -140, yPercent: 10, scale: .7, rotation: -20,  paused: true });
+  MaskAction = gsap.fromTo(
+    El_MaskText.value,
+    { duration: 1, opacity: 0, scale: 2, filter: "blur(10px)", paused: true },
+    { duration: 1, opacity: 1, scale: 1, filter: "blur(0px)", paused: true }
   );
+});
+
+const StartAction = () => {
+  MaskAction.play();
 };
 
 const InitAction = () => {
-  gsap.to(El_MaskText.value, { opacity:0, scale: 1, filter: "blur(0)", duration: 0 });
+  MaskAction.reverse();
 };
 
 const CardLeave = () => {
-  gsap.to(El_Card.value, { duration: 2, xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "expo" });
+  CardAction.play();
   InitAction();
 };
 
 const CardBack = () => {
-  gsap.to(El_Card.value, { duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo" });
+  CardAction.reverse();
   StartAction();
 };
 defineExpose({ StartAction, InitAction, CardLeave, CardBack});
@@ -61,7 +68,6 @@ defineExpose({ StartAction, InitAction, CardLeave, CardBack});
   .bg {
     @include absolute;
     object-fit: cover;
-    // mix-blend-mode: hard-light;
     opacity: .2;
   }
   .mask-text {
@@ -69,7 +75,6 @@ defineExpose({ StartAction, InitAction, CardLeave, CardBack});
     background-clip: text;
     background-size: cover;
     text-align: center;
-    opacity: 0;
   }
   .welocme {
     font-size: 150px;

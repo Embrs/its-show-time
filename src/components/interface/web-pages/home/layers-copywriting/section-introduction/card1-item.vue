@@ -15,7 +15,7 @@ const El_Text = ref();
 
 let CardAction: gsap.core.Tween;
 onMounted( () => {
-  CardAction = gsap.to(El_Card.value, {duration: 2, xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20,  paused: true});
+  CardAction = gsap.to(El_Card.value, {duration: 1, xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20,  paused: true});
 });
 
 const TextAction = (text: string, delay: number = 0) =>  {
@@ -43,7 +43,6 @@ const CardLeave = () => {
 };
 
 const CardBack = () => {
-  // gsap.to(El_Card.value, {duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo"});
   CardAction.reverse();
   StartAction();
 };

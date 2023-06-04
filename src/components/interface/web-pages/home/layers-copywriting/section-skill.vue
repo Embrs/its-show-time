@@ -22,7 +22,7 @@ onMounted(() => {
     onEnter: function () {
       gsap.fromTo(
         ".card1-title",
-        { y: -400 , opacity:0,  duration: 1},
+        { y: -400 , opacity:0},
         { y: -200 , opacity:1,  duration: 1}
       );
     },
@@ -35,7 +35,7 @@ onMounted(() => {
     onEnterBack: function () {
       gsap.fromTo(
         ".card1-title",
-        { y: -400 , opacity:0,  duration: 1},
+        { y: -400 , opacity:0},
         { y: -300 , opacity:1,  duration: 1}
       );
     },

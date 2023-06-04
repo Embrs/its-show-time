@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance } from "vue";
+import { ref, getCurrentInstance, onMounted } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
@@ -17,25 +17,37 @@ const El_EnName = ref();
 const El_Name = ref();
 const El_Job  = ref();
 
+let CardAction: gsap.core.Tween;
+let EnNameAction: gsap.core.Tween;
+let NameAction: gsap.core.Tween;
+let JobAction: gsap.core.Tween;
+onMounted( () => {
+  CardAction = gsap.to(El_Card.value, { duration: 1, xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20,  paused: true});
+  EnNameAction = gsap.from(El_EnName.value, { x: "-100vw", opacity: 0, duration: 2, paused: true });
+  NameAction = gsap.from(El_Name.value, { y: "100vh", opacity: 0, duration: 2, paused: true });
+  JobAction = gsap.from(El_Job.value, { x: "100vw", opacity: 0, duration: 2, paused: true });
+});
+
+
 const StartAction = () => {
-  gsap.fromTo(El_EnName.value, {x: "-100vw", opacity: 0, duration: 0 }, {x: "0", opacity: 1, duration: 1 });
-  gsap.fromTo(El_Name.value, {y: "100vh", opacity: 0, duration: 0 }, {y: "0", opacity: 1, duration: 1 });
-  gsap.fromTo(El_Job.value, {x: "100vw", opacity: 0, duration: 0 }, {x: "0", opacity: 1, duration: 1 });
+  EnNameAction.play();
+  NameAction.play();
+  JobAction.play();
 };
 
 const InitAction = () => {
-  gsap.to(El_EnName.value, {opacity: 0});
-  gsap.to(El_Name.value, {opacity: 0});
-  gsap.to(El_Job.value, {opacity: 0});
+  EnNameAction.reverse();
+  NameAction.reverse();
+  JobAction.reverse();
 };
 
 const CardLeave = () => {
-  gsap.to(El_Card.value, { duration: 2, xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "expo" });
+  CardAction.play();
   InitAction();
 };
 
 const CardBack = () => {
-  gsap.to(El_Card.value, { duration: 1, xPercent: 0 ,yPercent: 0, scale: 1, rotation: 0, ease: "expo" });
+  CardAction.reverse();
   StartAction();
 };
 
@@ -64,7 +76,6 @@ defineExpose({ StartAction, InitAction, CardLeave, CardBack });
     line-height: 127px;
     font-weight: 700px;
     letter-spacing: 14px;
-    opacity: 0;
     @include phone-media {
       font-size: 90px;
       line-height: 77px;
@@ -75,7 +86,6 @@ defineExpose({ StartAction, InitAction, CardLeave, CardBack });
     font-size: 40px;
     letter-spacing: 20px;
     padding-left: 8px;
-    opacity: 0;
     @include phone-media {
       font-size: 30px;
     }
@@ -86,7 +96,6 @@ defineExpose({ StartAction, InitAction, CardLeave, CardBack });
     font-size: 40px;
     letter-spacing: 10px;
     padding-right: 5px;
-    opacity: 0;
     @include phone-media {
       padding-top: 40px;
       font-size: 30px;

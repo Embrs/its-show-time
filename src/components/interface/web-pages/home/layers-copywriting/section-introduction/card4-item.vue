@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance } from "vue";
+import { ref, getCurrentInstance, onMounted } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
@@ -19,19 +19,29 @@ const El_Hand1 = ref();
 const El_Hand2 = ref();
 const El_Star = ref();
 
-const StartAction = () => {
-  gsap.fromTo(
-    El_Star.value, 
-    { clipPath: "polygon(0% 99.5%, 100% 0%, 100% .5%, 0% 100%)" ,opacity: 0, duration: 1, delay: 0 },
-    { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", opacity: 1, duration: 1, delay: 1 },
+let StarAction: gsap.core.Tween;
+let Hand1Action: gsap.core.Tween;
+let Hand2Action: gsap.core.Tween;
+onMounted( () => {
+  StarAction = gsap.fromTo(
+    El_Star.value,
+    {clipPath: "polygon(0% 99.5%, 100% 0%, 100% .5%, 0% 100%)" ,opacity: 0, duration: 1, paused: true},
+    {clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", opacity: 1, duration: 1, delay: 1, paused: true },
   );
-  gsap.to(El_Hand1.value, { yPercent:-50, xPercent: -150, duration: 1, delay: 1 });
-  gsap.to(El_Hand2.value, { yPercent:50, xPercent: 150, duration: 1, delay: 1 });
+  Hand1Action = gsap.to(El_Hand1.value, { yPercent:-50, xPercent: -150, duration: 1, delay: 1, paused: true });
+  Hand2Action = gsap.to(El_Hand2.value, { yPercent:50, xPercent: 150, duration: 1, delay: 1, paused: true });
+});
+
+const StartAction = () => {
+  StarAction.play();
+  Hand1Action.play();
+  Hand2Action.play();
 };
 
 const InitAction = () => {
-  gsap.to(El_Hand1.value, { yPercent: 0, xPercent: 0, duration: 0 });
-  gsap.to(El_Hand2.value, { yPercent: 0, xPercent: 0, duration: 0 });
+  StarAction.reverse();
+  Hand1Action.reverse();
+  Hand2Action.reverse();
 };
 
 
@@ -72,7 +82,6 @@ defineExpose({ StartAction, InitAction});
       position: absolute;
       bottom: -20vh;
       transform: rotate(70deg);
-      // filter: opacity(.7);
       @include web-media {
         height: 65vh;
         left: 50vw;
