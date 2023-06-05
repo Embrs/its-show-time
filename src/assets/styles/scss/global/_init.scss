@@ -9,6 +9,6 @@ html {
 html {
   min-height: 100vh;
   max-width: 100vw;
-  overflow-y: overlay;
+  overflow-y: overlay !important;
   overflow-x: hidden;
 }

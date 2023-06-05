@@ -18,27 +18,28 @@ const { skillList }  = skillListFn();
 const { proxy } = getCurrentInstance()!;
 const { gsap, ScrollTrigger } = proxy!.$gsap;
 
-
 const El_SkillCard1Item = ref();
 const El_SkillTitle = ref();
 const El_SkillItem = ref();
 
-
 let SkillTitleAction: gsap.core.Tween;
-let SkillItemActions: gsap.core.Tween[];
+let SkillItemAction: gsap.core.Tween;
+
 onMounted(() => {
   SkillTitleAction = gsap.fromTo(
     El_SkillTitle.value, 
-    { y: -400, opacity: 0, duration: 1 }, 
+    { y: -400, opacity: 0, duration: 1, paused: true }, 
     { y: -200, opacity: 1,  duration: 1, paused: true } 
   );
-  let _delay :number = 1;
-  const SkillItemActions = El_SkillItem.value.map((skillEl: Element) => {
-    _delay += 0.2;
-    return gsap.from(skillEl, {
-      y: "-50vh", opacity:0 ,duration: 1, delay: _delay, ease: "Bounce.easeOut",
-      scrollTrigger: {  trigger: El_SkillCard1Item.value  }
-    });
+  SkillItemAction = gsap.from(El_SkillItem.value, {
+    y: "-50vh",
+    x: "random(-400, 400)",
+    opacity: 0,
+    duration: 0.2,
+    delay: 1,
+    ease: "Back.easeOut.config(1.7)",
+    stagger: 0.05,
+    paused: true
   });
   // ---------------------
   ScrollTrigger.create({
@@ -46,38 +47,24 @@ onMounted(() => {
     markers: true,
 		//向下滾動進入start點時觸發callback
     onEnter: () => {
-      console.log("enter");
       SkillTitleAction.play();
-      SkillItemActions.forEach((action: gsap.core.Tween) => { action.play(); });
+      SkillItemAction.play();
     },
 		//向下滾動超過end點時觸發callback
     onLeave: () => {  
-      console.log("leave");
       SkillTitleAction.reverse();
-      SkillItemActions.forEach((action: gsap.core.Tween) => { action.reverse(); });
+      SkillItemAction.reverse();
     }, 
 		//向上滾動超過end點時觸發（回滾時觸發）callback
     onEnterBack: () => {
-      console.log("enter back");
       SkillTitleAction.play();
-      SkillItemActions.forEach((action: gsap.core.Tween) => { action.play(); });
+      SkillItemAction.play();
     },
     onLeaveBack: () => {
-      console.log("leave back");
       SkillTitleAction.reverse();
-      SkillItemActions.forEach((action: gsap.core.Tween) => { action.reverse(); });
+      SkillItemAction.reverse();
     }
   });
-  // ----------------------
-  // let i = 1;
-  // for (const skillEl of El_SkillItem.value) {
-  //   i+=0.2;
-  //   gsap.from(skillEl, {
-  //     y: "-50vh", opacity:0 ,duration: 1, delay: i, ease: "Bounce.easeOut",
-  //     scrollTrigger: {  trigger: El_SkillCard1Item.value  }
-  //   });
-
-  // }
   // ----------------------
   console.log(El_SkillItem);
   VanillaTilt.init(
@@ -100,15 +87,14 @@ onMounted(() => {
     position: absolute;
     color: white;
     padding-left: 5vw;
+    font-weight: 700;
    
     @include web-media {
       font-size: 200px;
-      font-weight: 700;
       letter-spacing: 10px;
     }
     @include mobile-media {
       font-size: 80px;
-      font-weight: 700;
       letter-spacing: 5px;
     }
   }
@@ -118,13 +104,13 @@ onMounted(() => {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 3vw;
+    gap: 4vw;
     @include mobile-media {
       padding-top: 0px;
     }
   }
   .skill-img {
-    @include size(100px);
+    @include size(80px);
     filter: drop-shadow(8px 7px 2px rgba(0, 0, 0, 0.3));
 
   }

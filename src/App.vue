@@ -11,7 +11,7 @@ const colorStore = useThemeColorStore();
 
 <style lang="scss">
 
-@import "@/assets/styles/scss/_scroll.scss"; // scroll 樣式
+// @import "@/assets/styles/scss/_scroll.scss"; // scroll 樣式
 
 * /*主題色注入*/{
   --fontPrimary: v-bind(colorStore.colors.fontPrimary);
