@@ -44,7 +44,7 @@ onMounted(() => {
   // ---------------------
   ScrollTrigger.create({
     trigger: El_SkillCard1Item.value,
-    markers: true,
+    markers: false,
 		//向下滾動進入start點時觸發callback
     onEnter: () => {
       SkillTitleAction.play();

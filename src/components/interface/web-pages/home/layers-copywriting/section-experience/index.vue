@@ -44,7 +44,7 @@ const El_Paper4 = ref();
 onMounted(() => {
   const scrollTL = gsap.timeline({
     scrollTrigger: {
-      trigger: El_ExperienceBox.value, pin: true, scrub: true, markers: true,
+      trigger: El_ExperienceBox.value, pin: true, scrub: true, markers: false,
     },
   });
   // time line --------------------------------------------
@@ -114,7 +114,6 @@ onMounted(() => {
       transform: translate(calc($i * 1vw), calc($i * 1vh)) ;
     }
   }
-
   // .paper {
   //   @include size;
   //   position: relative;

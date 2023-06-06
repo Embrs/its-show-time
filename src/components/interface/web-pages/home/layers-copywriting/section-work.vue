@@ -1,7 +1,8 @@
 <template lang="pug">
 //- 作品
 section#SectionWork
-  p(v-for="i of 50" :key="i") Work
+  video(controls)
+    source(src="@/assets/videos/relithe.mov" type="video/quicktime")
 </template>
 
 <script setup lang="ts">

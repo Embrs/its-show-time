@@ -1,24 +1,22 @@
 <template lang="pug">
 //- 請填寫功能描述👈
 #PaperItem(ref="El_Paper")
+  .other-area
   .header-area
     .header-img-area
       img.logo(:src="props.infoData.logo")
     .header-title-area 
       .title {{ props.infoData.title }}
-      .sub-title {{ props.infoData.subTitle}}
+      .sub-title {{ props.infoData.subTitle }}
   .job-area
-    .job-label-area
-      p {{"JOB TITLE"}}
-    .job-content-area
-      p {{ props.infoData.job}}
+    .job-label-area {{"JOB TITLE"}}
+    .job-content-area {{ props.infoData.job }}
   .introduce-area
     .introduce-content-area {{ props.infoData.intruduce }}
-  .works-area
-    .works-label-area
-      p {{"RESPONSIBILITY"}}
-    .works-content-area
-      p(v-for="(textItem, index) of props.infoData.works" :key="index" ) {{ `◆ ${textItem}` }}
+  .project-area
+    .project-label-area {{"PROJECT"}}
+    .project-content-area
+      p(v-for="(textItem, index) of props.infoData.project" :key="index" ) {{ `◆ ${textItem}` }}
 </template>
 
 <script setup lang="ts">
@@ -31,11 +29,6 @@ const props = defineProps({
     default: () => ({})
   },
 });
-const borderColor = ref(props.infoData.borderColor);
-const bgColor = ref(props.infoData.bgColor);
-const fontColor = ref(props.infoData.fontColor);
-const logoBg = ref(props.infoData.logoBg);
-
 
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
@@ -61,26 +54,35 @@ defineExpose({ PaperEnter, PaperLeave });
 </script>
 
 <style lang="scss" scoped>
-.border-bottom { border-bottom: 5px solid v-bind(borderColor); };
-.border-right { border-right: 5px solid v-bind(borderColor); };
+.border-bottom { border-bottom: 1px solid v-bind("infoData.borderColor"); };
+.border-right { border-right: 1px solid v-bind("infoData.borderColor"); };
+.label {
+  color: v-bind("infoData.bgColor");
+  background-color: v-bind("infoData.fontColor");
+}
 // 佈局
 #PaperItem {
   @include size;
   @include font(18px);
   max-width: 1000px;
   margin: 0 auto;
-  border: 5px solid v-bind(borderColor);
+  border: 1px solid v-bind("infoData.borderColor");
   box-shadow: 6px 5px 9px 0px #00000042;
-  background-color: v-bind(bgColor);
-  color: v-bind(fontColor);
+  background-color: v-bind("infoData.bgColor");
+  color: v-bind("infoData.fontColor");
   display: grid;
   grid-template-rows: auto auto auto 1fr;
+  grid-template-columns: 1fr 15px ;
   grid-template-areas:
-    "header"
-    "job"
-    "introduce"
-    "works" ;
+    "header other"
+    "job other"
+    "introduce other"
+    "project other" ;
 
+  .other-area {
+    grid-area: other;
+    @extend .label;
+  }
   .header-area {
     grid-area: header;
     @extend .border-bottom;
@@ -91,8 +93,8 @@ defineExpose({ PaperEnter, PaperLeave });
       grid-area: head-img;
       @include center;
       @extend .border-right;
-      padding:  5px;
-      background-color: v-bind(logoBg);
+      padding: 5px 10px;
+      background-color: v-bind("infoData.logoBg");
       
     }
     .header-title-area {
@@ -109,15 +111,22 @@ defineExpose({ PaperEnter, PaperLeave });
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-areas: "job-label job-content";
+    @include phone-media {
+      @include font(14px);
+    }
     .job-label-area {
       grid-area: job-label;
       @extend .border-right;
+      @extend .label;
       padding: 10px 20px;
       font-weight: 700;
+      display: flex;
+      align-items: center;
     }
     .job-content-area {
       grid-area: job-content;
       padding: 10px 20px;
+ 
     }
   }
 
@@ -125,32 +134,43 @@ defineExpose({ PaperEnter, PaperLeave });
     grid-area: introduce;
     @extend .border-bottom;
     .introduce-content-area {
-      padding: 20px;
+      padding: 20px 30px;
       @include font(20px);
       @include text-break;
+      text-align: justify;
+      @include phone-media {
+        @include font(12px);
+      }
     }
   }
 
-  .works-area {
-    grid-area: works;
+  .project-area {
+    grid-area: project;
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-areas: "works-label works-content";
-    .works-label-area {
-      grid-area: works-label;
+    grid-template-areas: "project-label project-content";
+    @include phone-media {
+      @include font(14px);
+    }
+    .project-label-area {
+      grid-area: project-label;
       @extend .border-right;
+      @extend .label;
+      letter-spacing: 5px;
       padding: 20px 5px;
       writing-mode: vertical-lr;
       font-weight: 700;
-      
     }
-    .works-content-area {
-      grid-area: works-content;
+    .project-content-area {
+      grid-area: project-content;
       padding: 20px;
       @include font(20px);
       display: flex;
       flex-direction: column;
       gap: 10px;
+      @include phone-media {
+        @include font(12px);
+      }
     }
   }
 }
@@ -158,15 +178,19 @@ defineExpose({ PaperEnter, PaperLeave });
 #PaperItem {
   .logo {
     height: 80px;
-    width: 100px;
+    width: 110px;
     object-fit: contain;
-    background-color: v-bind(logoBg);
+    background-color: v-bind("infoData.logoBg");
   }
   .title {
     @include font(36px, 700);
+    @include phone-media {
+      @include font(20px, 700);
+    }
   }
   .sub-title {
     @include font(15px, 700);
+    @include font(14px, 700);
   }
 }
 </style>

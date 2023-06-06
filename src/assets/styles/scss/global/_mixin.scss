@@ -75,7 +75,7 @@
     font-family: $family;
   } 
   font-size: $size;
-  line-height: calc($size + 4px);
+  line-height: calc($size * 1.4);
   letter-spacing: calc($size / 10);
 }
 // 字框 -------------------------------------------------------------------------------------------------

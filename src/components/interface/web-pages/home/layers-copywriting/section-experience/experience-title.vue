@@ -19,7 +19,7 @@ onMounted(() => {
   );
   ScrollTrigger.create({
     trigger: El_Title.value,
-    markers: true,
+    markers: false,
     onEnter: () => {
       TitleAction.play();
     },
