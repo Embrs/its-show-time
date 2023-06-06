@@ -1,7 +1,7 @@
 <template lang="pug">
 //- 文案圖層
 #LayersCopywriting
-  //- SectionIntroduction
+  SectionIntroduction
   SectionSkill
   SectionExperience
   SectionWork

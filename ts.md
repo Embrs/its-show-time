@@ -41,6 +41,19 @@ function (): ResData {}
 
 (aa: string): Promise<string> => {new Promise(resolve => resolve("abc")) }
 
+
+defineProps({
+  infoData: {
+    type: Object as () => JobData, // 自定義類型
+    default: () => ({})
+  },
+  logoBg: {
+    type: String,
+    default: "#fff"
+  }
+});
+
+
 //---------------------------
 const deviceList = ref<DeviceInfo[]>([]);
 

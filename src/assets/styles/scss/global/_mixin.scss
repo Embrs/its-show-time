@@ -37,7 +37,7 @@
 }
 
 @mixin text-break {
-  // word-break: break-all;
+  word-break: break-all;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -67,9 +67,7 @@
 // -------------------------------------------------------------------------------------------------
 @mixin font($size: 14px, $weight: 400, $family: "") {
   font-weight: $weight; // 400, 700
-  // 基準值為14px
-  $defaultSize: 14px;
-  // $calcSize: convertRem($size, $defaultSize);
+
   @if ($family == "") {
     font-family: "Quicksand", "Noto Sans TC";
   } 
@@ -77,34 +75,8 @@
     font-family: $family;
   } 
   font-size: $size;
-
-  @if $size <= 12px {
-    letter-spacing: 1px;
-  }
-  @if $size == 14px {
-    letter-spacing: 1.2px;
-  }
-  @if $size == 16px {
-    letter-spacing: 1.3px;
-  }
-  @if $size == 18px {
-    letter-spacing: 1.4px;
-  }
-  @if $size == 20px {
-    letter-spacing: 1.5px;
-  }
-  @if $size == 20px {
-    letter-spacing: 1.6px;
-  }
-  @if $size == 22px {
-    letter-spacing: 1.7px;
-  }
-  @if $size == 24px {
-    letter-spacing: 1.8px;
-  }
-  @if $size > 32px {
-    letter-spacing: 2.6px;
-  }
+  line-height: calc($size + 4px);
+  letter-spacing: calc($size / 10);
 }
 // 字框 -------------------------------------------------------------------------------------------------
 /// Stroke font-character

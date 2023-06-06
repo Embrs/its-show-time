@@ -4,24 +4,37 @@ section#SectionExperience
   ExperienceTitle
   .experience-box(ref="El_ExperienceBox")
     .box
-      PaperItem.p4(ref="El_Paper4")
+      PaperItem.p4(
+        ref="El_Paper4"
+        :infoData="experienceData.hirata"
+      )
     .box
-      PaperItem.p3(ref="El_Paper3")
+      PaperItem.p3(
+        ref="El_Paper3"
+        :infoData="experienceData.cc"
+      )
     .box
-      PaperItem.p2(ref="El_Paper2")
+      PaperItem.p2(
+        ref="El_Paper2"
+        :infoData="experienceData.axolotl"
+      )
     .box
-      PaperItem.p1(ref="El_Paper1")
-  //- p(v-for="i of 50" :key="i") Experience
+      PaperItem.p1(
+        ref="El_Paper1"
+        :infoData="experienceData.tyr"
+      )
 </template>
 
 <script setup lang="ts">
 import { ref, getCurrentInstance, onMounted } from "vue";
 import ExperienceTitle from "./experience-title.vue";
 import PaperItem from "./paper-item.vue";
+import _experienceData from "./experience-data";
 
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
+const experienceData = ref(_experienceData);
 const El_ExperienceBox = ref();
 const El_Paper1 = ref();
 const El_Paper2 = ref();

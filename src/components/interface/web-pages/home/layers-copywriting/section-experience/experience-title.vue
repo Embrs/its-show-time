@@ -37,7 +37,8 @@ onMounted(() => {
 // 組件
 #ExperienceTitle {
   .title {
-    padding-left: 5vw;
+    // padding-left: 5vw;
+    text-align: center;
     font-weight: 700;
     color: #484C74;
     letter-spacing: 5px;
