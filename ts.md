@@ -53,7 +53,7 @@ defineProps({
   }
 });
 
-
+const videoElement = ref<HTMLVideoElement | null>(null);
 //---------------------------
 const deviceList = ref<DeviceInfo[]>([]);
 
