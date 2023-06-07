@@ -69,7 +69,7 @@ defineExpose({ InitAction, CardLeave, CardEnter});
 // 組件
 #Card1Item {
   .mask-text {
-    background: url(@/assets/images/bg/svg/bg-star.svg);
+    background-image: url(@/assets/images/bg/svg/bg-star.svg);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;

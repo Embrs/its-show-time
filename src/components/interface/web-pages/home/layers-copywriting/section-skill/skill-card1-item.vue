@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted, vShow } from "vue";
+import { ref, getCurrentInstance, onMounted } from "vue";
 import skillListFn from "./skill-list";
 import VanillaTilt from "vanilla-tilt";
 
@@ -107,6 +107,11 @@ onMounted(() => {
     gap: 4vw;
     @include mobile-media {
       padding-top: 0px;
+    }
+  }
+  .skill-item {
+    a {
+      cursor: default;
     }
   }
   .skill-img {

@@ -37,12 +37,11 @@ onMounted(() => {
 #SectionWork {
   .video-box {
     width: 360px;
-    height: 790px;
     position: relative;
     transform-style: preserve-3d;
     video {
       background-color: 62646c;
-      border-radius: 10px;
+      border-radius: 14px;
       overflow: hidden;
       position: relative;
       z-index: 1;
