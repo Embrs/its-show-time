@@ -1,20 +1,49 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#Card1Item
+#Card1Item(ref="El_Card")
   .mask-text
-    span.text 👋🏻
+    span.text(ref="El_Text") {{"👋🏻"}}
 </template>
 
 <script setup lang="ts">
-const InitAction = (scrollTL:  gsap.core.Timeline) => {
-  console.log("aa");
-  scrollTL.to("#Card1Item > * > .text", {
-    text: "Hello World !!", //text屬性將自動為DOM元素嵌入我們所輸入的文字
-    duration: 2,
-    toggleActions: "play pause resume reset", //見備註
-  });
+import { ref, getCurrentInstance, onMounted } from "vue";
+const { proxy } = getCurrentInstance()!;
+const { gsap } = proxy!.$gsap;
+
+const El_Card = ref();
+const El_Text = ref();
+
+let CardAction: gsap.core.Tween;
+onMounted( () => {
+  CardAction = gsap.to(El_Card.value, {duration: 1, xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20,  paused: true});
+});
+
+const TextAction = (text: string, delay: number = 0) =>  {
+  gsap.to(
+    El_Text.value,
+    {
+      text,
+      duration: 1,
+      delay
+    }
+  );
 };
-defineExpose({InitAction});
+
+const InitAction = () => {
+  TextAction("");
+};
+
+const CardEnter = () => {
+  CardAction.reverse();
+  TextAction("Hello World !!", 1);
+};
+
+const CardLeave = () => {
+  CardAction.play();
+  InitAction();
+};
+
+defineExpose({ InitAction, CardLeave, CardEnter});
 </script>
 
 <style lang="scss" scoped>
@@ -40,7 +69,7 @@ defineExpose({InitAction});
 // 組件
 #Card1Item {
   .mask-text {
-    background: url(@/assets/svg/bg-star.svg);
+    background-image: url(@/assets/images/bg/svg/bg-star.svg);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;

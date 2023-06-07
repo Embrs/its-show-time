@@ -10,7 +10,10 @@
 
 <style lang="scss" scoped>
 // 佈局
-#Layout {}
+#Layout {
+  // width: 100vw;
+  // background-color: #aaa;
+}
 // 組件
 #Layout {}
 </style>

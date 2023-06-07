@@ -8,5 +8,11 @@ html {
 }
 html {
   min-height: 100vh;
-  overflow: overlay;
+  max-width: 100vw;
+  overflow-y: overlay !important;
+  overflow-x: hidden;
+  // body {
+  //   overflow-y: overlay !important;
+  //   overflow-x: hidden;
+  // }
 }

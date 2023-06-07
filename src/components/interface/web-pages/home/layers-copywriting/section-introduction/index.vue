@@ -1,16 +1,14 @@
 <template lang="pug">
 //- 自我介紹
-section#SectionIntroduction
-  .level-area.a4.c-4
-    .star-item
-      img.a6.star-img(src="@/assets/svg/bg-star.svg")
-    //- .card-item
-  p aaaa
-  .level-area.a3
+section#SectionIntroduction(ref="El_SectionIntroduction")
+
+  .level-area
+    Card4Item(ref="El_Card4Item")
+  .level-area
     Card3Item.card-item(ref="El_Card3Item")
-  .level-area.a2
+  .level-area
     Card2Item.card-item(ref="El_Card2Item")
-  .level-area.a1
+  .level-area
     Card1Item.card-item(ref="El_Card1Item")
 </template>
 
@@ -19,40 +17,78 @@ import { ref } from "vue";
 import Card1Item from "./card1-item.vue";
 import Card2Item from "./card2-item.vue";
 import Card3Item from "./card3-item.vue";
+import Card4Item from "./card4-item.vue";
+
 import { getCurrentInstance, onMounted } from "vue";
+
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
+
+const El_SectionIntroduction = ref();
 const El_Card1Item = ref();
 const El_Card2Item = ref();
 const El_Card3Item = ref();
+const El_Card4Item = ref();
 // -------------------------------------------------------------------------------------------------
 onMounted(() => {
   const scrollTL = gsap.timeline({
     scrollTrigger: {
-      trigger: "#SectionIntroduction", pin: true, scrub: true, markers: true
-
+      trigger: El_SectionIntroduction.value, pin: true, scrub: true, markers: false,
     },
   });
-
   // time line --------------------------------------------
-  El_Card1Item.value.InitAction(scrollTL);
-  scrollTL.to(".a1", { duration: 10 });
-  scrollTL.to(".a1", { xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1, onComplete: () => {/* */} });
+  scrollTL.to(
+    El_Card1Item.value,
+    {
+      duration: 1,
+      onStart: () => { El_Card1Item.value.CardEnter(); },
+      onComplete: () => { El_Card1Item.value.CardLeave(); }
+    }
+  );
   //-----
-  El_Card2Item.value.InitAction(scrollTL);
-  scrollTL.to(".a2", { duration: 10 });
-  scrollTL.to(".a2", { xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20, ease: "ease-in", duration: 1});
+  scrollTL.to(
+    El_Card2Item.value,
+    { 
+      duration: 1,
+      onReverseComplete: () => { 
+        El_Card1Item.value.CardEnter();
+        El_Card2Item.value.InitAction();
+      },
+      onStart: () => { El_Card2Item.value.CardEnter(); },
+      onComplete: () => { El_Card2Item.value.CardLeave(); }
+    }
+  );
   //-----
-  El_Card3Item.value.InitAction(scrollTL);
-  scrollTL.to(".a3", { duration: 10 });
-  scrollTL.to(".a3", { xPercent: -140, yPercent: 10, scale: .7, rotation: -20, ease: "ease-in", duration: 1});
+  scrollTL.to(
+    El_Card3Item.value,
+    {
+      duration: 1,
+      onReverseComplete: () => {
+        El_Card2Item.value.CardEnter();
+        El_Card3Item.value.InitAction();
+      },
+      onStart: () => { El_Card3Item.value.CardEnter(); },
+      onComplete: () => { El_Card3Item.value.CardLeave(); }
+    }
+  );
   //-----
-  scrollTL.fromTo(
-    ".a4", 
-    {clipPath: "polygon(0% 99%, 100% 0%, 100% 1%, 0% 100%)", duration: 1},
-    {clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", duration: 1},
-    );
-  scrollTL.to(".a4", { duration: 10});
+  scrollTL.to(
+    El_Card4Item.value,
+    {
+      duration: 1,
+      onReverseComplete: () => {
+        El_Card3Item.value.CardEnter();
+        El_Card4Item.value.InitAction();
+      },
+      onStart: () => { El_Card4Item.value.CardEnter();},
+    }
+  );
+  scrollTL.to(
+    El_Card4Item.value,
+    {
+      duration: 1,
+    }
+  );
 });
 </script>
 
@@ -76,36 +112,13 @@ onMounted(() => {
 #SectionIntroduction {
   .card-item {
     @include size;
-    // width: 50vw;
-    // height: 50vh;
-    // overflow: hidden;
     box-shadow: 73px 57px 0px -17px #0000003d;
-  }
- 
-
-  .c-4 {
-    background-color: #111d2f;
-  }
-  .star-img {
-    @include size;
-      object-fit: cover;
-  }
-  .star-item {
-    @include size;
-    // background-image: url(@/assets/svg/bg-star.svg);
-    // background-repeat: no-repeat;
-    // background-position: center center;
-    // background-size: cover;
-  }
-  .star-mask {
-    @include size;
-    background-image: url(@/assets/svg/bg-star.svg);
   }
 }
 // -------------------------------------------------------------------------------------------------
-@for $i from 0 through 5 {
-  .z-#{$i * 10} {
-    z-index: #{$i * 10};
-  }
-}
+// @for $i from 0 through 5 {
+//   .z-#{$i * 10} {
+//     z-index: #{$i * 10};
+//   }
+// }
 </style>

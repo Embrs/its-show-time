@@ -1,19 +1,53 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#Card2Item
+#Card2Item(ref="El_Card")
   .text-area
-    p.en-name {{"HARRY TSOU"}}
-    p.name {{ "鄒豐懋" }}
-    p.job {{"FRONT-END ENGINEER"}}
+    p.en-name(ref="El_EnName") {{"HARRY TSOU"}}
+    p.name(ref="El_Name") {{ "鄒豐懋" }}
+    p.job(ref="El_Job") {{"FRONT-END ENGINEER"}}
 </template>
 
 <script setup lang="ts">
-const InitAction = (scrollTL:  gsap.core.Timeline) => {
-  scrollTL.from("#Card2Item > * > .en-name", {x: "-100vw", opacity: 0, duration: 1 });
-  scrollTL.from("#Card2Item > * > .name", {y: "100vh", opacity: 0, duration: 1 });
-  scrollTL.from("#Card2Item > * > .job", {x: "100vw", opacity: 0, duration: 1 });
+import { ref, getCurrentInstance, onMounted } from "vue";
+const { proxy } = getCurrentInstance()!;
+const { gsap } = proxy!.$gsap;
+
+const El_Card = ref();
+const El_EnName = ref();
+const El_Name = ref();
+const El_Job  = ref();
+
+let CardAction: gsap.core.Tween;
+let EnNameAction: gsap.core.Tween;
+let NameAction: gsap.core.Tween;
+let JobAction: gsap.core.Tween;
+
+onMounted( () => {
+  CardAction = gsap.to(El_Card.value, { duration: 1, xPercent: -140 ,yPercent: -10, scale: .7, rotation: 20,  paused: true});
+  EnNameAction = gsap.from(El_EnName.value, { duration: 2, x: "-100vw", opacity: 0, ease: "Elastic.easeOut", paused: true }); 
+  NameAction = gsap.from(El_Name.value, { duration: 2, y: "100vh", opacity: 0, ease: "Bounce.easeOut",paused: true });
+  JobAction = gsap.from(El_Job.value, { duration: 2, x: "100vw", opacity: 0, ease: "Elastic.easeOut",paused: true });
+  // ease: https://greensock.com/docs/v2/Easing
+});
+
+const InitAction = () => {
+  EnNameAction.reverse();
+  NameAction.reverse();
+  JobAction.reverse();
 };
-defineExpose({InitAction});
+
+const CardEnter = () => {
+  CardAction.reverse();
+
+  EnNameAction.play();
+  NameAction.play();
+  JobAction.play();
+};
+const CardLeave = () => {
+  CardAction.play();
+  InitAction();
+};
+defineExpose({ InitAction, CardLeave, CardEnter });
 </script>
 
 <style lang="scss" scoped>
@@ -38,7 +72,6 @@ defineExpose({InitAction});
     line-height: 127px;
     font-weight: 700px;
     letter-spacing: 14px;
-    
     @include phone-media {
       font-size: 90px;
       line-height: 77px;
@@ -49,7 +82,6 @@ defineExpose({InitAction});
     font-size: 40px;
     letter-spacing: 20px;
     padding-left: 8px;
-    
     @include phone-media {
       font-size: 30px;
     }
@@ -60,7 +92,6 @@ defineExpose({InitAction});
     font-size: 40px;
     letter-spacing: 10px;
     padding-right: 5px;
-    
     @include phone-media {
       padding-top: 40px;
       font-size: 30px;
