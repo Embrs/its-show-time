@@ -41,12 +41,10 @@ onMounted(() => {
 });
 
 const PaperEnter = () => {
-  console.log("ee");
   PaperAction.reverse();
 };
 
 const PaperLeave = () => {
-  console.log("ll");
   PaperAction.play();
 };
 

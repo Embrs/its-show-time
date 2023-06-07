@@ -7,7 +7,6 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
 const route = useRoute(); // 路由
-console.log(route);
 // script
 </script>
 

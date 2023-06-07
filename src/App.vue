@@ -5,8 +5,14 @@ RouterView
 
 <script setup lang="ts">
 // 主題色配置 -------------------------------------------------------------------------------------------------
+import { onMounted } from "vue";
 import { useThemeColorStore } from "@/stores/theme-color";
+import infoLog from "@/utils/console";
+
 const colorStore = useThemeColorStore();
+onMounted(() => {
+  infoLog();
+});
 </script>
 
 <style lang="scss">

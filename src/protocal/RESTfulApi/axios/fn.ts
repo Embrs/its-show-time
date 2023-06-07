@@ -20,7 +20,6 @@ export const HandleSuccessRes = (response: AxiosResponse): ResObject => {
 
 // 回傳失敗
 export const HandleErrorRes = (error: Error): ResObject => {
-  console.log("err", error);
   // 未知異常
   return errData;
 };

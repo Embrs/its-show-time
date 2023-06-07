@@ -7,6 +7,8 @@ import $firebase from "@/plugin/firebase";
 import router from "./router";
 import App from "./App.vue";
 
+import "@/utils/console.ts";
+
 const app = createApp(App);
 app.config.globalProperties.$gsap = $gsap;
 app.config.globalProperties.$firebase = $firebase;

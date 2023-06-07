@@ -30,8 +30,6 @@ import type { LoginParams, LoginResData } from "@/protocal/RESTfulApi/methods/in
     const ApiVersion = async (): Promise<boolean> => {
     const { data, status: code } = await GetVersion();
     if (code.err === 0) {
-      console.log(data);
-      // be fix user data
       // 設定使用者資訊
       return true;
     }

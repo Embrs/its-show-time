@@ -66,7 +66,6 @@ onMounted(() => {
     }
   });
   // ----------------------
-  console.log(El_SkillItem);
   VanillaTilt.init(
     El_SkillItem.value,
     { reverse: true, max: 30, speed: 1000 }
