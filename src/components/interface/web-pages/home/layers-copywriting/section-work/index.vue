@@ -6,6 +6,7 @@ section#SectionWork
     video(
       autoplay
       muted
+      controlslist="nodownload"
       :loop="true"
       :controls="false"
     )
