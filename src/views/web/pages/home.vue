@@ -13,7 +13,6 @@ import LayersCopywriting from "@/components/interface/web-pages/home/layers-copy
 <style lang="scss" scoped>
 #Home {
   position: relative;
-  max-height: 10000vh; // 可調整
 }
 </style>
 

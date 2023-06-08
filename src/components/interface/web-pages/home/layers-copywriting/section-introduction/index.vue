@@ -104,12 +104,10 @@ onMounted(() => {
   width: 100vw;;
   overflow: hidden;
   .level-area {
-    position: absolute;
+    @include absolute;
     width: 100vw;
     height: 100vh;
     display: flex;
-    top: 0;
-    left: 0;
   }
 }
 // 組件 

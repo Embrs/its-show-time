@@ -3,13 +3,6 @@
   height: $height;
 }
 
-@mixin absolute($top: 0, $left: 0) {
-  @include size;
-  position: absolute;
-  top: $top;
-  left: $left;
-}
-
 @mixin center($gap: 0) {
   display: flex;
   justify-content: center;
@@ -78,6 +71,47 @@
   line-height: calc($size * 1.4);
   letter-spacing: calc($size / 10);
 }
+// 定位 -------------------------------------------------------------------------------------------------
+@mixin absolute($direction: "top-left" ,$a-pos: 0, $b-pos: $a-pos) {
+  position: absolute;
+  @if ($direction == "top-left") {
+    top: $a-pos;
+    left: $b-pos;
+  }
+  @if ($direction == "top-right") {
+    top: $a-pos;
+    right: $b-pos;
+  }
+  @if ($direction == "bottom-left") {
+    bottom: $a-pos;
+    left: $b-pos;
+  }
+  @if ($direction == "bottom-right") {
+    bottom: $a-pos;
+    right: $b-pos;
+  }
+}
+
+@mixin fixed($direction: "top-left" ,$a-pos: 0, $b-pos: $a-pos) {
+  position: fixed;
+  @if ($direction == "top-left") {
+    top: $a-pos;
+    left: $b-pos;
+  }
+  @if ($direction == "top-right") {
+    top: $a-pos;
+    right: $b-pos;
+  }
+  @if ($direction == "bottom-left") {
+    bottom: $a-pos;
+    left: $b-pos;
+  }
+  @if ($direction == "bottom-right") {
+    bottom: $a-pos;
+    right: $b-pos;
+  }
+}
+
 // 字框 -------------------------------------------------------------------------------------------------
 /// Stroke font-character
 /// @param  {Integer} $stroke - Stroke width

@@ -28,10 +28,8 @@ const ClickFullPageIcon = debounce(() => {
   @include center;
   @include size(30px);
   @include btn-click;
+  @include absolute("top-right", 8px);
 
-  position: absolute;
-  right: 8px;
-  top: 8px;
   z-index: 1;
 
   font-size: 24px;;

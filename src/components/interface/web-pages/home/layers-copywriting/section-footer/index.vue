@@ -33,9 +33,9 @@
 #SectionFooter {
   .bg {
     @include size;
+    @include absolute;
     height: 50vh;
     width: 100vw;
-    position: absolute;
     object-fit: cover;
     object-position: top;
     z-index: 0;

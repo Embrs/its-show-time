@@ -1,5 +1,5 @@
 <template lang="pug">
-//- 請填寫功能描述👈
+//- 背景圖層
 #LayersBackground
   //- img(src="@/assets/images/bg/svg/bg-star.svg")
 </template>
@@ -11,9 +11,7 @@
 <style lang="scss" scoped>
 // 佈局
 #LayersBackground {
-  position: absolute;
-  top: 0;
-  left: 0;
+  @include absolute;
   width: 100vw;
 }
 // 組件

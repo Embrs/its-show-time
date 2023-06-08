@@ -104,9 +104,7 @@ onMounted(() => {
     padding: 3vh 3vw;
     .box {
       @include size;
-      position: absolute;
-      top: 0;
-      left: 0;
+      @include absolute;
       padding: 3vh 6vw 6vh 3vw;
     }
   }
@@ -128,9 +126,7 @@ onMounted(() => {
   //   box-shadow: -.2em .2em .3em -.1em rgba(0,0,0,.3);
   //   &::before {
   //     content: '';
-  //     position: absolute;
-  //     top: 0;
-  //     right: 0;
+  //     @include absolute;
   //     background: linear-gradient(to left bottom, transparent 50%, rgba(0,0,0,.05) 0, rgba(0,0,0,.15)) no-repeat 100% 0;
   //     width: 1.73em;
   //     height: 3em;

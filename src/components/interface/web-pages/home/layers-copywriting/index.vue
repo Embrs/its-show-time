@@ -19,9 +19,7 @@ import SectionFooter from "./section-footer/index.vue";
 <style lang="scss" scoped>
 // 佈局
 #LayersCopywriting {
-  position: absolute;
-  top: 0;
-  left: 0;
+  @include absolute;
   width: 100vw;
 }
 // 組件

@@ -98,9 +98,7 @@ defineExpose({ InitAction, CardEnter, CardLeave});
     }
   }
   .star-item {
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include absolute;
     .star-img {
       width: 100vw;
       height: 100vh;
