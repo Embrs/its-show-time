@@ -2,12 +2,12 @@
 //- 請填寫功能描述👈
 #Card4Item(ref="El_Card")
   .hand-imgs
-    img.bg-cloud(src="@/assets/images/bg/bg-yellow-cloud.jpg")
-    img.hand1(ref="El_Hand1" src="@/assets/images/png/hand1.png")
-    img.hand2(ref="El_Hand2" src="@/assets/images/png/hand2.png")
+    img.bg-cloud(src="@/assets/images/bg/bg-yellow-cloud.jpg" loading="lazy")
+    img.hand1(ref="El_Hand1" src="@/assets/images/png/hand1.png" loading="lazy")
+    img.hand2(ref="El_Hand2" src="@/assets/images/png/hand2.png" loading="lazy")
 
   .star-item(ref="El_Star")
-    img.star-img(src="@/assets/images/bg/svg/bg-star.svg")
+    img.star-img(src="@/assets/images/bg/svg/bg-star.svg" loading="lazy")
 </template>
 
 <script setup lang="ts">

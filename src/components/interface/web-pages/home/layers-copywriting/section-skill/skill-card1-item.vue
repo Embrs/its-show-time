@@ -4,7 +4,12 @@
   .card-title(ref="El_SkillTitle") {{"SKILL"}} 
   .skill-list
     .skill-item(ref="El_SkillItem" v-for="skillItem of skillList" :key="skillItem.name")
-      img.skill-img(:src="skillItem.logo"  :title="skillItem.name" :alt="skillItem.name")
+      img.skill-img(
+        :src="skillItem.logo" 
+        :title="skillItem.name"
+        :alt="skillItem.name"
+        loading="lazy"
+      )
 
 </template>
 

@@ -3,8 +3,9 @@
 section#SectionWork
   .video-box(ref="El_RelitheVideo")
     .box
+    //- autoplay
     video(
-      autoplay
+      ref="El_Video"
       muted
       controlslist="nodownload"
       :loop="true"
@@ -14,15 +15,31 @@ section#SectionWork
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, getCurrentInstance } from "vue";
 import VanillaTilt from "vanilla-tilt";
 
+const { proxy } = getCurrentInstance()!;
+const { ScrollTrigger } = proxy!.$gsap;
+
 const El_RelitheVideo = ref();
+const El_Video = ref();
 onMounted(() => {
   VanillaTilt.init(
     El_RelitheVideo.value,
-    { reverse: true, max: 30, speed: 1000 }
+    { max: 30, speed: 1000 }
   );
+  //----------------------------
+  ScrollTrigger.create({
+    trigger: El_RelitheVideo.value,
+    markers: false,
+		// 向下滾動進入start點時觸發callback
+    onEnter: () => { El_Video.value.play();},
+		// 向下滾動超過end點時觸發callback
+    onLeave: () => { El_Video.value.pause();}, 
+		// 向上滾動超過end點時觸發（回滾時觸發）callback
+    onEnterBack: () => { El_Video.value.play();},
+    onLeaveBack: () => {El_Video.value.pause();}
+  });
 });
 
 
@@ -31,13 +48,13 @@ onMounted(() => {
 <style lang="scss" scoped>
 // 佈局
 #SectionWork {
-  padding: 10vh 5vw;
+  padding: 10vh 10vw;
   @include center;
 }
 // 組件
 #SectionWork {
   .video-box {
-    width: 360px;
+    width: 340px;
     position: relative;
     transform-style: preserve-3d;
     video {
