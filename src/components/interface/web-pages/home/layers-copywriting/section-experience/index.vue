@@ -42,9 +42,14 @@ const El_Paper3 = ref();
 const El_Paper4 = ref();
 
 onMounted(() => {
+  const _height = window.innerHeight;
   const scrollTL = gsap.timeline({
     scrollTrigger: {
-      trigger: El_ExperienceBox.value, pin: true, scrub: true, markers: false,
+      trigger: El_ExperienceBox.value,
+      pin: true,
+      scrub: true,
+      markers: false,
+      end: `+=${4*_height}`
     },
   });
   // time line --------------------------------------------

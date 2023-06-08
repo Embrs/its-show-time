@@ -1,7 +1,6 @@
 <template lang="pug">
 //- 自我介紹
 section#SectionIntroduction(ref="El_SectionIntroduction")
-
   .level-area
     Card4Item(ref="El_Card4Item")
   .level-area
@@ -31,9 +30,14 @@ const El_Card3Item = ref();
 const El_Card4Item = ref();
 // -------------------------------------------------------------------------------------------------
 onMounted(() => {
+  const _height = window.innerHeight;
   const scrollTL = gsap.timeline({
     scrollTrigger: {
-      trigger: El_SectionIntroduction.value, pin: true, scrub: true, markers: false,
+      trigger: El_SectionIntroduction.value,
+      pin: true,
+      scrub: true,
+      end: `+=${3*_height}`,
+      markers: false,
     },
   });
   // time line --------------------------------------------
