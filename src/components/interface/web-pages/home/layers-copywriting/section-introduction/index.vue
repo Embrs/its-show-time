@@ -12,13 +12,12 @@ section#SectionIntroduction(ref="El_SectionIntroduction")
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"; 
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 import Card1Item from "./card1-item.vue";
 import Card2Item from "./card2-item.vue";
 import Card3Item from "./card3-item.vue";
 import Card4Item from "./card4-item.vue";
 
-import { getCurrentInstance, onMounted } from "vue";
 
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
@@ -28,10 +27,19 @@ const El_Card1Item = ref();
 const El_Card2Item = ref();
 const El_Card3Item = ref();
 const El_Card4Item = ref();
+let scrollTL: gsap.core.Timeline;
 // -------------------------------------------------------------------------------------------------
 onMounted(() => {
+  InitFlow();
+});
+
+onBeforeUnmount(()=>{
+  scrollTL?.kill();
+});
+
+const InitFlow = () =>{
   const _height = window.innerHeight;
-  const scrollTL = gsap.timeline({
+  scrollTL = gsap.timeline({
     scrollTrigger: {
       trigger: El_SectionIntroduction.value,
       pin: true,
@@ -40,7 +48,7 @@ onMounted(() => {
       markers: false,
     },
   });
-  // time line --------------------------------------------
+  // time line -----------
   scrollTL.to(
     El_Card1Item.value,
     {
@@ -93,7 +101,8 @@ onMounted(() => {
       duration: 1,
     }
   );
-});
+};
+
 </script>
 
 <style lang="scss" scoped>

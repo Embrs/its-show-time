@@ -90,6 +90,12 @@
     bottom: $a-pos;
     right: $b-pos;
   }
+  @if ($direction == "fill") {
+    top: $a-pos;
+    right: $b-pos;
+    bottom: $a-pos;
+    left: $b-pos;
+  }
 }
 
 @mixin fixed($direction: "top-left" ,$a-pos: 0, $b-pos: $a-pos) {
@@ -109,6 +115,12 @@
   @if ($direction == "bottom-right") {
     bottom: $a-pos;
     right: $b-pos;
+  }
+  @if ($direction == "fill") {
+    top: $a-pos;
+    right: $b-pos;
+    bottom: $a-pos;
+    left: $b-pos;
   }
 }
 

@@ -26,7 +26,7 @@ section#SectionExperience
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 import ExperienceTitle from "./experience-title.vue";
 import PaperItem from "./paper-item.vue";
 import _experienceData from "./experience-data";
@@ -41,9 +41,18 @@ const El_Paper2 = ref();
 const El_Paper3 = ref();
 const El_Paper4 = ref();
 
+let scrollTL: gsap.core.Timeline;
 onMounted(() => {
+  InitFlow();
+});
+
+onBeforeUnmount(() => {
+  scrollTL?.kill();
+});
+
+const InitFlow = () => {
   const _height = window.innerHeight;
-  const scrollTL = gsap.timeline({
+  scrollTL = gsap.timeline({
     scrollTrigger: {
       trigger: El_ExperienceBox.value,
       pin: true,
@@ -90,7 +99,8 @@ onMounted(() => {
       onStart: () => { El_Paper4.value.PaperEnter(); },
     }
   );
-});
+};
+
 </script>
 
 <style lang="scss" scoped>

@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
@@ -30,6 +30,12 @@ onMounted( () => {
   );
   Hand1Action = gsap.to(El_Hand1.value, { yPercent:-50, xPercent: -150, duration: 1, delay: 1, paused: true });
   Hand2Action = gsap.to(El_Hand2.value, { yPercent:50, xPercent: 150, duration: 1, delay: 1, paused: true });
+});
+
+onBeforeUnmount(() => {
+  StarAction?.kill();
+  Hand1Action?.kill();
+  Hand2Action?.kill();
 });
 
 const InitAction = () => {

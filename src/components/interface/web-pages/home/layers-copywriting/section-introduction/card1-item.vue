@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
@@ -14,12 +14,18 @@ const El_Card = ref();
 const El_Text = ref();
 
 let CardAction: gsap.core.Tween;
+let TextAction: gsap.core.Tween;
+
 onMounted( () => {
   CardAction = gsap.to(El_Card.value, {duration: 1, xPercent: -140 ,yPercent: 10, scale: .7, rotation: -20,  paused: true});
 });
+onBeforeUnmount(()=> {
+  CardAction?.kill();
+  TextAction?.kill();
+});
 
-const TextAction = (text: string, delay: number = 0) =>  {
-  gsap.to(
+const TextActionFlow = (text: string, delay: number = 0) =>  {
+  TextAction = gsap.to(
     El_Text.value,
     {
       text,
@@ -30,12 +36,12 @@ const TextAction = (text: string, delay: number = 0) =>  {
 };
 
 const InitAction = () => {
-  TextAction("");
+  TextActionFlow("");
 };
 
 const CardEnter = () => {
   CardAction.reverse();
-  TextAction("Hello World !!", 1);
+  TextActionFlow("Hello World !!", 1);
 };
 
 const CardLeave = () => {

@@ -13,6 +13,7 @@ import LayersCopywriting from "@/components/interface/web-pages/home/layers-copy
 <style lang="scss" scoped>
 #Home {
   position: relative;
+  user-select: none;
 }
 </style>
 

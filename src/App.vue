@@ -1,5 +1,6 @@
 <template lang="pug">
-RouterView
+transition(name="page" mode="out-in")
+  RouterView
 </template>
 
 <script setup lang="ts">
@@ -35,5 +36,4 @@ onMounted(() => {
   --warning: v-bind(colorStore.colors.warning);
   --error: v-bind(colorStore.colors.error);
 }
-
 </style>

@@ -5,12 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap, ScrollTrigger } = proxy!.$gsap;
 
 const El_Title = ref();
 let TitleAction: gsap.core.Tween;
+
 onMounted(() => {
   TitleAction = gsap.fromTo(
     El_Title.value,
@@ -27,6 +28,10 @@ onMounted(() => {
       TitleAction.reverse();
     }
   });
+});
+
+onBeforeUnmount(() => {
+  TitleAction?.kill();
 });
 </script>
 

@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
@@ -25,6 +25,11 @@ onMounted(() => {
     { duration: 1, opacity: 0, scale: 2, filter: "blur(10px)", paused: true },
     { duration: 1, opacity: 1, scale: 1, filter: "blur(0px)", paused: true }
   );
+});
+
+onBeforeUnmount(() => {
+  CardAction?.kill();
+  MaskAction?.kill();
 });
 
 const InitAction = () => {

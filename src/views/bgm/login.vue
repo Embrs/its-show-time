@@ -2,13 +2,13 @@
 //- 請填寫功能描述👈
 #bgm-login
   p bgm-login
+  RouterLink(to="/") home
   a-button(@click="ApiLogin") LOGIN
   a-button(@click="ApiVersion") Version
   RouterLink(to="/bgm") BGM
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from "vue-router";
 import { Login, GetVersion } from "@/protocal/RESTfulApi/methods/auth";
 import type { LoginParams, LoginResData } from "@/protocal/RESTfulApi/methods/interface/auth";
 

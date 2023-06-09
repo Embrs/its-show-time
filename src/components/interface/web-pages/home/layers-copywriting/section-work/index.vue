@@ -15,7 +15,7 @@ section#SectionWork
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, getCurrentInstance } from "vue";
+import { ref, onMounted, getCurrentInstance, onBeforeUnmount } from "vue";
 import VanillaTilt from "vanilla-tilt";
 
 const { proxy } = getCurrentInstance()!;
@@ -23,13 +23,23 @@ const { ScrollTrigger } = proxy!.$gsap;
 
 const El_RelitheVideo = ref();
 const El_Video = ref();
+
+let ScrollTriggerAction: ScrollTrigger;
+
 onMounted(() => {
+  InitFlow();
+});
+onBeforeUnmount(() => {
+  ScrollTriggerAction?.kill();
+});
+
+const InitFlow = () => {
   VanillaTilt.init(
     El_RelitheVideo.value,
     { max: 30, speed: 1000 }
   );
   //----------------------------
-  ScrollTrigger.create({
+  ScrollTriggerAction = ScrollTrigger.create({
     trigger: El_RelitheVideo.value,
     markers: false,
 		// 向下滾動進入start點時觸發callback
@@ -40,8 +50,7 @@ onMounted(() => {
     onEnterBack: () => { El_Video.value.play();},
     onLeaveBack: () => {El_Video.value.pause();}
   });
-});
-
+};
 
 </script>
 
