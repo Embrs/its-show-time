@@ -63,6 +63,7 @@ defineExpose({ InitAction, CardLeave, CardEnter});
   position: relative;
   .bg {
     @include absolute;
+    @include size;
     object-fit: cover;
     opacity: .2;
   }
