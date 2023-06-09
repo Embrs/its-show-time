@@ -24,6 +24,7 @@ const ClickMenu = debounce(function () {
 }, 400, { leading: true, trailing: false });
 
 const OnMenuChange = (_isMenuOpen: boolean) => {
+  console.log("change");
   isMenuOpen.value = _isMenuOpen;
 };
 </script>
