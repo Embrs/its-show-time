@@ -7,11 +7,11 @@ import hirataLogo from "@/assets/images/experience/hirata.png";
 const job_tyr: JobData = {
   logo: tyrLogo,
   title: "泰爾科技股份有限公司",
-  subTitle: "2024.04 ～ 現在",
+  subTitle: "2021.04 ～ 現在",
   job: "技術顧問、前端組組長",
   intruduce: "我在公司成立初期擔任 Axolotl 技術顧問的角色，負責協助專案架構的規劃。隨著公司的穩定成長，我轉為擔任前端主管的職位，專注於這一領域的工作。在我的任職期間，我負責設立團隊的規範，進行新人的培訓和指導，參與跨組的需求討論，並克服各種技術上的障礙，引入新的技術。我參與開發了三個產品，其中以 Relithe 在二手精品界享有盛名。我們的網站也引入了一些技術，包括 SEO 優化、PWA、即時版本刷新等，官網我們使用 Nuxt 進行開發。此外，我還參與了一些小型項目，例如精品爬蟲和 IG 直播擷取器等。這些項目都展示了我對於探索新技術和解決問題的熱情。",
   project: [
-    "Reliteh 二手精品媒合平台，使用 Nuxt、docker、金流串接，第三方登入等多項技術",
+    "Reliteh 二手精品媒合平台，使用 Nuxt、docker、金流串接、第三方登入等多項技術",
     "Purest 工作互動平台，解決疫情居家工作問題，使用 Vue、Electron",
     "Woah 二手精品C2C平台，以面交為核心，使用 Nuxt 技術",
     "精品爬蟲，使用 Puppeteer 技術",
