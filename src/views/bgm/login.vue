@@ -48,12 +48,12 @@ const El_LoginFrom =ref<FormInstance>();
 // -------------------------------------------------------------------------------------------------
 // 密碼驗證
 const ValidatePass = async (_rule: Rule, value: string) => {
-  if (value === "") return Promise.reject(" ");
+  if (value === "") return Promise.reject("Please enter any password");
   return Promise.resolve();
 };
 
 const fromRules: Record<string, Rule[]> = {
-  account: [{ required: true, message: " ", trigger: "change" }],
+  account: [{ required: true, message: "Please enter any account", trigger: "change" }],
   password: [{ required: true, validator: ValidatePass, trigger: "change" }],
 };
 
@@ -83,7 +83,7 @@ const CheckFlow = async() => {
     padding: 30px 40px;
     border-radius: 5px;
     color: white;
-    background: #D2D2D2;
+    background: #3d586a;
   }
 }
 

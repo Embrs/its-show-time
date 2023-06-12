@@ -1,11 +1,7 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#UserInfo
-  
-  p Harry
-  p Harry
-  p Harry
-  p Harry
+#CtrlMenuMobile
+  p CtrlMenuMobile
 </template>
 
 <script setup lang="ts">
@@ -14,9 +10,9 @@
 
 <style lang="scss" scoped>
 // 佈局
-#UserInfo {
+#CtrlMenuMobile {
 }
 // 組件
-#UserInfo {
+#CtrlMenuMobile {
 }
 </style>

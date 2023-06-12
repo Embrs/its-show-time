@@ -11,6 +11,7 @@ teleport(to="body")
             @click="ToPaht(menuItem.path)"
           )
             p {{ menuItem.label }}
+          .ps {{"... Continuously updating"}}
 </template>
 
 <script setup lang="ts">
@@ -134,6 +135,12 @@ defineExpose({ OpenCtrl });
     &:active {
       transform: scaleY(0.8);
     }
+  }
+  .ps {
+    @include font(14px);
+    color: #c3c3c3;
+    text-align: center;
+    padding: 20px 0;
   }
 }
 //  -------------------------------------------------------------------------------------------------

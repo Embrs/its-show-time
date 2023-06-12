@@ -104,7 +104,7 @@
 		"body": [
 			"debounce(function () {",
 			"  // ",
-			"}, 400, { leading: true, trailing: false }),"
+			"}, 400, { leading: true, trailing: false });"
 		]
 	}
 }

@@ -40,8 +40,8 @@ export default defineConfig(({ mode }) => {
         less: {
           javascriptEnabled: true,
           modifyVars: {
-            "primary-color": "#5395CC",
-            "error-color": "#C4484E",
+            "primary-color": "#78CDE9",
+            "error-color": "#f77878",
             "border-radius-base": "4px",
           },
         }
