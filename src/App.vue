@@ -16,7 +16,9 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-
+#app {
+  @include size;
+}
 // @import "@/assets/styles/scss/_scroll.scss"; // scroll 樣式
 
 * /*主題色注入*/{
