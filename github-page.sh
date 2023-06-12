@@ -3,6 +3,7 @@
 # 當發生錯誤時終止腳本運行
 set -e
 # 打包
+rm -rf dist 
 npm run build
 
 git add .
