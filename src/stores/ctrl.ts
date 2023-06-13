@@ -1,9 +1,10 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
-
-// 設定頁面滿屏
-export const useFullPageStore = defineStore("ctrl", () => {
-  const isFullPage = ref(false);
-  const SetFull = (isFull: boolean) => { isFullPage.value = isFull; };
-  return { isFullPage, SetFull };
+// 設定 bgm menu 縮放
+export const useBgmMenuZoom = defineStore("bgm-menu-zoom", () => {
+  const isMiniMenu = ref(false);
+  const ReverseZoom = () => {
+    isMiniMenu.value = !isMiniMenu.value;
+  };
+  return { isMiniMenu, ReverseZoom };
 });

@@ -102,7 +102,7 @@
   "debounce 基礎": {
 		"prefix": "debounce",
 		"body": [
-			"debounce(function () {",
+			"debounce(() => {",
 			"  // ",
 			"}, 400, { leading: true, trailing: false });"
 		]

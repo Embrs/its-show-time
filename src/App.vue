@@ -1,6 +1,8 @@
 <template lang="pug">
-transition(name="page" mode="out-in")
-  RouterView
+RouterView(v-slot="{ Component }")
+  transition(name="page" mode="out-in")
+    //- KeepAlive(:include="")
+    component(:is="Component") 
 </template>
 
 <script setup lang="ts">
@@ -19,10 +21,8 @@ onMounted(() => {
 #app {
   @include size;
 }
-// @import "@/assets/styles/scss/_scroll.scss"; // scroll 樣式
 
 * /*主題色注入*/{
-  
   --fontPrimary: v-bind(colorStore.colors.fontPrimary);
   --fontSecondary: v-bind(colorStore.colors.fontSecondary);
   --fontDisabled: v-bind(colorStore.colors.fontDisabled);
