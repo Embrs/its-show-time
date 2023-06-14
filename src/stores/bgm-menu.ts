@@ -1,3 +1,4 @@
+// bgm menu 生成
 import { ref } from "vue";
 import { defineStore } from "pinia";
 import MenuMapFn from "@/components/vue-fn/bgm/bgm-menu-map";
@@ -26,8 +27,7 @@ export interface MenuObj {
 export const useBgmMenuStore = defineStore("bgm-menu", () => {
   const $route = useRoute();
   const { menuMap, bgmPages } = MenuMapFn();
-  console.log(menuMap);
-  // 生成樹
+  // 生成樹 // TODO 權限過濾
   const menuObj: MenuObj = {};
   for (const pageRoute of bgmPages) {
     const keys = pageRoute.path.replace("/bgm/", "").split("/");

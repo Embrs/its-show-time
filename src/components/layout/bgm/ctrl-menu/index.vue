@@ -27,12 +27,12 @@ onMounted(()=> {
 
 // 頁面初始化
 const Init = () => {
-  let page = $route.path.replace("/bgm/", "").split("/").pop() || "";
+  let pageKey = $route.path.replace("/bgm/", "").split("/").pop() || "";
   if ($route.path === "/bgm") {
-    page = bgmMenuStore?.firstPage?.key || page;
+    pageKey = bgmMenuStore?.firstPage?.key || pageKey;
   }
-  bgmPageKeepStore.SelectPage(page);
-  bgmMenuStore.OpenInit(page);
+  bgmPageKeepStore.SelectPage(pageKey);
+  bgmMenuStore.OpenInit(pageKey);
 };
 </script>
 

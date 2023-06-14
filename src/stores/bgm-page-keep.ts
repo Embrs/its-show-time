@@ -1,11 +1,12 @@
-import { ref } from "vue";
+// menu 持久化與跳轉
+import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import { keyMap, SetHash, GetHash, RemoveHash } from "@/plugin/storage";
 import { useRouter } from "vue-router";
 import MenuMapFn from "@/components/vue-fn/bgm/bgm-menu-map";
 
 export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
-  const { pageMap } = MenuMapFn();
+  const { menuMap } = MenuMapFn();
   const $router = useRouter();
   const keepPages = ref<string[]>([]);
   const currentPage = ref<string>("");
@@ -30,14 +31,14 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
   };
 
   // 選擇頁面
-  const SelectPage = (pageName: string) => {
-    if (!pageName) return;
-    if (!keepPages.value.includes(pageName)) {
-      keepPages.value.push(pageName);
+  const SelectPage = (pageKey: string) => {
+    if (!pageKey) return;
+    if (!keepPages.value.includes(pageKey)) {
+      keepPages.value.push(pageKey);
     }
-    const path = pageMap[pageName];
+    const path = menuMap[pageKey].path; // TODO 未來優化跳轉路徑為指定路徑
     if (path) $router.push(path);
-    currentPage.value = pageName;
+    currentPage.value = pageKey;
     SaveStorage();
   };
 
@@ -48,25 +49,37 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
   };
 
   // 刪除頁面
-  const DeletePage = (pageName: string) => {
-    if (!pageName) return;
-    // 小於等於 1 不刪除
-    if (keepPages.value.length <= 1) return;
+  const DeletePage = (pageKey: string) => {
+    if (!pageKey) return;
     // 刪除位置
-    const _delIndex = keepPages.value.findIndex((_pageName) => _pageName === pageName);
+    const _delIndex = keepPages.value.findIndex((_pageKey) => _pageKey === pageKey);
     if (_delIndex === -1) return;
-    // 刪除後的位置
-    const _toIndex = (_delIndex - 1) >= 0 ? _delIndex - 1 : _delIndex;
     keepPages.value.splice(_delIndex, 1);
-    currentPage.value = keepPages.value[_toIndex];
+    // 目前位置 === 刪除位置，目前位置要移動
+    if ( currentPage.value === pageKey) {
+      const _toIndex = (_delIndex - 1) >= 0 ? _delIndex - 1 : _delIndex;
+      currentPage.value = keepPages.value[_toIndex];
+      const path = menuMap[currentPage.value].path;
+      if (path) $router.push(path);
+    }
     SaveStorage();
   };
+
+  // keepTab 需要的資訊
+  const pageItemList = computed(()=> {
+    return keepPages.value.map((pageKey) => {
+      return {
+        ...menuMap[pageKey],
+        key: pageKey
+      };
+    });
+  });
   // init -------------------------------------------------------------------------------------------------
   GetStorage();
 
   return {
-    keepPages,
     currentPage,
+    pageItemList,
     SelectPage,
     ChangePages,
     DeletePage,

@@ -4,7 +4,8 @@ export interface menuMap {
   [key: string]: {
     name: string,
     icon: string,
-    path: string
+    path?: string
+    routeName?: string
   };
 }
 export interface stringObj {
@@ -21,19 +22,22 @@ export default () => {
       key: route.path.replace("/bgm/", "").split("/").pop()
     };
   });
-  // array to obj
-  const pageMap: stringObj = bgmPages.reduce((a, v: any) => ({ ...a, [v.key]: v }), {});
-  const MapPath = (key: string) => pageMap?.[key]?.path || "";
+  // array to obj // TODO (加到utils) 
+  const bgmPagesObj: stringObj = bgmPages.reduce((a, v: any) => ({ ...a, [v.key]: v }), {});
 
   // (menu 順序以 menuMap 決定)
   const menuMap: menuMap = {
-    "ds": { name: "系統設計", icon: "icon-sliders", path: MapPath("ds") },
-    "theme-colors": { name: "主題色", icon: "icon-adjust", path: MapPath("theme-colors") },
-    "theme-fonts": { name: "字型", icon: "icon-font", path: MapPath("theme-fonts") },
-    "icons": { name: "Icon", icon: "icon-star-half-alt", path: MapPath("icons") },
-    home: { name: "儀表板", icon: "icon-globe", path: MapPath("home") },
-    "aa": { name: "aa", icon: "icon-sliders", path: MapPath("aa") },
-    "bb": { name: "bb", icon: "icon-sliders", path: MapPath("bb") },
+    "ds": { name: "系統設計", icon: "icon-sliders" },
+    "theme-colors": { name: "主題色", icon: "icon-adjust" },
+    "theme-fonts": { name: "字型", icon: "icon-font" },
+    "icons": { name: "Icon", icon: "icon-star-half-alt" },
+    home: { name: "儀表板", icon: "icon-globe" },
+    "aa": { name: "aa", icon: "icon-sliders" },
+    "bb": { name: "bb", icon: "icon-sliders" },
   };
-  return { menuMap, bgmPages, pageMap };
+  for (const key in menuMap) {
+    menuMap[key].path = bgmPagesObj?.[key]?.path || "";
+    menuMap[key].routeName = bgmPagesObj?.[key]?.name?.toString() || "";
+  }
+  return { menuMap, bgmPages };
 };

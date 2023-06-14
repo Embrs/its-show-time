@@ -118,9 +118,13 @@ const IsCurrentPage = (path: string) => {
     cursor: pointer;
     gap: 6px;
     opacity: 0.6;
-    transition: opacity 0.4s ease;;
+    transition: opacity 0.4s ease, transform 0.1s ease;
+    transform-origin: 0 50%;
     &:hover {
       opacity: 1;
+    }
+    &:active {
+      transform: scale(0.95);
     }
     .menu-i {
       font-size: 20px;

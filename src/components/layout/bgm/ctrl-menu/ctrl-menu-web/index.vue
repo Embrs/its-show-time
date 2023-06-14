@@ -13,7 +13,7 @@
   .menu-list-area(:class="{'menu-list-area-mini': isMini}")
     BgmMenuList(:isMini="isMini" :menuList="props.menuList")
   //----------------  
-  .menu-footer
+  .menu-footer-area
     .logout-area
       .logout-btn(@click="ClickLogout")
         .icon-logout
@@ -91,6 +91,9 @@ const ClickLogout = () => {
     &-mini {
       padding: 0 0;
     }
+  }
+  .menu-footer-area {
+    padding-bottom: 20px;
   }
   .logout-area {
     @include center;

@@ -41,8 +41,8 @@ interface FromProps {
   password: string
 }
 const formProps = ref<FromProps>({
-  account: "",
-  password: "",
+  account: "test",
+  password: "test",
 });
 const El_LoginFrom =ref<FormInstance>();
 // -------------------------------------------------------------------------------------------------
