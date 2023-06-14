@@ -2,12 +2,14 @@
 //- menuItem
 #BgmMenuList( :class="{'is-sub-list': isSub, 'list-is-mini': props.isMini }" )
   .menu-item(v-for="menuItem of menuList" :key="menuItem.name")
+    //-按鈕------------
     .item-btn(
       :class="{'is-sub-btn': isSub}" 
       @click="ClickMenuItem(menuItem)"
     )
       .menu-i(:class="menuItem.icon")
       .menu-label {{ menuItem.name }}
+    //-展開------------
     .btn-line(
       v-if="menuItem.children.length > 0"
       :class="{'btn-line-open': menuItem.isOpen}"
@@ -28,10 +30,13 @@
 import { computed } from "vue";
 import debounce from "lodash/debounce";
 import type { MenuItem } from "@/components/layout/bgm/ctrl-menu/menu-list";
-//  -------------------------------------------------------------------------------------------------
+// route -------------------------------------------------------------------------------------------------
 import { useRouter } from "vue-router";
 const $route = useRouter();
-//  -------------------------------------------------------------------------------------------------
+// page keep -------------------------------------------------------------------------------------------------
+import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
+const bgmPageKeepStore = useBgmPageKeepStore();
+// -------------------------------------------------------------------------------------------------
 const props = defineProps({
   level: { // 第幾層
     type: Number,
@@ -48,11 +53,13 @@ const props = defineProps({
 });
 //  -------------------------------------------------------------------------------------------------
 // 是子項目
-const isSub =  computed(() => props.level > 0);
+const isSub = computed(() => props.level > 0);
 // 點擊 Menu
 const ClickMenuItem = debounce((menuItem: MenuItem) => {
+  const {key, path, routeName} = menuItem;
   if (menuItem.path) {
-    $route.push(menuItem.path);
+    $route.push(path);
+    bgmPageKeepStore.SelectPage({key, path, routeName});
     return;
   }
   menuItem.isOpen = !menuItem.isOpen;

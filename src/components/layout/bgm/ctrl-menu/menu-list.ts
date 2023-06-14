@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import menuMap from "./menu-map";
+import MenuMapFn from "./menu-map";
 
 export interface MenuItem {
   name: string,
@@ -23,6 +23,7 @@ export interface MenuObj {
 }
 //  -------------------------------------------------------------------------------------------------
 export default () => {
+  const { menuMap } = MenuMapFn();
   // 生成樹
   const $router = useRouter(); // 路由
   const bgmPages = $router.options.routes.find((item) => item.path === "/bgm")?.children ?? [];
@@ -53,6 +54,7 @@ export default () => {
   // -------------------------------------------------------------------------------------------------
   // 轉 array map
   const menuList = ref<MenuItem[]>([]);
+  const firstPage = ref<MenuItem>();
 
   const SortMenu = (_menuObj: MenuObj, _list: MenuItem[]) => {
     if (Object.keys(_menuObj).length === 0) return;
@@ -64,11 +66,13 @@ export default () => {
         children: [],
         isOpen: false
       };
+      if (!firstPage.value && path) {
+        firstPage.value = menuItem;
+      }
       SortMenu(childrenMap, menuItem.children);
       _list.push(menuItem);
     }
   };
   SortMenu(menuObj, menuList.value);
-  console.log("ml", menuList);
-  return { menuList };
+  return { menuList, firstPage };
 };
