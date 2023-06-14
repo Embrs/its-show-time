@@ -4,9 +4,8 @@
   .ctrl-menu-area
     CtrlMenu
   .page-tab-area
-    PageTab
+    BgmPageTab
   .main-page-area
-    p {{ bgmMenuStore.menuList }}
     RouterView(v-slot="{ Component }")
       transition(name="page" mode="out-in")
         //- KeepAlive(:include="")
@@ -15,11 +14,9 @@
 
 <script setup lang="ts">
 import CtrlMenu from "@/components/layout/bgm/ctrl-menu/index.vue";
-import PageTab from "@/components/layout/bgm/page-tab/index.vue";
+import BgmPageTab from "@/components/layout/bgm/bgm-page-tab/index.vue";
 
-// TODO Remove
-import { useBgmMenuStore } from "@/stores/bgm-menu";
-const bgmMenuStore = useBgmMenuStore();
+
 
 </script>
 
