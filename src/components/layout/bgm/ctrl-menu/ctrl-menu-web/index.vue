@@ -10,7 +10,7 @@
       img(src="@/assets/images/bgm/member.png")
     .member-name(v-show="!isMini") {{"Member name"}}
   .gap-line(:class="{'gap-line-mini': isMini}")
-  BgmMenuListBox
+  BgmMenuListBox(:isMini="isMini" :menuList="menuList")
   .menu-footer
     .logout-area
       .logout-btn(@click="ClickLogout")
@@ -18,25 +18,41 @@
         transition(name="com" mode="out-in")
           p(v-if="!isMini") {{ "Logout" }}
     transition(name="com" mode="out-in")
-      .copy-right(v-if="!isMini") {{ "© 2023 EMBRS" }}
+      .copy-right(v-show="!isMini") {{ "© 2023 EMBRS" }}
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import BgmMenuListBox from "./bgm-menu-list-box/index.vue";
-import { useBgmMenuZoom } from "@/stores/ctrl";
+import type { MenuItem } from "@/components/layout/bgm/ctrl-menu/menu-list";
+
+const props = defineProps({
+  isMini: {
+    type: Boolean,
+    default: false
+  },
+  menuList: {
+    type: Array as () => MenuItem[],
+    default: () => ([])
+  }
+});
+//  -------------------------------------------------------------------------------------------------
+const emit = defineEmits(["on-reverse-zoom"]);
+const EmitReverseZoom = () => {
+  emit("on-reverse-zoom");
+};
 //  -------------------------------------------------------------------------------------------------
 import { useRouter } from "vue-router";
 const $route = useRouter();
 //  -------------------------------------------------------------------------------------------------
-
-const menuStore = useBgmMenuZoom();
-const isMini = computed(() => menuStore.isMiniMenu ?? false);
 // 縮放 menu
 const ClickZoomBtn = () => {
-  menuStore.ReverseZoom();
+  EmitReverseZoom();
 };
 
+const ClickLogout = () => {
+  $route.push("/bgm-login");
+};
 // script
 </script>
 

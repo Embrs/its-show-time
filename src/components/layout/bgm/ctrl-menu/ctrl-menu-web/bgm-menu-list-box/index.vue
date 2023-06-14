@@ -1,19 +1,25 @@
 <template lang="pug">
 //- 後台 menu 列表
-#BgmMenuListBox(:class="{'is-mini': isMini}")
-  BgmMenuList(:menuList="menuList")
+#BgmMenuListBox(:class="{'is-mini':props.isMini}")
+  BgmMenuList(:isMini="isMini" :menuList="props.menuList")
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import BgmMenuList from "./bgm-menu-list.vue";
-//  -------------------------------------------------------------------------------------------------
-import { useBgmMenuZoom } from "@/stores/ctrl";
-const menuStore = useBgmMenuZoom();
-const isMini = computed(() => menuStore.isMiniMenu ?? false);
-//  -------------------------------------------------------------------------------------------------
-import MenuListFn from "./menu-list";
-const { menuList } = MenuListFn();
+import type { MenuItem } from "@/components/layout/bgm/ctrl-menu/menu-list";
+
+const props = defineProps({
+  isMini: {
+    type: Boolean,
+    default: false
+  },
+  menuList: {
+    type: Array as () => MenuItem[],
+    default: () => ([])
+  }
+});
+
 </script>
 
 <style lang="scss" scoped>

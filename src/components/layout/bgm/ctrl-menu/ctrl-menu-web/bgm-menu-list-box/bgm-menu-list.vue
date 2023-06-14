@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import debounce from "lodash/debounce";
-import type { MenuItem } from "./menu-list";
+import type { MenuItem } from "../../menu-list";
 //  -------------------------------------------------------------------------------------------------
 import { useBgmMenuZoom } from "@/stores/ctrl";
 const menuStore = useBgmMenuZoom();
@@ -95,7 +95,6 @@ const ClickMenuItem = debounce((menuItem: MenuItem) => {
     overflow: hidden;
   }
   .btn-line {
-    margin: 10px 0;
     width: 60% !important;
   }
 }
@@ -119,7 +118,7 @@ const ClickMenuItem = debounce((menuItem: MenuItem) => {
       font-size: 16px;
       max-width: 400px;
       max-height: 40px;
-      transition: max-width 0.2s ease, max-height 0.2s ease;
+      transition: max-width 0.2s ease, max-height 0.4s ease;
     }
   }
   .is-sub-btn {
