@@ -34,7 +34,7 @@ import debounce from "lodash/debounce";
 import type { Rule } from "ant-design-vue/es/form";
 import type { FormInstance } from "ant-design-vue";
 
-const $route = useRouter();
+const $router = useRouter();
 // -------------------------------------------------------------------------------------------------
 interface FromProps {
   account: string ;
@@ -68,7 +68,7 @@ const ClickLogin = debounce(function () {
 const CheckFlow = async() => {
   const isPass = await El_LoginFrom.value?.validateFields().then(()=> true).catch(()=> false) ;
   console.log("res", isPass);
-  if (isPass) $route.push("/bgm");
+  if (isPass) $router.push("/bgm");
 };
 </script>
 

@@ -39,7 +39,7 @@ const isMini = ref(false);
 
 //  -------------------------------------------------------------------------------------------------
 import { useRouter } from "vue-router";
-const $route = useRouter();
+const $router = useRouter();
 //  -------------------------------------------------------------------------------------------------
 
 // 縮放 menu
@@ -48,7 +48,7 @@ const ClickZoomBtn = () => {
 };
 
 const ClickLogout = () => {
-  $route.push("/bgm-login");
+  $router.push("/bgm-login");
 };
 // script
 </script>

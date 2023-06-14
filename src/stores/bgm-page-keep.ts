@@ -4,13 +4,11 @@ import { keyMap, SetHash, GetHash, RemoveHash } from "@/plugin/storage";
 import { useRouter } from "vue-router";
 import MenuMapFn from "@/components/vue-fn/bgm/bgm-menu-map";
 
-
 export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
   const { pageMap } = MenuMapFn();
-  const $route = useRouter();
+  const $router = useRouter();
   const keepPages = ref<string[]>([]);
   const currentPage = ref<string>("");
-  // const pageMap = computed(() => keepPages.value.map((page) => page));
 
   // Storage -------------------------------------------------------------------------------------------------
   const SaveStorage = () => {
@@ -37,7 +35,7 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
       keepPages.value.push(pageName);
     }
     const path = pageMap[pageName];
-    if (path) $route.push(path);
+    if (path) $router.push(path);
     currentPage.value = pageName;
     SaveStorage();
   };

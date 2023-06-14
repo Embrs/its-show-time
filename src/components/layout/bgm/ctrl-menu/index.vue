@@ -1,7 +1,7 @@
 <template lang="pug">
 //- 會員控制與menu
 #CtrlMenu
-  CtrlMenuWeb.web-item(:menuList="menuList")
+  CtrlMenuWeb.web-item(:menuList="bgmMenuStore.menuList")
   CtrlMenuMobile.mobile-item
 </template>
 
@@ -10,29 +10,29 @@ import { onMounted } from "vue";
 import CtrlMenuWeb from "@/components/layout/bgm/ctrl-menu/ctrl-menu-web/index.vue";
 import CtrlMenuMobile from "@/components/layout/bgm/ctrl-menu/ctrl-menu-mobile/index.vue";
 
-// -------------------------------------------------------------------------------------------------
-import MenuListFn from "./menu-list";
-const { menuList, firstPage } = MenuListFn();
+// menu list -------------------------------------------------------------------------------------------------
+import { useBgmMenuStore } from "@/stores/bgm-menu";
+const bgmMenuStore = useBgmMenuStore();
 // page keep -------------------------------------------------------------------------------------------------
 import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
 const bgmPageKeepStore = useBgmPageKeepStore();
-// -------------------------------------------------------------------------------------------------
 // route -------------------------------------------------------------------------------------------------
 import { useRouter } from "vue-router";
 const $route = useRouter();
 //  -------------------------------------------------------------------------------------------------
 
 onMounted(()=> {
-  console.log("mm");
+  // TODO
   ToFirstPage();
   InitListOpen();
+  bgmMenuStore.OpenInit();
 });
 
 // 前往首頁
 const ToFirstPage = () => {
   // keep page 不存在
   if (bgmPageKeepStore.keepPages.length > 0) return;
-  if (!firstPage.value) return;
+  if (!bgmMenuStore.firstPage) return;
 
   // TODO
   // $route.push(firstPath.value);
@@ -41,7 +41,7 @@ const ToFirstPage = () => {
 
 // 初始 menu open 結構
 const InitListOpen = () => {
-  console.log("rr", $route);
+  //
 };
 
 </script>

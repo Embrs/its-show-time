@@ -19,7 +19,7 @@ import { ref, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
 import debounce from "lodash/debounce";
 
-const $route = useRouter();
+const $router = useRouter();
 const visible = ref(false);
 const menuList = ref([
   { path: "/", label: "INTRODUCE" },
@@ -49,7 +49,7 @@ const ClickMask = debounce(function () {
 
 // 前往頁面
 const ToPaht = debounce(function (path: string) {
-  $route.push({path});
+  $router.push(path);
   OpenCtrl(false);
 }, 400, { leading: true, trailing: false });
 
