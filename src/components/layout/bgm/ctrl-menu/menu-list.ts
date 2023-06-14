@@ -1,6 +1,5 @@
 import { ref } from "vue";
-import { useRouter } from "vue-router";
-import MenuMapFn from "./menu-map";
+import MenuMapFn from "@/components/vue-fn/bgm/bgm-menu-map";
 
 export interface MenuItem {
   name: string,
@@ -23,10 +22,9 @@ export interface MenuObj {
 }
 //  -------------------------------------------------------------------------------------------------
 export default () => {
-  const { menuMap } = MenuMapFn();
+  const { menuMap, bgmPages } = MenuMapFn();
+  console.log(menuMap);
   // 生成樹
-  const $router = useRouter(); // 路由
-  const bgmPages = $router.options.routes.find((item) => item.path === "/bgm")?.children ?? [];
   const menuObj: MenuObj = {};
   for (const pageRoute of bgmPages) {
     const keys = pageRoute.path.replace("/bgm/", "").split("/");

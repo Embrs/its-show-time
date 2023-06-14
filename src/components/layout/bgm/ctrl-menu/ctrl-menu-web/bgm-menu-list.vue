@@ -1,10 +1,10 @@
 <template lang="pug">
 //- menuItem
-#BgmMenuList( :class="{'is-sub-list': isSub, 'list-is-mini': props.isMini }" )
+#BgmMenuList(:class="{'is-sub-list': isSub, 'list-is-mini': props.isMini }" )
   .menu-item(v-for="menuItem of menuList" :key="menuItem.name")
     //-按鈕------------
     .item-btn(
-      :class="{'is-sub-btn': isSub}" 
+      :class="{'is-sub-btn': isSub, 'is-select': IsCurrentPage(menuItem.path)}" 
       @click="ClickMenuItem(menuItem)"
     )
       .menu-i(:class="menuItem.icon")
@@ -30,9 +30,6 @@
 import { computed } from "vue";
 import debounce from "lodash/debounce";
 import type { MenuItem } from "@/components/layout/bgm/ctrl-menu/menu-list";
-// route -------------------------------------------------------------------------------------------------
-import { useRouter } from "vue-router";
-const $route = useRouter();
 // page keep -------------------------------------------------------------------------------------------------
 import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
 const bgmPageKeepStore = useBgmPageKeepStore();
@@ -56,15 +53,18 @@ const props = defineProps({
 const isSub = computed(() => props.level > 0);
 // 點擊 Menu
 const ClickMenuItem = debounce((menuItem: MenuItem) => {
-  const {key, path, routeName} = menuItem;
+  const {key} = menuItem;
   if (menuItem.path) {
-    $route.push(path);
-    bgmPageKeepStore.SelectPage({key, path, routeName});
+    bgmPageKeepStore.SelectPage(key);
     return;
   }
   menuItem.isOpen = !menuItem.isOpen;
   // TODO 全關
 }, 200, { leading: true, trailing: false });
+const IsCurrentPage = (path: string) => {
+  const _pageName = path.replace("/bgm/", "").split("/").pop();
+  return bgmPageKeepStore.currentPage === _pageName;
+};
 </script>
 
 <style lang="scss" scoped>
@@ -109,6 +109,10 @@ const ClickMenuItem = debounce((menuItem: MenuItem) => {
 
 // 組件
 #BgmMenuList {
+  .is-select {
+    color: #62fdf9 !important;
+    opacity: 1 !important;
+  }
   .item-btn {
     @include flex;
     color: #C8FDF8;

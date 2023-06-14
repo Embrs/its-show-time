@@ -23,6 +23,7 @@ const $route = useRouter();
 //  -------------------------------------------------------------------------------------------------
 
 onMounted(()=> {
+  console.log("mm");
   ToFirstPage();
   InitListOpen();
 });
