@@ -31,6 +31,7 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
 
   // 選擇頁面
   const SelectPage = (pageName: string) => {
+    if (!pageName) return;
     if (!keepPages.value.includes(pageName)) {
       keepPages.value.push(pageName);
     }
@@ -48,6 +49,7 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
 
   // 刪除頁面
   const DeletePage = (pageName: string) => {
+    if (!pageName) return;
     // 小於等於 1 不刪除
     if (keepPages.value.length <= 1) return;
     // 刪除位置

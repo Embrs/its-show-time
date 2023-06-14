@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, nextTick } from "vue";
 import CtrlMenuWeb from "@/components/layout/bgm/ctrl-menu/ctrl-menu-web/index.vue";
 import CtrlMenuMobile from "@/components/layout/bgm/ctrl-menu/ctrl-menu-mobile/index.vue";
 
@@ -17,26 +17,22 @@ const bgmMenuStore = useBgmMenuStore();
 import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
 const bgmPageKeepStore = useBgmPageKeepStore();
 // route -------------------------------------------------------------------------------------------------
-import { useRouter } from "vue-router";
-const $route = useRouter();
+import { useRoute } from "vue-router";
+const $route = useRoute();
 //  -------------------------------------------------------------------------------------------------
 
 onMounted(()=> {
-  // TODO
-  ToFirstPage();
-  InitListOpen();
-  bgmMenuStore.OpenInit();
+  Init();
 });
 
-// 前往首頁
-const ToFirstPage = () => {
-  // keep page 不存在
-  if (bgmPageKeepStore.keepPages.length > 0) return;
-  if (!bgmMenuStore.firstPage) return;
-
-  // TODO
-  // $route.push(firstPath.value);
-  // bgmPageKeepStore.sele
+// 頁面初始化
+const Init = () => {
+  let page = $route.path.replace("/bgm/", "").split("/").pop() || "";
+  if ($route.path === "/bgm") {
+    page = bgmMenuStore?.firstPage?.key || page;
+  }
+  bgmPageKeepStore.SelectPage(page);
+  bgmMenuStore.OpenInit(page);
 };
 
 // 初始 menu open 結構
