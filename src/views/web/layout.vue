@@ -1,6 +1,6 @@
 <template lang="pug">
 //- 佈局
-#Layout
+#WebLayout
   RouterView
   WebMenuBtn.menu-item
 </template>

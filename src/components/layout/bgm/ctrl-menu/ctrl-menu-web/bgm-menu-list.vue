@@ -29,7 +29,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import debounce from "lodash/debounce";
-import type { MenuItem } from "@/components/layout/bgm/ctrl-menu/menu-list";
+import type { MenuItem } from "@/stores/bgm-menu";
 // page keep -------------------------------------------------------------------------------------------------
 import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
 const bgmPageKeepStore = useBgmPageKeepStore();
@@ -81,7 +81,6 @@ const IsCurrentPage = (path: string) => {
     padding-top: 5px;
     padding-left: 20px;
   }
-  
 }
 
 
@@ -110,12 +109,12 @@ const IsCurrentPage = (path: string) => {
 // 組件
 #BgmMenuList {
   .is-select {
-    color: #62fdf9 !important;
+    color: var(--bgmFont300) !important;
     opacity: 1 !important;
   }
   .item-btn {
     @include flex;
-    color: #C8FDF8;
+    color: var(--bgmFont100);
     cursor: pointer;
     gap: 6px;
     opacity: 0.6;
@@ -143,7 +142,7 @@ const IsCurrentPage = (path: string) => {
   }
   .btn-line {
     width: 100%;
-    border-top: 1px solid #C8FDF8;
+    border-top: 1px solid var(--bgmBorder100);
     transition: transform 0.4s ease;
     transform-origin: 0 0;
     transform: scaleX(0);

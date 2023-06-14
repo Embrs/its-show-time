@@ -14,5 +14,10 @@
 }
 // 組件
 #PageTab {
+  .tag {
+    display: flex;
+    gap: 10px;
+    padding: 4px;
+  }
 }
 </style>

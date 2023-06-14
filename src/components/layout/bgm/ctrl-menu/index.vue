@@ -2,11 +2,11 @@
 //- 會員控制與menu
 #CtrlMenu
   CtrlMenuWeb.web-item(:menuList="bgmMenuStore.menuList")
-  CtrlMenuMobile.mobile-item
+  CtrlMenuMobile.mobile-item(:menuList="bgmMenuStore.menuList")
 </template>
 
 <script setup lang="ts">
-import { onMounted, nextTick } from "vue";
+import { onMounted } from "vue";
 import CtrlMenuWeb from "@/components/layout/bgm/ctrl-menu/ctrl-menu-web/index.vue";
 import CtrlMenuMobile from "@/components/layout/bgm/ctrl-menu/ctrl-menu-mobile/index.vue";
 
@@ -34,12 +34,6 @@ const Init = () => {
   bgmPageKeepStore.SelectPage(page);
   bgmMenuStore.OpenInit(page);
 };
-
-// 初始 menu open 結構
-const InitListOpen = () => {
-  //
-};
-
 </script>
 
 <style lang="scss" scoped>

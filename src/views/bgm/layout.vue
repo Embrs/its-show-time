@@ -3,7 +3,8 @@
 #BgmLayout
   .ctrl-menu-area
     CtrlMenu
-  .page-tab-area page-bar
+  .page-tab-area
+    PageTab
   .main-page-area
     p {{ bgmMenuStore.menuList }}
     RouterView(v-slot="{ Component }")
@@ -14,6 +15,7 @@
 
 <script setup lang="ts">
 import CtrlMenu from "@/components/layout/bgm/ctrl-menu/index.vue";
+import PageTab from "@/components/layout/bgm/page-tab/index.vue";
 
 // TODO Remove
 import { useBgmMenuStore } from "@/stores/bgm-menu";
@@ -27,8 +29,7 @@ const bgmMenuStore = useBgmMenuStore();
   @include size;
   max-width: 100vw;
   max-height: 100vh;
-  color: white;
-
+  background-color: var(--bgmBg100);
   display: grid;
   @include web-media {
     grid-template-columns: auto 1fr;
@@ -49,12 +50,11 @@ const bgmMenuStore = useBgmMenuStore();
   } 
   .page-tab-area {
     grid-area: page-tab;
-    background-color: #D5D5D5;
   } 
   .main-page-area {
     grid-area: main-page;
-    background-color: #425483;
     overflow: overlay;
+    border-top: 1px solid var(--bgmBorder100);
   } 
 }
 

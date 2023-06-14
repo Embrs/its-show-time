@@ -1,11 +1,10 @@
 <template lang="pug">
 //- 網頁版 meniu
-#CtrlMenuWeb
+#CtrlMenuWeb(:class="{'mobile-type': isMobileType}")
   .member-info-area(:class="{'member-info-area-mini': isMini}")
     .zoom-btn(@click="ClickZoomBtn")
-      .bnticon(
-        :class="isMini ? 'icon-resize-full' : 'icon-resize-small'"
-      )
+      .bnticon(v-if="isMobileType" class="icon-cancel" )
+      .bnticon(v-else :class="isMini ? 'icon-resize-full' : 'icon-resize-small'")
     .member-img(:class="{'member-img-mini': isMini}")
       img(src="@/assets/images/bgm/member.png")
     .member-name(v-show="!isMini") {{"Member name"}}
@@ -27,12 +26,16 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import BgmMenuList from "./bgm-menu-list.vue";
-import type { MenuItem } from "@/components/layout/bgm/ctrl-menu/menu-list";
+import type { MenuItem } from "@/stores/bgm-menu";
 
 const props = defineProps({
   menuList: {
     type: Array as () => MenuItem[],
     default: () => ([])
+  },
+  isMobileType: {
+    type: Boolean,
+    default: false
   }
 });
 const isMini = ref(false);
@@ -41,9 +44,17 @@ const isMini = ref(false);
 import { useRouter } from "vue-router";
 const $router = useRouter();
 //  -------------------------------------------------------------------------------------------------
+const emit = defineEmits(["on-close"]);
+const EmitClose = () => {
+  emit("on-close");
+};
 
 // 縮放 menu
 const ClickZoomBtn = () => {
+  if (props.isMobileType) {
+    EmitClose();
+    return;
+  }
   isMini.value = !isMini.value;
 };
 
@@ -59,7 +70,9 @@ const ClickLogout = () => {
   display: grid;
   grid-template-rows: auto auto 1fr auto;
   height: 100vh;
-  background-color: #0F1116;
+  background-color: var(--bgmBg200);
+  border-right: 1px solid var(--bgmBorder100);
+  color: var(--bgmFont200);
   .member-info-area {
     @include column;
     position: relative;
@@ -74,7 +87,7 @@ const ClickLogout = () => {
   }
   .menu-list-area {
     padding: 0 20px;
-    transform: padding 0.4s ease;
+    transition: padding 0.4s ease;
     &-mini {
       padding: 0 0;
     }
@@ -83,6 +96,7 @@ const ClickLogout = () => {
     @include center;
   };
 }
+
 // 組件
 #CtrlMenuWeb {
   .zoom-btn {
@@ -91,15 +105,14 @@ const ClickLogout = () => {
     @include center;
     @include btn-click;
     border-radius: 4px;;
-    background-color: #72C0B8;
-    color: #fff;
+    background-color: var(--bgmBg300);
+    color: var(--bgmFont200);;
   }
   .member-img {
     @include size(100px);
     border-radius: 30px;
-    background-color: #666;
     overflow: hidden;
-    border: 3px solid #72C0B8;
+    border: 3px solid var(--bgmBorder100);
     img {
       @include size;
       @include img-lock;
@@ -113,10 +126,10 @@ const ClickLogout = () => {
     }
   }
   .member-name {
-    color: #72C0B8;
+    color: var(--bgmFont100);
   }
   .gap-line {
-    border-bottom: 1px solid #72C0B8;
+    border-bottom: 1px solid var(--bgmBorder100);
     margin: 0 20px;
     transition: margin 0.4s ease;
     &-mini {
@@ -137,6 +150,18 @@ const ClickLogout = () => {
     padding: 5px 0;
     font-size: 12px;
     text-align: center;
+  }
+}
+.mobile-type {
+  border-right: 0px solid var(--bgmBorder100) !important;
+  border-left: 1px solid var(--bgmBorder100);
+  .member-info-area{
+    width: 250px !important;
+  }
+  .zoom-btn {
+    // @include absolute("top-right", 10px);
+    right: 10px !important;
+    left: unset !important;
   }
 }
 </style>
