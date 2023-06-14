@@ -1,6 +1,6 @@
 <template lang="pug">
 //- menuItem
-#BgmMenuList( :class="{'is-sub-list': isSub, 'list-is-mini': isMini }" )
+#BgmMenuList( :class="{'is-sub-list': isSub, 'list-is-mini': props.isMini }" )
   .menu-item(v-for="menuItem of menuList" :key="menuItem.name")
     .item-btn(
       :class="{'is-sub-btn': isSub}" 
@@ -18,19 +18,16 @@
     )
       BgmMenuList(
         v-if="menuItem.children"
-        :level="level + 1"
+        :isMini="props.isMini"
         :menuList="menuItem.children"
+        :level="level + 1"
       )
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 import debounce from "lodash/debounce";
-import type { MenuItem } from "../../menu-list";
-//  -------------------------------------------------------------------------------------------------
-import { useBgmMenuZoom } from "@/stores/ctrl";
-const menuStore = useBgmMenuZoom();
-const isMini = computed(() => menuStore.isMiniMenu ?? false);
+import type { MenuItem } from "@/components/layout/bgm/ctrl-menu/menu-list";
 //  -------------------------------------------------------------------------------------------------
 import { useRouter } from "vue-router";
 const $route = useRouter();
@@ -40,13 +37,16 @@ const props = defineProps({
     type: Number,
     default: 0
   },
+  isMini: {
+    type: Boolean,
+    default: false
+  },
   menuList: {
     type: Array as () => MenuItem[],
     default: () => ([])
   }
 });
-// 目前階層
-const currentLevel = computed(() => props.level);
+//  -------------------------------------------------------------------------------------------------
 // 是子項目
 const isSub =  computed(() => props.level > 0);
 // 點擊 Menu
@@ -68,14 +68,15 @@ const ClickMenuItem = debounce((menuItem: MenuItem) => {
   gap: 10px;
   padding-top: 10px;
   user-select: none;
-  // color: #C8FDF8;
   transition: padding-left 0.4s ease;
   .is-sub-list {
     gap: 5px;
     padding-top: 5px;
     padding-left: 20px;
   }
+  
 }
+
 
 .list-is-mini {
   padding-left: 0 !important;
