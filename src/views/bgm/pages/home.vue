@@ -2,6 +2,7 @@
 //- 請填寫功能描述👈
 #BgmHome
   p BgmHome
+  aInput
 </template>
 
 <script setup lang="ts">

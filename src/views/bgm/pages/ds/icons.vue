@@ -2,6 +2,7 @@
 //- 外部 Icon
 #Icons
   p Icons
+  aInput
 </template>
 
 <script setup lang="ts">

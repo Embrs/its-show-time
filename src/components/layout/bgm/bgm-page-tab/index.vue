@@ -5,7 +5,9 @@
     orientation="horizontal"
     behaviour="contain"
     :lock-axis="'x'"
+    drag-begin-delay="50"
     @drop="DropEvent"
+  
   )
     Draggable.dnd(v-for="pageItem of bgmPageKeepStore.pageItemList" :key="pageItem.key")
       .tab-item(

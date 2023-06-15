@@ -2,6 +2,7 @@
 //- 字型
 #ThemeFonts
   p ThemeFonts
+  aInput
 </template>
 
 <script setup lang="ts">

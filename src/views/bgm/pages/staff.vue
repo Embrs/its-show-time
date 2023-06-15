@@ -2,6 +2,7 @@
 //- 請填寫功能描述👈
 #bgm-staff
   p bgm-staff
+  aInput
 </template>
 
 <script setup lang="ts">
