@@ -55,7 +55,7 @@ defineExpose({ InitAction, CardLeave, CardEnter});
   color: #49B2DF;
   background-color: #49B2DF;
   padding: 20px;
-  @include web-media {
+  @include pc-media {
     @include stroke(10, #fff);
   }
   @include mobile-media {

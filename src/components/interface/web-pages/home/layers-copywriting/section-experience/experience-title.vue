@@ -47,7 +47,7 @@ onBeforeUnmount(() => {
     font-weight: 700;
     color: #484C74;
     letter-spacing: 5px;
-    @include web-media {
+    @include pc-media {
       font-size: 100px;
     }
     @include pad-media {

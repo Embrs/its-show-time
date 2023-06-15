@@ -38,13 +38,16 @@ const Init = () => {
 
 <style lang="scss" scoped>
 #CtrlMenu {
+  @include size;
   .web-item  {
     @include mobile-media {
       display: none !important;
     }
   }
   .mobile-item {
-    @include web-media {
+    @include size;
+    @include flex;
+    @include pc-media {
       display: none !important;
     }
   }

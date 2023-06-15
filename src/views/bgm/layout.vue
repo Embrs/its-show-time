@@ -8,13 +8,16 @@
   .main-page-area
     RouterView(v-slot="{ Component }")
       transition(name="page" mode="out-in")
-        //- //TODO KeepAlive(:include="")
-        component(:is="Component") 
+        KeepAlive(:include="bgmPageKeepStore.keepPages")
+          component(:is="Component") 
 </template>
 
 <script setup lang="ts">
 import CtrlMenu from "@/components/layout/bgm/ctrl-menu/index.vue";
 import BgmPageTab from "@/components/layout/bgm/bgm-page-tab/index.vue";
+// page keep -------------------------------------------------------------------------------------------------
+import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
+const bgmPageKeepStore = useBgmPageKeepStore();
 
 
 
@@ -28,7 +31,7 @@ import BgmPageTab from "@/components/layout/bgm/bgm-page-tab/index.vue";
   max-height: 100vh;
   background-color: var(--bgmBg100);
   display: grid;
-  @include web-media {
+  @include pc-media {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
@@ -47,6 +50,13 @@ import BgmPageTab from "@/components/layout/bgm/bgm-page-tab/index.vue";
   } 
   .page-tab-area {
     grid-area: page-tab;
+    max-width: 100vw;
+    overflow-x: overlay;
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+      margin: 5px;
+    }
   } 
   .main-page-area {
     grid-area: main-page;

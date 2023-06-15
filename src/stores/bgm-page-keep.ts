@@ -78,6 +78,7 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
   GetStorage();
 
   return {
+    keepPages,
     currentPage,
     pageItemList,
     SelectPage,

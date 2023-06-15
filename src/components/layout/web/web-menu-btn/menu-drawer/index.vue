@@ -79,7 +79,7 @@ defineExpose({ OpenCtrl });
   .drawer-mask {
     @include fixed;
     @include size;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(1px);
     background-color: rgb(0 0 0 / 24%);
   }
   .menu-list {

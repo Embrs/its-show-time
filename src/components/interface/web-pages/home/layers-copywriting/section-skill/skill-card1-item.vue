@@ -98,7 +98,7 @@ onBeforeUnmount(() => {
     padding-left: 5vw;
     font-weight: 700;
    
-    @include web-media {
+    @include pc-media {
       font-size: 200px;
       letter-spacing: 10px;
     }

@@ -77,7 +77,7 @@ defineExpose({ InitAction, CardEnter, CardLeave});
       position: absolute;
       transform: rotate(50deg);
       
-      @include web-media {
+      @include pc-media {
         height: 35vh;
         right: 50vw ;
       }
@@ -91,7 +91,7 @@ defineExpose({ InitAction, CardEnter, CardLeave});
       position: absolute;
       bottom: -20vh;
       transform: rotate(70deg);
-      @include web-media {
+      @include pc-media {
         height: 65vh;
         left: 50vw;
         bottom: -20vh;

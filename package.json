@@ -24,7 +24,8 @@
     "pinia": "^2.0.36",
     "vanilla-tilt": "^1.8.0",
     "vue": "^3.3.2",
-    "vue-router": "^4.2.0"
+    "vue-router": "^4.2.0",
+    "vue3-smooth-dnd": "^0.0.5"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

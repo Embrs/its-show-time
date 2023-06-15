@@ -19,7 +19,7 @@
   "rwd": {
 		"prefix": "rwd",
 		"body": [
-			"@include web-media {",
+			"@include pc-media {",
 			"  $1",
 			"}",
 			"@include mobile-media {",

@@ -64,7 +64,7 @@ defineExpose({ InitAction, CardLeave, CardEnter });
   color: #FFFFFF;
   text-shadow: 10px 9px 2px #00000036;
   @include center;
-  @include web-media {
+  @include pc-media {
     padding: 40px;
   }
   @include mobile-media {

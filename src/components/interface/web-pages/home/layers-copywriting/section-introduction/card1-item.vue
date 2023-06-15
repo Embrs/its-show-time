@@ -61,7 +61,7 @@ defineExpose({ InitAction, CardLeave, CardEnter});
   @include size;
   @include center;
   font-weight: 700;
-  @include web-media {
+  @include pc-media {
     font-size: 160px;
   }
   @include pad-media {
