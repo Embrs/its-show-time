@@ -23,7 +23,7 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
   };
   // -------------------------------------------------------------------------------------------------
   // 清除全部 
-  const ClearAllSave = () => {
+  const DeleteAll = () => {
     keepPages.value = [];
     currentPage.value = "";
     RemoveHash(keyMap.bmgKeepPage);
@@ -56,7 +56,7 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
     if (_delIndex === -1) return;
     keepPages.value.splice(_delIndex, 1);
     // 目前位置 === 刪除位置，目前位置要移動
-    if ( currentPage.value === pageKey) {
+    if (currentPage.value === pageKey) {
       const _toIndex = (_delIndex - 1) >= 0 ? _delIndex - 1 : _delIndex;
       currentPage.value = keepPages.value[_toIndex];
       const path = menuMap[currentPage.value].path;
@@ -66,7 +66,7 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
   };
 
   // keepTab 需要的資訊
-  const pageItemList = computed(()=> {
+  const pageItemList = computed(() => {
     return keepPages.value.map((pageKey) => {
       return {
         ...menuMap[pageKey],
@@ -83,6 +83,6 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
     SelectPage,
     ChangePages,
     DeletePage,
-    ClearAllSave
+    DeleteAll
   };
 });

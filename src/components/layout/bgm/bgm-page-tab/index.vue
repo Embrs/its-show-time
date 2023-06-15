@@ -58,15 +58,20 @@ const ClickTab = debounce((pageKey: string) => {
     padding: 1px 8px;
     color: var(--bgmFont100);
     background-color: var(--bgmBg200);
-    border: 1px solid var(--bgmBorder100);
+    border: 0.5px solid var(--bgmBorder100);
     border-bottom: 0px;
     border-radius: 4px 4px 0 0;
     opacity: 0.6;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease, color 0.4s ease, border-color 0.4s ease,;
     &-select {
       color: var(--bgmFont300);
       opacity: 1;
+      border: 0.5px solid var(--bgmFont300);
+    border-bottom: 0px;
     }
+  }
+  .close-btn {
+    @include btn-click;
   }
 }
 </style>

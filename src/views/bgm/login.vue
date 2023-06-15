@@ -28,13 +28,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import debounce from "lodash/debounce";
 import type { Rule } from "ant-design-vue/es/form";
 import type { FormInstance } from "ant-design-vue";
 
 const $router = useRouter();
+// page keep -------------------------------------------------------------------------------------------------
+import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
+const bgmPageKeepStore = useBgmPageKeepStore();
 // -------------------------------------------------------------------------------------------------
 interface FromProps {
   account: string ;
@@ -45,6 +48,10 @@ const formProps = ref<FromProps>({
   password: "test",
 });
 const El_LoginFrom =ref<FormInstance>();
+// -------------------------------------------------------------------------------------------------
+onMounted(() => {
+  bgmPageKeepStore.DeleteAll();
+});
 // -------------------------------------------------------------------------------------------------
 // 密碼驗證
 const ValidatePass = async (_rule: Rule, value: string) => {
