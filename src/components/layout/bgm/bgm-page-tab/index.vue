@@ -5,7 +5,6 @@
     orientation="horizontal"
     behaviour="contain"
     :lock-axis="'x'"
-    drag-begin-delay="50"
     @drop="DropEvent"
   
   )
@@ -33,13 +32,16 @@ const bgmMenuStore = useBgmMenuStore();
 
 // 點擊刪除
 const ClickDeleteBtn = debounce((pageKey: string) => {
+  console.log("dd");
   bgmPageKeepStore.DeletePage(pageKey);
 }, 400, { leading: true, trailing: false });
 
 // 點擊跳轉
 const ClickTab = debounce((pageKey: string) => {
+  console.log("aa",pageKey, bgmPageKeepStore.currentPage);
   // 為目前頁面時離開
   if (pageKey === bgmPageKeepStore.currentPage) return;
+  console.log("bb");
   bgmPageKeepStore.SelectPage(pageKey);
   bgmMenuStore.OpenInit(pageKey);
 }, 400, { leading: true, trailing: false });

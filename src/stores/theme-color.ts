@@ -25,7 +25,7 @@ export const useThemeColorStore = defineStore("themeColor", () => {
     "bgmFont200": "#FFFFFF",
     "bgmFont300": "#62fdf9",
 
-    "bgmBg100": "#182139",
+    "bgmBg100": "#1a3142",
     "bgmBg200": "#171c2c",
     "bgmBg300": "#3e7486",
 
