@@ -5,7 +5,7 @@
   ChartBasic.pie-area(ref="El_Pie" :chartOption="demoData.chartPie")
   ChartBasic.series-area(ref="El_Series" :chartOption="demoData.chartSeries")
   ChartBasic.gauge-area(ref="El_Gauge" :chartOption="demoData.chartGauge")
-  ChartBasic.line2-area(ref="El_Line" :chartOption="demoData.chartLine")
+  ChartBasic.line2-area(ref="El_Line" :chartOption="demoData.chartLine2")
 </template>
 
 <script setup lang="ts">
