@@ -28,12 +28,13 @@ export default () => {
   // (menu 順序以 menuMap 決定)
   const menuMap: menuMap = {
     home: { name: "儀表板", icon: "icon-globe" },
+    editer: { name: "富文本", icon: "icon-doc-text-inv" },
     "ds": { name: "系統設計", icon: "icon-sliders" },
     "theme-colors": { name: "主題色", icon: "icon-adjust" },
     "theme-fonts": { name: "字型", icon: "icon-font" },
     "icons": { name: "Icon", icon: "icon-star-half-alt" },
-    "aa": { name: "aa", icon: "icon-sliders" },
-    "bb": { name: "bb", icon: "icon-sliders" },
+    "aa": { name: "aa", icon: "icon-bug" },
+    "bb": { name: "bb", icon: "icon-bug" },
   };
   for (const key in menuMap) {
     menuMap[key].path = bgmPagesObj?.[key]?.path || "";
