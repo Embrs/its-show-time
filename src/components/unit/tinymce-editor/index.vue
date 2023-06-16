@@ -16,6 +16,18 @@ import "tinymce/themes/silver";
 // Icon
 import "tinymce/icons/default";
 // 用到的外掛
+import "tinymce/icons/default/icons"; // 樣式圖標
+import "tinymce/themes/silver/theme"; // 主題樣式
+// import "tinymce/plugins/table"; // 插入表格插件
+import "tinymce/plugins/lists"; // 列表插件
+import "tinymce/plugins/advlist"; // 高級列表插件
+import "tinymce/plugins/wordcount"; // 字數統計插件
+import "tinymce/plugins/link"; // 超鏈接插件
+import "tinymce/plugins/autolink"; // 自動鏈接插件
+import "tinymce/plugins/preview"; // 預覽
+import "tinymce/plugins/image"; // 插入上傳圖片插件
+import "tinymce/plugins/media"; // 插入視頻插件
+
 import "tinymce/plugins/emoticons";
 import "tinymce/plugins/emoticons/js/emojis.js";
 import "tinymce/plugins/table";
@@ -31,12 +43,12 @@ const props = defineProps({
   },
   plugins: {
     type: [String, Array],
-    default: "quickbars emoticons table",
+    default: "lists advlist image media wordcount link hr autolink  preview instagram"
   },
   toolbar: {
     type: [String, Array],
     default:
-      " bold italic underline strikethrough | fontsizeselect | forecolor backcolor | alignleft aligncenter alignright alignjustify|bullist numlist |outdent indent blockquote | undo redo | axupimgs | removeformat | table | emoticons",
+      "removeformat | formatselect lineheight | fontsizeselect fontselect bold italic underline strikethrough | forecolor backcolor| alignleft aligncenter alignright alignjustify | numlist bullist | outdent indent | image media instagram | preview | undo redo",
   },
 });
 
