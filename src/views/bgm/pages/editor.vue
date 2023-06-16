@@ -1,18 +1,20 @@
 <template lang="pug">
 //- 富文本
-#Editer
-  p Editer
+#Editor
+  EditorCard
 </template>
 
 <script setup lang="ts">
-// script
+import EditorCard from "@/components/interface/bgm-pages/editor/editor-card.vue";
+
 </script>
 
 <style lang="scss" scoped>
 // 佈局
-#Editer {
+#Editor {
+  padding: 10px;
 }
 // 組件
-#Editer {
+#Editor {
 }
 </style>

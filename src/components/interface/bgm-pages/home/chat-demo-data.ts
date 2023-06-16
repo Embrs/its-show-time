@@ -379,12 +379,13 @@ const chartGauge = {
       axisLabel: {
         color: "inherit",
         distance: 40,
-        fontSize: 20
+        fontSize: 12
       },
       detail: {
         valueAnimation: true,
         formatter: "{value} %",
-        color: "inherit"
+        color: "inherit",
+        fontSize: 20
       },
       data: [
         {
