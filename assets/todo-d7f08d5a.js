@@ -1,1 +1,0 @@
-import{d as t,Y as o,a0 as _,$ as s,a2 as a}from"./@vue-68c6bb74.js";import{_ as n}from"./index-cf6473d4.js";const c={id:"Todo"},d=t({__name:"todo",props:{text:{type:String,default:""}},setup(e){return(p,r)=>(o(),_("div",c,[s("p",null,a(e.text)+" 未完待續...",1)]))}});const l=n(d,[["__scopeId","data-v-f516f8e4"]]);export{l as T};
