@@ -1,8 +1,8 @@
 @import "./size-config";
 
 // 電腦
-@mixin web-media() {
-  @media all and (min-width: $web-media) {
+@mixin pc-media() {
+  @media all and (min-width: $pc-media) {
     @content;
   }
 }

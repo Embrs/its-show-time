@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
@@ -28,6 +28,13 @@ onMounted( () => {
   NameAction = gsap.from(El_Name.value, { duration: 2, y: "100vh", opacity: 0, ease: "Bounce.easeOut",paused: true });
   JobAction = gsap.from(El_Job.value, { duration: 2, x: "100vw", opacity: 0, ease: "Elastic.easeOut",paused: true });
   // ease: https://greensock.com/docs/v2/Easing
+});
+
+onBeforeUnmount(() => {
+  CardAction?.kill();
+  EnNameAction?.kill();
+  NameAction?.kill();
+  JobAction?.kill();
 });
 
 const InitAction = () => {
@@ -57,7 +64,7 @@ defineExpose({ InitAction, CardLeave, CardEnter });
   color: #FFFFFF;
   text-shadow: 10px 9px 2px #00000036;
   @include center;
-  @include web-media {
+  @include pc-media {
     padding: 40px;
   }
   @include mobile-media {

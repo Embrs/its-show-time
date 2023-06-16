@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap } = proxy!.$gsap;
 
@@ -25,6 +25,11 @@ onMounted(() => {
     { duration: 1, opacity: 0, scale: 2, filter: "blur(10px)", paused: true },
     { duration: 1, opacity: 1, scale: 1, filter: "blur(0px)", paused: true }
   );
+});
+
+onBeforeUnmount(() => {
+  CardAction?.kill();
+  MaskAction?.kill();
 });
 
 const InitAction = () => {
@@ -50,7 +55,7 @@ defineExpose({ InitAction, CardLeave, CardEnter});
   color: #49B2DF;
   background-color: #49B2DF;
   padding: 20px;
-  @include web-media {
+  @include pc-media {
     @include stroke(10, #fff);
   }
   @include mobile-media {

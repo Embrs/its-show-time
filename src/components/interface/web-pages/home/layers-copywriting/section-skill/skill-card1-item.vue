@@ -10,11 +10,10 @@
         :alt="skillItem.name"
         loading="lazy"
       )
-
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 import skillListFn from "./skill-list";
 import VanillaTilt from "vanilla-tilt";
 
@@ -29,6 +28,7 @@ const El_SkillItem = ref();
 
 let SkillTitleAction: gsap.core.Tween;
 let SkillItemAction: gsap.core.Tween;
+let ScrollTriggerAction: ScrollTrigger;
 
 onMounted(() => {
   SkillTitleAction = gsap.fromTo(
@@ -40,14 +40,14 @@ onMounted(() => {
     y: "-50vh",
     x: "random(-400, 400)",
     opacity: 0,
-    duration: 0.2,
+    duration: 0.5,
     delay: 1,
     ease: "Back.easeOut.config(1.7)",
     stagger: 0.05,
     paused: true
   });
   // ---------------------
-  ScrollTrigger.create({
+  ScrollTriggerAction = ScrollTrigger.create({
     trigger: El_SkillCard1Item.value,
     markers: false,
 		//向下滾動進入start點時觸發callback
@@ -76,6 +76,11 @@ onMounted(() => {
     { reverse: true, max: 30, speed: 1000 }
   );
 });
+onBeforeUnmount(() => {
+  SkillTitleAction?.kill();
+  SkillItemAction?.kill();
+  ScrollTriggerAction?.kill();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -93,7 +98,7 @@ onMounted(() => {
     padding-left: 5vw;
     font-weight: 700;
    
-    @include web-media {
+    @include pc-media {
       font-size: 200px;
       letter-spacing: 10px;
     }

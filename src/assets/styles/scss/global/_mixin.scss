@@ -37,7 +37,8 @@
 
 @mixin btn-click {
   cursor: pointer;
-  user-select: none; 
+  user-select: none;
+  transition: transform 0.2s ease;
   &:active {
     transform: scale(0.92);
   }
@@ -90,6 +91,12 @@
     bottom: $a-pos;
     right: $b-pos;
   }
+  @if ($direction == "fill") {
+    top: $a-pos;
+    right: $b-pos;
+    bottom: $a-pos;
+    left: $b-pos;
+  }
 }
 
 @mixin fixed($direction: "top-left" ,$a-pos: 0, $b-pos: $a-pos) {
@@ -109,6 +116,12 @@
   @if ($direction == "bottom-right") {
     bottom: $a-pos;
     right: $b-pos;
+  }
+  @if ($direction == "fill") {
+    top: $a-pos;
+    right: $b-pos;
+    bottom: $a-pos;
+    left: $b-pos;
   }
 }
 

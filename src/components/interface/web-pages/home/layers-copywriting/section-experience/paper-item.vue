@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 import type { JobData } from "./experience-data";
 
 const props = defineProps({
@@ -38,6 +38,9 @@ let PaperAction: gsap.core.Tween;
 
 onMounted(() => {
   PaperAction = gsap.to(El_Paper.value, { duration: 1.5, xPercent: "random(-400, 400)" ,yPercent: "-200", scale: .7, rotation: "random(-20, 20)",  paused: true});
+});
+onBeforeUnmount(() => {
+  PaperAction?.kill();
 });
 
 const PaperEnter = () => {

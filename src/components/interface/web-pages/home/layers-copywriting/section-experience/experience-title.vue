@@ -5,12 +5,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, getCurrentInstance, onMounted } from "vue";
+import { ref, getCurrentInstance, onMounted, onBeforeUnmount } from "vue";
 const { proxy } = getCurrentInstance()!;
 const { gsap, ScrollTrigger } = proxy!.$gsap;
 
 const El_Title = ref();
 let TitleAction: gsap.core.Tween;
+
 onMounted(() => {
   TitleAction = gsap.fromTo(
     El_Title.value,
@@ -28,6 +29,10 @@ onMounted(() => {
     }
   });
 });
+
+onBeforeUnmount(() => {
+  TitleAction?.kill();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -42,7 +47,7 @@ onMounted(() => {
     font-weight: 700;
     color: #484C74;
     letter-spacing: 5px;
-    @include web-media {
+    @include pc-media {
       font-size: 100px;
     }
     @include pad-media {

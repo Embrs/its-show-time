@@ -19,7 +19,7 @@
   "rwd": {
 		"prefix": "rwd",
 		"body": [
-			"@include web-media {",
+			"@include pc-media {",
 			"  $1",
 			"}",
 			"@include mobile-media {",
@@ -102,9 +102,9 @@
   "debounce 基礎": {
 		"prefix": "debounce",
 		"body": [
-			"debounce(function () {",
+			"debounce(() => {",
 			"  // ",
-			"}, 400, { leading: true, trailing: false }),"
+			"}, 400, { leading: true, trailing: false });"
 		]
 	}
 }
