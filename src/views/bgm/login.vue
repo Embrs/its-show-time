@@ -2,7 +2,7 @@
 //- 請填寫功能描述👈
 #bgm-login
   .log-box
-    .login-title {{"DEMO MANAGEMENT"}}
+    .login-title {{"MANAGEMENT SYSTEM"}}
     aForm(
       ref="El_LoginFrom"
       name="loginForm"
@@ -27,23 +27,22 @@
         .login-btn(
           @click="ClickLogin"
         ) {{"Login"}}
-      //- aButton(
-      //-   type="primary"
-      //-   @click="ClickLogin"
-      //- ) {{"Login"}}
+  WebMenuBtn.menu-item
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { useRouter } from "vue-router";
 import debounce from "lodash/debounce";
+import WebMenuBtn from "@/components/layout/web/web-menu-btn/index.vue";
 import type { Rule } from "ant-design-vue/es/form";
 import type { FormInstance } from "ant-design-vue";
 
-const $router = useRouter();
 // page keep -------------------------------------------------------------------------------------------------
 import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
 const bgmPageKeepStore = useBgmPageKeepStore();
+// menu list -------------------------------------------------------------------------------------------------
+import { useBgmMenuStore } from "@/stores/bgm-menu";
+const bgmMenuStore = useBgmMenuStore();
 // -------------------------------------------------------------------------------------------------
 interface FromProps {
   account: string ;
@@ -71,32 +70,33 @@ const fromRules: Record<string, Rule[]> = {
 };
 
 // -------------------------------------------------------------------------------------------------
-// const HandleFinish = () => {
-//   $route.push("/bgm");
-// };
 const ClickLogin = debounce(function () {
   CheckFlow();
 }, 400, { leading: true, trailing: false });
 
 const CheckFlow = async() => {
   const isPass = await El_LoginFrom.value?.validateFields().then(()=> true).catch(()=> false) ;
-  console.log("res", isPass);
-  if (isPass) $router.push("/bgm");
+  if (!isPass) return;
+  // 前往首頁
+  const pageKey = bgmMenuStore?.firstPage?.key || "";
+  bgmPageKeepStore.SelectPage(pageKey);
 };
 </script>
 
 <style lang="scss" scoped>
 // 佈局
 #bgm-login {
+  position: relative;
   background-image: url(@/assets/images/bg/bg-bgm.png);
   background-size: cover;
   @include size;
+  max-height: 100vh;
   @include center;
   padding: 20px;
   .log-box {
     width: 450px;
     padding: 40px 50px;
-    border-radius: 5px;
+    border-radius: 10px;
     color: white;
     backdrop-filter: blur(5px);
     background: #202a363b;
@@ -110,6 +110,10 @@ const CheckFlow = async() => {
 
 // 組件
 #bgm-login {
+  .menu-item {
+    @include absolute("top-right", 20px);
+    z-index: 1;
+  }
   .login-title {
     font-size: 30px;
     font-weight: 700;
@@ -147,7 +151,5 @@ const CheckFlow = async() => {
                   0 0 100px #34dded;
     }
   }
-
-
 }
 </style>

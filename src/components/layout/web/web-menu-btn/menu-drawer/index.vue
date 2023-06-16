@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
 // 開關控制
 const OpenCtrl = (isOpen: boolean) => {
   visible.value = isOpen;
-  ToggleHtmlScrollbar(visible.value);
+  // ToggleHtmlScrollbar(visible.value);
   EmitChange();
 };
 
@@ -69,13 +69,14 @@ defineExpose({ OpenCtrl });
 <style lang="scss" scoped>
 // 佈局
 #MenuDrawer {
-  @include fixed("fill");
+  @include absolute("fill");
+  // position: absolute;
+  // top: 0;
   @include size(100vw, 100vh);
-  position: relative;
 }
 // 組件
 #MenuDrawer {
-  position: relative;
+  // position: relative;
   .drawer-mask {
     @include fixed;
     @include size;
@@ -86,6 +87,7 @@ defineExpose({ OpenCtrl });
     @include fixed("bottom-right");
     height: calc(100vh - 90px);
     width: calc(100vw - 20px);
+    overflow: hidden;
     border-radius: 20px 0 0 20px;
     padding: 30px 0;
     bottom: 20px;

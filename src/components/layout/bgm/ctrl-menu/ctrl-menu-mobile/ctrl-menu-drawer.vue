@@ -6,12 +6,12 @@ teleport(to="#Layout")
       .drawer-mask(v-show="visible" @click="OnClose")
       transition(name="menu-drawer")
         .menu-box(v-show="visible")
-          CtrlMenuWeb(:menuList="props.menuList" @on-close="OnClose" isMobileType)
+          CtrlMenuPc(:menuList="props.menuList" @on-close="OnClose" isMobileType)
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import CtrlMenuWeb from "@/components/layout/bgm/ctrl-menu/ctrl-menu-web/index.vue";
+import CtrlMenuPc from "@/components/layout/bgm/ctrl-menu/ctrl-menu-pc/index.vue";
 
 import type { MenuItem } from "@/stores/bgm-menu";
 const props = defineProps({

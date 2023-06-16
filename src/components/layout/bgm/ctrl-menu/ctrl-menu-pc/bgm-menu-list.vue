@@ -114,6 +114,7 @@ const IsCurrentPage = (path: string) => {
   }
   .item-btn {
     @include flex;
+    position: relative;
     color: var(--bgmFont100);
     cursor: pointer;
     gap: 6px;
@@ -123,17 +124,37 @@ const IsCurrentPage = (path: string) => {
     &:hover {
       opacity: 1;
     }
+    &:before {
+      content: " ";
+      position: absolute;
+      top: 10%;
+      left: -5px;
+      width: 0%;
+      height: 80%;
+      background: linear-gradient(-90deg, var(--bgmFont300), transparent);
+      opacity: 0;
+      border-radius: 4px;
+      
+      transition: width 0.2s ease, opacity 0.2s ease;
+    }
     &:active {
-      transform: scale(0.95);
+      // transform: scale(0.95);
+      &:before {
+        opacity: 0.5;
+        width: 100%;
+    
+      }
     }
     .menu-i {
       font-size: 20px;
+      z-index: 1;
     }
     .menu-label {
       font-size: 16px;
       max-width: 400px;
       max-height: 40px;
       transition: max-width 0.2s ease, max-height 0.4s ease;
+      z-index: 1;
     }
   }
   .is-sub-btn {
