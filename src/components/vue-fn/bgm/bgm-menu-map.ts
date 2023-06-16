@@ -30,9 +30,11 @@ export default () => {
     home: { name: "儀表板", icon: "icon-globe" },
     editer: { name: "富文本", icon: "icon-doc-text-inv" },
     "ds": { name: "系統設計", icon: "icon-sliders" },
-    "theme-colors": { name: "主題色", icon: "icon-adjust" },
+    "theme-colors": { name: "主題色", icon: "icon-eyedropper" },
     "theme-fonts": { name: "字型", icon: "icon-font" },
     "icons": { name: "Icon", icon: "icon-star-half-alt" },
+    "com": { name: "模組設計", icon: "icon-cubes" },
+    "dialog": { name: "彈窗與對話框", icon: "icon-chat" },
     "aa": { name: "aa", icon: "icon-bug" },
     "bb": { name: "bb", icon: "icon-bug" },
   };

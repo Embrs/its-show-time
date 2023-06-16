@@ -1,10 +1,11 @@
 <template lang="pug">
 //- 主題色
 #ThemeColors
-  p ThemeColors
+  Todo(text="主題色設定")
 </template>
 
 <script setup lang="ts">
+import Todo from "@/components/module/todo.vue";
 // script
 </script>
 

@@ -1,18 +1,19 @@
 <template lang="pug">
 //- 請填寫功能描述👈
-#bgm-memeber
-  p bgm-memeber
+#Dialog
+  Todo(text="彈窗與對話框")
 </template>
 
 <script setup lang="ts">
+import Todo from "@/components/module/todo.vue";
 // script
 </script>
 
 <style lang="scss" scoped>
 // 佈局
-#bgm-memeber {
+#Dialog {
 }
 // 組件
-#bgm-memeber {
+#Dialog {
 }
 </style>

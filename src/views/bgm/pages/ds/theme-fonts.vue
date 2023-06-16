@@ -1,11 +1,11 @@
 <template lang="pug">
 //- 字型
 #ThemeFonts
-  p ThemeFonts
-  aInput
+  Todo(text="字型")
 </template>
 
 <script setup lang="ts">
+import Todo from "@/components/module/todo.vue";
 // script
 </script>
 

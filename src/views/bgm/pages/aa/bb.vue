@@ -1,11 +1,11 @@
 <template lang="pug">
 //- 請填寫功能描述👈
 #BB
-  aInput() aaaa
+  Todo(text="測試用")
 </template>
 
 <script setup lang="ts">
-import {onActivated, onMounted} from "vue";
+import Todo from "@/components/module/todo.vue";
 
 </script>
 

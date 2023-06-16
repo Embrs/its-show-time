@@ -1,11 +1,11 @@
 <template lang="pug">
 //- 外部 Icon
 #Icons
-  p Icons
-  aInput
+  Todo(text="注入Icon")
 </template>
 
 <script setup lang="ts">
+import Todo from "@/components/module/todo.vue";
 // script
 </script>
 
