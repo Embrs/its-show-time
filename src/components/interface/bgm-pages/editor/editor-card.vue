@@ -25,6 +25,7 @@ watch(editorData, (newValue) => {
 // 組件
 #EditorCard {
   .text-view {
+    padding: 10px;
     background-color: #fff;
     height: 350px;
     overflow: auto;
