@@ -1,10 +1,12 @@
 <template lang="pug">
 //- 富文本
 #Editor
+  Todo
   EditorCard
 </template>
 
 <script setup lang="ts">
+import Todo from "@/components/module/todo.vue";
 import EditorCard from "@/components/interface/bgm-pages/editor/editor-card.vue";
 
 </script>
