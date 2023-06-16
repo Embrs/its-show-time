@@ -1,5 +1,5 @@
 <template lang="pug">
-//- 富文本
+//- 富文本a
 #Editor
   Todo
   EditorCard
