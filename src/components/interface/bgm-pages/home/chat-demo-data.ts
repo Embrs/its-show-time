@@ -5,7 +5,7 @@ import type { EChartsOption } from "echarts";
 // Line -------------------------------------------------------------------------------------------------
 const chartLine: EChartsOption = {
   tooltip: {
-    trigger: "axis",
+    trigger: "item",
     axisPointer: {
       type: "shadow"
     }
@@ -13,7 +13,9 @@ const chartLine: EChartsOption = {
   legend: {
     top: 10,
     left: 20,
-    textStyle: { color: "#FFFFFF" }
+    textStyle: { color: "#FFFFFF" },
+    data: ["Direct", "Email", "Union Ads", "Video Ads", "Search Engine", "Baidu", "Google", "Bing", "Others"],
+    // selectedMode: "single"
   },
   grid: {
     left: "3%",

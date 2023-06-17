@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, computed, onMounted, getCurrentInstance } from "vue";
+import { shallowRef,ref, computed, onMounted, getCurrentInstance} from "vue";
 import throttle from "lodash/throttle";
 import * as echarts from "echarts";
 import type { EChartsOption } from "echarts";
@@ -30,7 +30,7 @@ const props = defineProps({
 
 const El_ChartItem = ref();
 const instance = getCurrentInstance();
-const myChart = ref();
+const myChart = shallowRef<any>();
 
 const cardStyle = computed(() => {
   if (props.useScale) {
@@ -48,12 +48,12 @@ onMounted(() => {
 // 大小重置
 const Resize = throttle(() => {
   if (!instance?.isMounted) return;
-  myChart.value.resize();
+  myChart.value?.resize();
 }, 400);
 
 // 設定值
 const SetOption = () => {
-  myChart.value.setOption(props.chartOption);
+  myChart.value?.setOption(props.chartOption);
 };
 
 defineExpose({ Resize ,SetOption});
