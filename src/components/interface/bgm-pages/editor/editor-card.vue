@@ -19,15 +19,18 @@ watch(editorData, (newValue) => {
 <style lang="scss" scoped>
 // 佈局
 #EditorCard {
+  @include size;
   display: grid;
+  grid-template-rows: 1fr 1fr;
   gap: 10px;
 }
 // 組件
 #EditorCard {
   .text-view {
+    @include size;
     padding: 10px;
+    border-radius: 10px;
     background-color: #fff;
-    height: 350px;
     overflow: auto;
   }
 }

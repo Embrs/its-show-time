@@ -54,7 +54,7 @@ const emit = defineEmits(["update:modelValue"]);
 
 const init = reactive({
   language: "zh_TW",
-  // height: "500",
+  height: "100%",
   autoresize_bottom_margin: 50,
   menubar: false,
   content_css: false,

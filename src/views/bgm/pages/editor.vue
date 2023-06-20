@@ -1,7 +1,6 @@
 <template lang="pug">
 //- 富文本a
-#Editor
-  Todo
+#Editor 
   EditorCard
 </template>
 
@@ -15,6 +14,7 @@ import EditorCard from "@/components/interface/bgm-pages/editor/editor-card.vue"
 // 佈局
 #Editor {
   padding: 10px;
+  @include size;
 }
 // 組件
 #Editor {
