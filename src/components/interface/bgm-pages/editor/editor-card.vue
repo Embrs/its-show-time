@@ -30,8 +30,8 @@ watch(editorData, (newValue) => {
   .text-view {
     @include size;
     padding: 10px;
-    border-radius: 10px;;
-    background-color: #fff;
+    // border-radius: 10px;;
+    background-color: #e0f5ec;
     overflow: auto;
   }
 }

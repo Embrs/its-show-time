@@ -85,7 +85,7 @@ const props = defineProps({
   toolbar: {
     type: [String, Array],
     default:
-      "removeformat| image media instagram emoticons | fontsize fontfamily | bold italic underline strikethrough  forecolor backcolor | alignleft aligncenter alignright alignjustify|bullist numlist |outdent indent | undo redo | axupimgs | table | preview",
+      "undo redo | removeformat| image media instagram emoticons | fontsize fontfamily | bold italic underline strikethrough  forecolor backcolor | alignleft aligncenter alignright alignjustify|bullist numlist |outdent indent | axupimgs | table | preview",
   },
 });
 
@@ -186,5 +186,15 @@ watch(editorValue, (newValue) => {
 // 組件
 #TinymceEditor {
 }
+  ::v-deep .tox-tinymce {
+    border-radius: 0;
+  }
+  ::v-deep .tox-toolbar__group{
+    padding: 0 5px;
+  }
+  ::v-deep .tox-tbtn {
+    height: 16px;
+    margin: 0px;
+  }
 </style>
   
