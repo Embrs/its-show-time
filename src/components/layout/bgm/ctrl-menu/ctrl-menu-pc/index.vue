@@ -11,7 +11,7 @@
   .gap-line(:class="{'gap-line-mini': isMini}")
   //----------------
   .menu-list-area(:class="{'menu-list-area-mini': isMini}")
-    BgmMenuList(:isMini="isMini" :menuList="props.menuList")
+    BgmMenuList(:isMini="isMini" :menuList="props.menuList" @on-close="EmitClose")
   //----------------  
   .menu-footer-area
     .logout-area
@@ -44,10 +44,11 @@ const isMini = ref(false);
 import { useRouter } from "vue-router";
 const $router = useRouter();
 //  -------------------------------------------------------------------------------------------------
-const emit = defineEmits(["on-close"]);
+const emit = defineEmits(["on-close", ]);
 const EmitClose = () => {
   emit("on-close");
 };
+//  -------------------------------------------------------------------------------------------------
 
 // 縮放 menu
 const ClickZoomBtn = () => {

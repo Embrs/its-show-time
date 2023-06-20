@@ -39,9 +39,9 @@ const ChatResize = () => {
 <style lang="scss" scoped>
 // 佈局
 #BgmHome {
-  padding: 10px;
+  padding: 8px;
   display: grid;
-  gap: 10px;
+  gap: 8px;
   @include pc-media {
     @include size;
     grid-template-columns: repeat(4, 1fr);

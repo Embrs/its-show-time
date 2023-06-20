@@ -34,6 +34,11 @@ import type { MenuItem } from "@/stores/bgm-menu";
 import { useBgmPageKeepStore } from "@/stores/bgm-page-keep";
 const bgmPageKeepStore = useBgmPageKeepStore();
 // -------------------------------------------------------------------------------------------------
+const emit = defineEmits(["on-close", ]);
+const EmitClose = () => {
+  emit("on-close");
+};
+// -------------------------------------------------------------------------------------------------
 const props = defineProps({
   level: { // 第幾層
     type: Number,
@@ -56,6 +61,7 @@ const ClickMenuItem = debounce((menuItem: MenuItem) => {
   const {key} = menuItem;
   if (menuItem.path) {
     bgmPageKeepStore.SelectPage(key);
+    EmitClose();
     return;
   }
   menuItem.isOpen = !menuItem.isOpen;

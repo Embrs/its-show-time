@@ -18,7 +18,6 @@ import "tinymce/icons/default";
 // 用到的外掛
 import "tinymce/icons/default/icons"; // 樣式圖標
 // import "tinymce/themes/silver/theme"; // 主題樣式
-
 import "tinymce/plugins/lists"; // 列表插件
 import "tinymce/plugins/advlist"; // 高級列表插件
 import "tinymce/plugins/image"; // 插入上傳圖片插件
@@ -42,12 +41,12 @@ const props = defineProps({
   },
   plugins: {
     type: [String, Array],
-    default: "lists advlist image media wordcount link autolink preview instagram quickbars emoticons "
+    default: " lists advlist image media wordcount link autolink preview instagram quickbars emoticons "
   },
   toolbar: {
     type: [String, Array],
     default:
-      "removeformat | formatselect lineheight | fontsizeselect fontselect bold italic underline strikethrough | forecolor backcolor| alignleft aligncenter alignright alignjustify | numlist bullist | outdent indent blockquote | image media instagram | preview | undo redo| axupimgs | removeformat | emoticons"
+      "removeformat formatselect lineheight | fontsizeselect fontselect bold italic underline strikethrough | forecolor backcolor| alignleft aligncenter alignright alignjustify | numlist bullist | outdent indent blockquote | image media instagram | preview | undo redo| axupimgs | emoticons"
   }
 });
 
@@ -55,7 +54,8 @@ const emit = defineEmits(["update:modelValue"]);
 
 const init = reactive({
   language: "zh_TW",
-  height: "400",
+  // height: "500",
+  autoresize_bottom_margin: 50,
   menubar: false,
   content_css: false,
   skin: false,
@@ -79,10 +79,14 @@ const init = reactive({
     Tahoma=Tahoma,Geneva,sans-serif;
     Verdana= Verdana,Geneva,sans-serif;
     Noto Sans TC=Noto Sans TC;`,
-    images_upload_handler: async (blobInfo: { blob: () => any; }, success: (arg0: any) => void, failure: any) => {
+    images_upload_handler: async (blobInfo: {
+
+      base64: any; blob: () => any; 
+      }, success: (arg0: any) => void, failure: any) => {
+    
       // base64
-      // const img = "data:image/jpeg;base64," + blobInfo.base64();
-      // success(img);
+      const img = "data:image/jpeg;base64," + blobInfo.base64();
+      success(img);
 
       // file
       // const file = blobInfo.blob();
