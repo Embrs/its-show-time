@@ -25,6 +25,7 @@ const OepnMenu = () => {
 
 <style lang="scss" scoped>
 #CtrlMenuMobile {
+  background-color: var(--bgmBg200);
   .menu-btn {
     @include size(50px, 30px);
     @include center;
