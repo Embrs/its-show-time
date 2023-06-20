@@ -2,13 +2,14 @@
 //- 富文本
 #EditorCard
   TinymceEditor(v-model="editorData")
-  .text-view(v-html="editorData")
+  .text-view
+    TinymceView(v-model="editorData")
 </template>
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import TinymceEditor from "@/components/unit/tinymce-editor/index.vue";
-
+import TinymceView from "@/components/unit/tinymce-editor/tinymce-view.vue";
 const editorData = ref("<p>Content of the editor.</p>");
 
 watch(editorData, (newValue) => {
