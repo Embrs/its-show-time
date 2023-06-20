@@ -10,7 +10,7 @@
 import { ref, watch } from "vue";
 import TinymceEditor from "@/components/unit/tinymce-editor/index.vue";
 import TinymceView from "@/components/unit/tinymce-editor/tinymce-view.vue";
-const editorData = ref("<p>Content of the editor.</p>");
+const editorData = ref("<p>請輸入文章.</p>");
 
 watch(editorData, (newValue) => {
   console.log(newValue);

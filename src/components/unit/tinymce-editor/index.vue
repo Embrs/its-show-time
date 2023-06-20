@@ -23,6 +23,7 @@ import "tinymce/plugins/table";
 import "tinymce/plugins/quickbars";
 import "tinymce/plugins/image"; // 插入上傳圖片插件
 import "tinymce/plugins/media"; // 插入視頻插件
+import "tinymce/plugins/preview"; // 預覽
 // 語言包
 import "tinymce-i18n/langs5/zh_TW.js";
 // IG 
@@ -79,12 +80,12 @@ const props = defineProps({
   },
   plugins: {
     type: [String, Array],
-    default: "quickbars emoticons table image media instagram",
+    default: "quickbars emoticons table image media instagram, preview",
   },
   toolbar: {
     type: [String, Array],
     default:
-      "removeformat| image media instagram | fontsize fontfamily | bold italic underline strikethrough  forecolor backcolor | alignleft aligncenter alignright alignjustify|bullist numlist |outdent indent | undo redo | axupimgs | table | emoticons",
+      "removeformat| image media instagram emoticons | fontsize fontfamily | bold italic underline strikethrough  forecolor backcolor | alignleft aligncenter alignright alignjustify|bullist numlist |outdent indent | undo redo | axupimgs | table | preview",
   },
 });
 
