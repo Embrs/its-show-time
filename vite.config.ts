@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
         "@": fileURLToPath(new URL("./src", import.meta.url))
       }
     },
-    // base: "/its-show-time/", // github page use
+    base: "/its-show-time/", // github page use
     server: {
       host: "0.0.0.0",
       port: 8088,

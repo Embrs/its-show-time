@@ -40,13 +40,16 @@ onMounted(() => {
     y: "-50vh",
     x: "random(-400, 400)",
     opacity: 0,
-    duration: 0.5,
-    delay: 1,
+    duration: 1,
+    delay: 0.5,
     ease: "Back.easeOut.config(1.7)",
     stagger: 0.05,
+    
     paused: true
   });
   // ---------------------
+  const _height = window.innerHeight;
+
   ScrollTriggerAction = ScrollTrigger.create({
     trigger: El_SkillCard1Item.value,
     markers: false,
@@ -87,7 +90,7 @@ onBeforeUnmount(() => {
 // 佈局
 #SkillCard1Item {
   position: relative;
-  min-height: 50vh;
+  min-height: 80vh;
   background: linear-gradient(0deg, #fdff9b00, #14b5b8);
 }
 // 組件
