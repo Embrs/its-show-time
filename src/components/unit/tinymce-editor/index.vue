@@ -80,7 +80,7 @@ const props = defineProps({
   },
   plugins: {
     type: [String, Array],
-    default: "quickbars emoticons table image media instagram, preview",
+    default: "quickbars emoticons table image media instagram preview",
   },
   toolbar: {
     type: [String, Array],
