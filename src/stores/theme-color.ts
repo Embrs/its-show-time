@@ -30,7 +30,7 @@ export const useThemeColorStore = defineStore("themeColor", () => {
     "bgmBg300": "#3e7486",
 
     "bgmBorder100": "#3e7486",
-    "bgmBorder200": "#0B1773",
+    "bgmBorder200": "#2B2D3E",
 
   });
 

@@ -7,7 +7,7 @@
     BgmPageTab
   .main-page-area
     RouterView(v-slot="{ Component }")
-      transition(name="page" mode="out-in")
+      transition(name="bgm-page" mode="out-in")
         KeepAlive(:include="bgmPageKeepStore.keepPages")
           component(:is="Component") 
 </template>
@@ -24,7 +24,6 @@ const bgmPageKeepStore = useBgmPageKeepStore();
 </script>
 
 <style lang="scss" scoped>
-// 佈局
 #BgmLayout {
   @include size;
   max-width: 100vw;
@@ -65,8 +64,14 @@ const bgmPageKeepStore = useBgmPageKeepStore();
   } 
 }
 
-// 組件
-#BgmLayout {
+.bgm-page-enter-active,
+.bgm-page-leave-active {
+  transition: all 0.4s ease;
+}
+.bgm-page-enter-from,
+.bgm-page-leave-to {
+  transform: translateX(40px);
+  opacity: 0;
 }
 </style>
   

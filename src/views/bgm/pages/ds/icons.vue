@@ -1,7 +1,7 @@
 <template lang="pug">
 //- 外部 Icon
 #Icons
-  .title {{ "Icon清單" }}
+  .title {{ "Icon 清單" }}
   //- pre {{ IconList }}
   .icons-list
     .iconitem(v-for="icon of IconList" :key="icon" @click="ClickIcon(icon)")
@@ -31,8 +31,7 @@ const ClickIcon = (icon: String) => {
   padding: 8px;
   .title {
     @include font(30px, 700);
-    padding: 20px 10px;
-    // font-size: 30px;
+    padding: 14px 0 20px 30px;
     color: white;
   }
   .icons-list {
