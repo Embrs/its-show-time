@@ -39,7 +39,7 @@ tinymce.PluginManager.add("instagram", function (editor, url) {
             {
               type: "textarea",
               name: "instagram",
-              label: "IG "
+              label: "請貼上 IG 嵌入碼"
             }
           ]
         },

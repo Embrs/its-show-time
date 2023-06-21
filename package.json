@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.1.0",
+    "@ckpack/vue-color": "^1.5.0",
     "@tinymce/tinymce-vue": "^5.1.0",
     "@types/lodash": "^4.14.195",
     "ant-design-vue": "^3.2.20",
@@ -21,6 +22,7 @@
     "firebase": "^9.22.1",
     "gsap": "^3.11.5",
     "js-cookie": "^3.0.5",
+    "lightvue": "^1.5.1",
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
     "moment": "^2.29.4",
