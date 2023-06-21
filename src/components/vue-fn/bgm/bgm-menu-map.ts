@@ -27,16 +27,18 @@ export default () => {
 
   // (menu 順序以 menuMap 決定)
   const menuMap: menuMap = {
-    home: { name: "儀表板", icon: "icon-globe" },
-    editor: { name: "富文本", icon: "icon-doc-text-inv" },
+    home: { name: "儀表板", icon: "icon-chart-bar" },
+    editor: { name: "富文本", icon: "icon-doc-text" },
     "ds": { name: "系統設計", icon: "icon-sliders" },
     "theme-colors": { name: "主題色", icon: "icon-eyedropper" },
     "theme-fonts": { name: "字型", icon: "icon-font" },
     "icons": { name: "Icon", icon: "icon-star-half-alt" },
-    "com": { name: "模組設計", icon: "icon-cubes" },
+    "com": { name: "模組設計", icon: "icon-beaker" },
     "dialog": { name: "彈窗與對話框", icon: "icon-chat" },
     "aa": { name: "aa", icon: "icon-bug" },
     "bb": { name: "bb", icon: "icon-bug" },
+    "cc": { name: "cc", icon: "icon-bug" },
+    "dd": { name: "dd", icon: "icon-bug" },
   };
   for (const key in menuMap) {
     menuMap[key].path = bgmPagesObj?.[key]?.path || "";

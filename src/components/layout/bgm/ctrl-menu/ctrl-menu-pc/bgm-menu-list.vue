@@ -100,7 +100,7 @@ const IsCurrentPage = (path: string) => {
     @include column;
   }
   .menu-i {
-    font-size: 20px !important;
+    font-size: 18px !important;
   }
   .menu-label {
     max-width: 0 !important;
@@ -123,7 +123,7 @@ const IsCurrentPage = (path: string) => {
     position: relative;
     color: var(--bgmFont100);
     cursor: pointer;
-    gap: 6px;
+    gap: 8px;
     opacity: 0.6;
     transition: opacity 0.4s ease, transform 0.1s ease;
     transform-origin: 0 50%;
@@ -152,11 +152,12 @@ const IsCurrentPage = (path: string) => {
       }
     }
     .menu-i {
-      font-size: 20px;
+      font-size: 18px;
       z-index: 1;
+      min-width: 20px;
     }
     .menu-label {
-      font-size: 16px;
+      font-size: 14px;
       max-width: 400px;
       max-height: 40px;
       transition: max-width 0.2s ease, max-height 0.4s ease;
