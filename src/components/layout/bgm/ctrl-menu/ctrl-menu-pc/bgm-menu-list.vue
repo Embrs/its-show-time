@@ -23,6 +23,7 @@
         :isMini="props.isMini"
         :menuList="menuItem.children"
         :level="level + 1"
+        @on-close="EmitClose"
       )
 </template>
 
