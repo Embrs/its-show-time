@@ -11,7 +11,10 @@
 import { onMounted } from "vue";
 import { useThemeColorStore } from "@/stores/theme-color";
 import infoLog from "@/utils/console";
-
+//  -------------------------------------------------------------------------------------------------
+import WinSizeFn from "@/components/vue-fn/app/win-resize";
+WinSizeFn();
+//  -------------------------------------------------------------------------------------------------
 const colorStore = useThemeColorStore();
 onMounted(() => {
   infoLog();

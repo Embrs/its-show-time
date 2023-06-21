@@ -9,23 +9,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from "vue"; 
+import { ref, getCurrentInstance } from "vue"; 
 import ChartBasic from "@/components/interface/bgm-pages/home/chart-basic.vue";
 import demoData from "@/components/interface/bgm-pages/home/chat-demo-data";
+//  -------------------------------------------------------------------------------------------------
+const { proxy } = getCurrentInstance()!;
+const $mitt = proxy!.$mitt;
 
+$mitt.on("on-win-resize", () => {
+  ChatResize();
+});
+//  -------------------------------------------------------------------------------------------------
 const El_Line = ref();
 const El_Pie = ref();
 const El_Series = ref();
 const El_Gauge = ref();
 const El_Line2 = ref();
-// -------------------------------------------------------------------------------------------------
-onMounted(() => {
-  window.addEventListener("resize", ChatResize);
-});
 
-onBeforeUnmount(()=> {
-  window.removeEventListener("resize", ChatResize);
-});
 // -------------------------------------------------------------------------------------------------
 const ChatResize = () => {
   El_Line.value.Resize();

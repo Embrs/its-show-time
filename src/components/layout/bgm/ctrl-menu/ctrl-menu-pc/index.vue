@@ -19,12 +19,11 @@
         .icon-logout
         transition(name="com" mode="out-in")
           p(v-if="!isMini") {{ "Logout" }}
-    transition(name="com" mode="out-in")
-      .copy-right(v-show="!isMini") {{ "© 2023 EMBRS" }}
+    .copy-right(v-show="!isMini") {{ "© 2023 EMBRS" }}
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, getCurrentInstance } from "vue";
 import BgmMenuList from "./bgm-menu-list.vue";
 import type { MenuItem } from "@/stores/bgm-menu";
 
@@ -49,7 +48,9 @@ const EmitClose = () => {
   emit("on-close");
 };
 //  -------------------------------------------------------------------------------------------------
-
+const { proxy } = getCurrentInstance()!;
+const $mitt = proxy!.$mitt;
+//  -------------------------------------------------------------------------------------------------
 // 縮放 menu
 const ClickZoomBtn = () => {
   if (props.isMobileType) {
@@ -57,6 +58,9 @@ const ClickZoomBtn = () => {
     return;
   }
   isMini.value = !isMini.value;
+  setTimeout(() => {
+    $mitt.emit("on-win-resize");
+  }, 500);
 };
 
 const ClickLogout = () => {

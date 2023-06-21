@@ -5,5 +5,6 @@ declare module "@vue/runtime-core" {
   interface ComponentCustomProperties {
     $firebase: Firebase;
     $gsap: Gsap
+    $mitt: Emitter
   }
 }
