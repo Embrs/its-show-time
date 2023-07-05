@@ -881,6 +881,48 @@
       "css": "sun",
       "code": 61829,
       "src": "fontawesome"
+    },
+    {
+      "uid": "4fc9b8c122d1b5ca3df42a104a655e8b",
+      "css": "language",
+      "code": 61867,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "6846d155ad5bda456569df81f3057faa",
+      "css": "clone",
+      "code": 62029,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "f6766a8b042c2453a4e153af03294383",
+      "css": "list-numbered",
+      "code": 61643,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "48b87105bd38c20315f1b705b8c7b38c",
+      "css": "list",
+      "code": 59445,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "d407a4707f719b042ed2ad28d2619d7e",
+      "css": "signal",
+      "code": 59464,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "5b0772e9484a1a11646793a82edd622a",
+      "css": "pin",
+      "code": 59465,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "1d2b426ab6db81a58547ba13d8701ad8",
+      "css": "paypal",
+      "code": 61933,
+      "src": "fontawesome"
     }
   ]
 }

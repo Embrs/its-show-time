@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 .icon-heart:before { content: '\e800'; } /* '' */
 .icon-heart-empty:before { content: '\e801'; } /* '' */
 .icon-star-empty:before { content: '\e802'; } /* '' */
@@ -66,6 +67,7 @@
 .icon-mail:before { content: '\e832'; } /* '' */
 .icon-camera:before { content: '\e833'; } /* '' */
 .icon-videocam:before { content: '\e834'; } /* '' */
+.icon-list:before { content: '\e835'; } /* '' */
 .icon-play:before { content: '\e836'; } /* '' */
 .icon-stop:before { content: '\e837'; } /* '' */
 .icon-pause:before { content: '\e838'; } /* '' */
@@ -84,10 +86,13 @@
 .icon-comment:before { content: '\e845'; } /* '' */
 .icon-chat:before { content: '\e846'; } /* '' */
 .icon-bell:before { content: '\e847'; } /* '' */
+.icon-signal:before { content: '\e848'; } /* '' */
+.icon-pin:before { content: '\e849'; } /* '' */
 .icon-bookmark-empty:before { content: '\f097'; } /* '' */
 .icon-beaker:before { content: '\f0c3'; } /* '' */
 .icon-docs:before { content: '\f0c5'; } /* '' */
 .icon-menu:before { content: '\f0c9'; } /* '' */
+.icon-list-numbered:before { content: '\f0cb'; } /* '' */
 .icon-table:before { content: '\f0ce'; } /* '' */
 .icon-magic:before { content: '\f0d0'; } /* '' */
 .icon-mail-alt:before { content: '\f0e0'; } /* '' */
@@ -131,6 +136,7 @@
 .icon-bank:before { content: '\f19c'; } /* '' */
 .icon-graduation-cap:before { content: '\f19d'; } /* '' */
 .icon-google:before { content: '\f1a0'; } /* '' */
+.icon-language:before { content: '\f1ab'; } /* '' */
 .icon-cube:before { content: '\f1b2'; } /* '' */
 .icon-cubes:before { content: '\f1b3'; } /* '' */
 .icon-steam:before { content: '\f1b6'; } /* '' */
@@ -138,6 +144,7 @@
 .icon-database:before { content: '\f1c0'; } /* '' */
 .icon-paper-plane:before { content: '\f1d8'; } /* '' */
 .icon-sliders:before { content: '\f1de'; } /* '' */
+.icon-paypal:before { content: '\f1ed'; } /* '' */
 .icon-cc-visa:before { content: '\f1f0'; } /* '' */
 .icon-cc-mastercard:before { content: '\f1f1'; } /* '' */
 .icon-bell-off:before { content: '\f1f6'; } /* '' */
@@ -159,3 +166,4 @@
 .icon-user-times:before { content: '\f235'; } /* '' */
 .icon-battery-3:before { content: '\f241'; } /* '' */
 .icon-object-group:before { content: '\f247'; } /* '' */
+.icon-clone:before { content: '\f24d'; } /* '' */

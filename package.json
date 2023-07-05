@@ -31,6 +31,7 @@
     "tinymce-i18n": "^23.5.29",
     "vanilla-tilt": "^1.8.0",
     "vue": "^3.3.2",
+    "vue-i18n": "^9.3.0-beta.21",
     "vue-router": "^4.2.0",
     "vue3-smooth-dnd": "^0.0.5"
   },

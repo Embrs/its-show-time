@@ -8,7 +8,7 @@
       @click="ClickMenuItem(menuItem)"
     )
       .menu-i(:class="menuItem.icon")
-      .menu-label {{ menuItem.name }}
+      .menu-label {{ $t(`page.${menuItem.key}`) }}
     //-展開------------
     .btn-line(
       v-if="menuItem.children.length > 0"

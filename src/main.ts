@@ -7,6 +7,7 @@ import $mitt from "@/plugin/mitt";
 import metaTags from "@/plugin/meta-tags";
 import router from "./router";
 import App from "./App.vue";
+import i18n from "@/plugin/i18n";
 
 
 const app = createApp(App);
@@ -18,5 +19,6 @@ app.use(createPinia());
 app.use(router);
 app.use(antd);
 app.use(metaTags);
+app.use(i18n);
 
 app.mount("#app");

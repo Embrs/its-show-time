@@ -5,7 +5,6 @@ import MenuMapFn from "@/components/vue-fn/bgm/bgm-menu-map";
 import { useRoute } from "vue-router";
 
 export interface MenuItem {
-  name: string,
   routeName: string,
   key: string,
   path: string,
@@ -15,7 +14,6 @@ export interface MenuItem {
 }
 export interface MenuObj {
   [key: string]: {
-    name: string,
     routeName: string,
     key: string,
     path: string,
@@ -39,7 +37,6 @@ export const useBgmMenuStore = defineStore("bgm-menu", () => {
           routeName: "",
           path: "",
           key,
-          name: menuMap[key]?.name || "",
           icon: menuMap[key]?.icon || "",
           childrenMap: {},
         };
@@ -61,9 +58,9 @@ export const useBgmMenuStore = defineStore("bgm-menu", () => {
     if (Object.keys(_menuObj).length === 0) return;
     for (const menuKey in menuMap) {
       if (!_menuObj[menuKey]) continue;
-      const { routeName, path, key, name, icon, childrenMap } = _menuObj[menuKey];
+      const { routeName, path, key, icon, childrenMap } = _menuObj[menuKey];
       const menuItem: MenuItem = {
-        name, routeName, key, path, icon,
+        routeName, key, path, icon,
         children: [],
         isOpen: false
       };

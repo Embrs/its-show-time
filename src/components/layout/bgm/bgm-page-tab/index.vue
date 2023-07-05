@@ -13,7 +13,7 @@
         :class="{'tab-item-select':pageItem.key === bgmPageKeepStore.currentPage}"
         @click="ClickTab(pageItem.key)"
       )
-        .label {{ pageItem.name }}
+        .label {{ $t(`page.${pageItem.key}`) }}
         .close-btn.icon-cancel(
           v-if="bgmPageKeepStore.pageItemList.length > 1"
           @click.stop="ClickDeleteBtn(pageItem.key)"
