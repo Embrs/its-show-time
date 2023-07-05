@@ -1,13 +1,13 @@
-const typeIndex = {
-  "zh-TW": 0,
-  "en-US": 1,
-};
-
 interface LangData {
   [key: string]: string[];
 }
+
+export const typeIndex = {
+  "zh-TW": 0,
+  "en-US": 1,
+};
 // -------------------------------------------------------------------------------------------------
-const langData: LangData = {
+export const langData: LangData = {
   // key: ["zh-TW", "en-US"]
   "page.home": ["儀表板", "Dashboard"],
   "page.editor": ["富文本", "Editor"],
@@ -41,9 +41,4 @@ const langData: LangData = {
     Little Ming: Because I wear glasses.
     `
   ]
-};
-
-export {
-  typeIndex,
-  langData
 };

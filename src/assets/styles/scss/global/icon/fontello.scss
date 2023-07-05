@@ -13,7 +13,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .icon-heart:before { content: '\e800'; } /* '' */
 .icon-heart-empty:before { content: '\e801'; } /* '' */
 .icon-star-empty:before { content: '\e802'; } /* '' */
@@ -95,6 +94,9 @@
 .icon-list-numbered:before { content: '\f0cb'; } /* '' */
 .icon-table:before { content: '\f0ce'; } /* '' */
 .icon-magic:before { content: '\f0d0'; } /* '' */
+.icon-sort:before { content: '\f0dc'; } /* '' */
+.icon-sort-down:before { content: '\f0dd'; } /* '' */
+.icon-sort-up:before { content: '\f0de'; } /* '' */
 .icon-mail-alt:before { content: '\f0e0'; } /* '' */
 .icon-comment-empty:before { content: '\f0e5'; } /* '' */
 .icon-chat-empty:before { content: '\f0e6'; } /* '' */
