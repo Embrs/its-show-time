@@ -58,6 +58,7 @@ const bgmPageKeepStore = useBgmPageKeepStore();
     }
   } 
   .main-page-area {
+    position: relative;
     grid-area: main-page;
     overflow: overlay;
     border-top: 1px solid var(--bgmBorder100);

@@ -2,27 +2,19 @@
 //- 請填寫功能描述👈
 #Dialog
   Todo(text="彈窗與對話框")
-  div(ref="container")
+  p(v-for="i of 10" :key="i") {{ i }}
+  p(@click="CallDialog") Dialog
 </template>
 
 <script setup lang="ts">
 import Todo from "@/components/module/todo.vue";
-import { render, ref, onMounted, h } from "vue";
+import { OpenDialog } from "@/components/vue-fn/dialog";
 
-// 在onMounted钩子中渲染 vNode
-const container = ref();
-onMounted(() => {
-
-  // 创建一个vNode
-  const vNode = h("div", { class: "red" }, "Hello, Vue 3!");
-
-  // 渲染vNode到容器中
-  // 注意：需要将容器元素的引用传递给渲染函数的第二个参数
-  // 渲染函数会将vNode渲染到容器中
-  const el = document.querySelector("#BgmLayout");
-  if (!el) return;
-  render(vNode, el);
-});
+const CallDialog = async() => {
+  console.log("oo");
+  const ans = await OpenDialog();
+  console.log("ans:",ans);
+};
 </script>
 
 <style lang="scss" scoped>
