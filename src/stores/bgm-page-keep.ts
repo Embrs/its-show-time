@@ -46,6 +46,7 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
     }
     const path = menuMap[pageKey].path; // TODO 未來優化跳轉路徑為指定路徑
     if (path) $router.push(path);
+    currentPage.value = pageKey;
     SaveStorage();
   };
 
