@@ -5,7 +5,7 @@
     CtrlMenu
   .page-tab-area
     BgmPageTab
-  .main-page-area
+  #BgmPage.main-page-area
     RouterView(v-slot="{ Component }")
       transition(name="bgm-page" mode="out-in")
         KeepAlive(:include="bgmPageKeepStore.keepPages")

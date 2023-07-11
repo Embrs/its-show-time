@@ -1,21 +1,29 @@
 // menu 持久化與跳轉
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { defineStore } from "pinia";
 import { keyMap, SetHash, GetHash, RemoveHash } from "@/plugin/storage";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
+import debounce from "lodash/debounce";
 import MenuMapFn from "@/components/vue-fn/bgm/bgm-menu-map";
 
 export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
   const { menuMap } = MenuMapFn();
   const $router = useRouter();
+  const $route = useRoute();
   const keepPages = ref<string[]>([]);
   const currentPage = ref<string>("");
 
+  watch($route, () => {
+    const pageKey = $route.path.replace("/bgm/", "").split("/").pop() || "";
+    currentPage.value = pageKey;
+    SaveStorage();
+  });
+  
   // Storage -------------------------------------------------------------------------------------------------
-  const SaveStorage = () => {
+  const SaveStorage = debounce(() => {
     SetHash(keyMap.bmgKeepPage, keepPages.value);
     SetHash(keyMap.bgmCurrentPage, currentPage.value);
-  };
+  }, 200);
 
   const GetStorage = () => {
     keepPages.value = GetHash(keyMap.bmgKeepPage) ?? [];
@@ -38,7 +46,6 @@ export const useBgmPageKeepStore = defineStore("bgm-page-keep", () => {
     }
     const path = menuMap[pageKey].path; // TODO 未來優化跳轉路徑為指定路徑
     if (path) $router.push(path);
-    currentPage.value = pageKey;
     SaveStorage();
   };
 
