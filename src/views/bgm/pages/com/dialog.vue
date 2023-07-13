@@ -2,17 +2,17 @@
 //- 請填寫功能描述👈
 #Dialog
   Todo(text="彈窗與對話框")
-  p(v-for="i of 10" :key="i") {{ i }}
-  p(@click="CallDialog") Dialog
+  aButton(@click="DialogDemo") {{ "vNode Dialog" }}
 </template>
 
 <script setup lang="ts">
 import Todo from "@/components/module/todo.vue";
 import { OpenDialog } from "@/components/vue-fn/dialog";
 
-const CallDialog = async() => {
-  console.log("oo");
-  const ans = await OpenDialog();
+const DialogDemo = async() => {
+  const ans = await OpenDialog({
+    content: "這是 vNode Dialog 測試"
+  });
   console.log("ans:",ans);
 };
 </script>
@@ -20,6 +20,7 @@ const CallDialog = async() => {
 <style lang="scss" scoped>
 // 佈局
 #Dialog {
+  padding: 10px;
 }
 // 組件
 #Dialog {
