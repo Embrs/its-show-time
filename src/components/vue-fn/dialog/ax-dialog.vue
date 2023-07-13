@@ -130,11 +130,11 @@ const ClickEventBtn = debounce((eventType: EventType) => {
 
 .ax-dialog-enter-active,
 .ax-dialog-leave-active {
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 .ax-dialog-enter-from,
 .ax-dialog-leave-to {
-  transform: scale(0.4);
+  transform: scale(0.8);
   opacity: 0;
 }
 </style>
