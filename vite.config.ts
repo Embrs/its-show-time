@@ -20,6 +20,7 @@ const ValuePlugin = (name: string, key: string, value: string) => {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+  console.log("mode", mode, loadEnv(mode, process.cwd()).VITE_MODE);
   return {
     plugins: [
       vue(),
@@ -40,7 +41,7 @@ export default defineConfig(({ mode }) => {
       // },
       proxy: {
         "/api": {
-          target: loadEnv("", process.cwd()).VITE_APP_URL,
+          target: loadEnv(mode, process.cwd()).VITE_APP_URL,
           changeOrigin: true,
           // rewrite: (path) => path.replace(/^\/api/, ""),
         }
