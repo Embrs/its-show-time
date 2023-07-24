@@ -1,17 +1,30 @@
 import { fileURLToPath, URL } from "node:url";
-
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
-// import fs from "fs"; // https use (打包請關閉)
+
+import fs from "fs"; // https use (打包請關閉)
 // import path from "path"; // https use (打包請關閉)
-// get version
-// const { version } = JSON.parse(fs.readFileSync("package.json", "utf-8"));
-// console.log(version);
+
+// app version
+const { version } = JSON.parse(fs.readFileSync("package.json", "utf-8"));
+
+// set html value
+const ValuePlugin = (name: string, key: string, value: string) => {
+  return {
+    name,
+    transformIndexHtml(html: any) {
+      return html.replaceAll(key, value);
+    },
+  };
+};
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
-    plugins: [vue()],
+    plugins: [
+      vue(),
+      ValuePlugin("version-plugin", "<!-- APP_VERSION -->", version)
+    ],
     resolve: {
       alias: {
         "@": fileURLToPath(new URL("./src", import.meta.url))
