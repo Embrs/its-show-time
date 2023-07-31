@@ -20,7 +20,6 @@ const ValuePlugin = (name: string, key: string, value: string) => {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  console.log("mode", mode, loadEnv(mode, process.cwd()).VITE_MODE);
   return {
     plugins: [
       vue(),
