@@ -6,6 +6,7 @@ COPY . .
 RUN rm -rf node_modules
 RUN rm -rf dist
 RUN npm install
+
 RUN npm run build
 
 # production stage
