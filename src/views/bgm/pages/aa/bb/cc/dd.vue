@@ -8,7 +8,7 @@
   p DEV: {{ dev }}
   p SSR: {{ ssr }}
   p {{ appUrl }}
-  p {{ aaa }}
+  p {{ envGroup }}
 </template>
 
 <script setup lang="ts">
@@ -20,7 +20,7 @@ const dev = import.meta.env.DEV;
 const ssr = import.meta.env.SSR;
 // const mode = import.meta.env.VITE_MODE;
 const appUrl = import.meta.env.VITE_APP_URL;
-const aaa = import.meta.env;
+const envGroup = import.meta.env;
 
 </script>
 
